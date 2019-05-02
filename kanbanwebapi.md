@@ -49,3 +49,33 @@ kanbanwebapi.kanban.getBlock(blockHashOrBlockNumber [, returnTransactionObjects]
     * <b>gasUsed</b> - Number: The total used gas by all transactions in this block.
     * <b>timestamp</b> - Number: The unix timestamp for when the block was collated.
     * <b>transactions</b> - Array: Array of transaction objects, or 32 Bytes transaction hashes depending on the returnTransactionObjects parameter.
+
+
+### eth.getBlockTransactionCount
+```
+kanbanwebapi.kanban.getBlockTransactionCount(blockHashOrBlockNumber [, callback])
+```
+
+#### Parameters
+ - String|Number - The block number or block hash. Or the string "genesis", "latest" or "pending" as in the default block parameter.
+ - Function - (optional) Optional callback, returns an error object as first parameter and the result as second.
+
+#### Return Type
+ - Number - The number of transactions in the given block
+
+
+
+### eth.getBalance
+```
+kanbanwebapi.kanban.getBalance(address [, defaultBlock] [, callback])
+```
+
+#### Parameters
+ - String - The address to get the balance of
+ - Number|String - (optional) - if you pass this parameter it will not use the default block set with kanbanwebapi.kanban.defaultBlock.
+
+#### Return Type
+ - balance object:
+    * BTC - String - The Bitcoin balance in hexadecimal format
+    * ETH - String - The Ethereum balance in hexadecimal format
+    * FAB - String - The FABcoin balacne in hexadecimal format
