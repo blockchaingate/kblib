@@ -5,8 +5,8 @@
 
 ### Properties
 
-| Property                | Return-type               | Description                                                      |
-|-------------------------|---------------------------|------------------------------------------------------------------|
+| Property                   | Return-type               | Description                                                      |
+|----------------------------|---------------------------|------------------------------------------------------------------|
 | kanban.coinbase            | String                    | the coinbase address to which mining rewards will go             |
 | kanban.mining              | Boolean                   | checks whether the node is mining or not                         |
 | kanban.hashrate            | Number                    | number of hashes per second that the node is mining with         |
@@ -21,13 +21,12 @@
 
 ### kanban.getBlock
 ```
-kanbanwebapi.kanban.getBlock(blockHashOrBlockNumber [, returnTransactionObjects] [, callback])
+kanbanwebapi.kanban.getBlock(blockHashOrBlockNumber [, returnTransactionObjects])
 ```
 
 #### Parameters
- - String|Number - The block number or block hash. Or the string "genesis", "latest" or "pending" as in the default block parameter.
- - Boolean - (optional, default false) If true, the returned block will contain all transactions as objects, if false it will only contains the transaction hashes.
- - Function - (optional) Optional callback, returns an error object as first parameter and the result as second.
+ - blockHashOrBlockNumber - String|Number - The block number or block hash. Or the string "genesis", "latest" or "pending" as in the default block parameter.
+ - returnTransactionObjects - Boolean - (optional, default false) If true, the returned block will contain all transactions as objects, if false it will only contains the transaction hashes.
 
 #### Return Type
  - block object:
@@ -51,31 +50,100 @@ kanbanwebapi.kanban.getBlock(blockHashOrBlockNumber [, returnTransactionObjects]
     * <b>transactions</b> - Array: Array of transaction objects, or 32 Bytes transaction hashes depending on the returnTransactionObjects parameter.
 
 
-### kanban.getBlockTransactionCount
+### kanban.getTransactionCount
 ```
-kanbanwebapi.kanban.getBlockTransactionCount(blockHashOrBlockNumber [, callback])
+kanbanwebapi.kanban.getTransactionCount(address [, defaultBlock])
 ```
 
 #### Parameters
- - String|Number - The block number or block hash. Or the string "genesis", "latest" or "pending" as in the default block parameter.
- - Function - (optional) Optional callback, returns an error object as first parameter and the result as second.
+ - address - String - The address that you want to see the transaction count of
+ - defaultBlock - String|Number - (optional, default "latest") The block number in decimal or hex format. Or the string "genesis", "latest" or "pending".
+
+#### Return Type
+ - Number - The number of transactions sent from the address in the given (or latest) block
+
+
+### kanban.getBlockTransactionCount
+```
+kanbanwebapi.kanban.getBlockTransactionCount(blockHashOrBlockNumber)
+```
+
+#### Parameters
+ - blockHashOrBlockNumber - String|Number - The block number or block hash. Or the string "genesis", "latest" or "pending" as in the default block parameter.
 
 #### Return Type
  - Number - The number of transactions in the given block
 
 
-
 ### kanban.getBalance
 ```
-kanbanwebapi.kanban.getBalance(address [, defaultBlock] [, callback])
+kanbanwebapi.kanban.getBalance(address [, defaultBlock])
 ```
 
 #### Parameters
- - String - The address to get the balance of
- - Number|String - (optional) - if you pass this parameter it will not use the default block set with kanbanwebapi.kanban.defaultBlock.
+ - address - String - The address to get the balance of
+ - defaultBlock - Number|String - (optional) - if you pass this parameter it will not use the default block set with kanbanwebapi.kanban.defaultBlock.
 
 #### Return Type
  - balance object:
     * BTC - String - The Bitcoin balance in hexadecimal format
-    * ETH - String - The Ethereum balance in hexadecimal format
+    * ETH - String - The Ether balance in hexadecimal format
     * FAB - String - The FABcoin balacne in hexadecimal format
+
+
+### personal.newAccount
+```
+kanbanwebapi.personal.newAccount(password)
+```
+
+#### Parameters
+ - String - the password you wish to use to secure the account
+
+#### Return Type
+ - String - Address of the newly created account
+
+
+### personal.unlockAccount
+```
+kanbanwebapi.personal.unlockAccount(address, password, unlockDuration)
+```
+
+#### Parameters
+ - address - String - The account address to unlock
+ - password - String - The account password
+ - unlockDuration - Number - The duration for the account to remain unlocked.
+
+#### Return Type
+ - Boolean - True if the account was unlocked successfully otherwise false
+
+
+### personal.lockAccount
+```
+kanbanwebapi.kanban.lockAccount(address)
+```
+
+#### Parameters
+ - address - String - The account address to lock
+
+#### Return Type
+ - Boolean - True if the account was locked successfully otherwise false
+
+
+### kanban.sendTransaction
+```
+kanbanwebapi.kanban.sendTransaction(transactionObject)
+```
+
+#### Parameters
+ - Object - The transaction object to send:
+    + <b>from</b> - String|Number: The address for the sending account. Uses the web3.eth.defaultAccount property, if not specified. Or an address or index of a local wallet in web3.eth.accounts.wallet.
+    + <b>to</b> - String: (optional) The destination address of the message, left undefined for a contract-creation transaction.
+    + <b>coin</b> - String (optional) The type of coin you wish to send. Currently supports ("FAB", "BTC", "ETH"). Default "FAB". 
+    + <b>value</b> - Number|String|BN|BigNumber: (optional) The value transferred for the transaction in wei, also the endowment if it’s a contract-creation transaction.
+    + <b>gas</b> - Number: (optional, default: To-Be-Determined) The amount of gas to use for the transaction (unused gas is refunded).
+    + <b>gasPrice</b> - Number|String|BN|BigNumber: (optional) The price of gas for this transaction in wei, defaults to web3.eth.gasPrice.
+    + <b>data</b> - String: (optional) Either a ABI byte string containing the data of the function call on a contract, or in the case of a contract-creation transaction the initialisation code.
+    + <b>nonce</b> - Number: (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
+
+#### Return Type
+ - TO DO update return type with more detail
