@@ -7,19 +7,19 @@
 
 | Property                | Return-type               | Description                                                      |
 |-------------------------|---------------------------|------------------------------------------------------------------|
-| eth.coinbase            | String                    | the coinbase address to which mining rewards will go             |
-| eth.mining              | Boolean                   | checks whether the node is mining or not                         |
-| eth.hashrate            | Number                    | number of hashes per second that the node is mining with         |
-| eth.syncing             | syncing object or boolean | if node is syncing, returns syncing object, otherwise false      |
-| eth.gasPrice            | BigNumber                 | current gas price oracle determined by median of last few blocks |// confirm if should exist
-| eth.accounts            | array of accounts         | array of addresses controlled by node                            |// confirm return type & if works
-| eth.blockNumber         | Object                    | object containing "blockNumber" and "blockNumberHex"             |
-| eth.protocolVersion     | String                    | protocol version of the node in hexadecimal format               |// confirm if produces kanban version
+| kanban.coinbase            | String                    | the coinbase address to which mining rewards will go             |
+| kanban.mining              | Boolean                   | checks whether the node is mining or not                         |
+| kanban.hashrate            | Number                    | number of hashes per second that the node is mining with         |
+| kanban.syncing             | syncing object or boolean | if node is syncing, returns syncing object, otherwise false      |
+| kanban.gasPrice            | BigNumber                 | current gas price oracle determined by median of last few blocks |// confirm if should exist
+| kanban.accounts            | array of accounts         | array of addresses controlled by node                            |// confirm return type & if works
+| kanban.blockNumber         | Object                    | object containing "blockNumber" and "blockNumberHex"             |
+| kanban.protocolVersion     | String                    | protocol version of the node in hexadecimal format               |// confirm if kanban version
 
 
 ### Methods
 
-### eth.getBlock
+### kanban.getBlock
 ```
 kanbanwebapi.kanban.getBlock(blockHashOrBlockNumber [, returnTransactionObjects] [, callback])
 ```
@@ -51,7 +51,7 @@ kanbanwebapi.kanban.getBlock(blockHashOrBlockNumber [, returnTransactionObjects]
     * <b>transactions</b> - Array: Array of transaction objects, or 32 Bytes transaction hashes depending on the returnTransactionObjects parameter.
 
 
-### eth.getBlockTransactionCount
+### kanban.getBlockTransactionCount
 ```
 kanbanwebapi.kanban.getBlockTransactionCount(blockHashOrBlockNumber [, callback])
 ```
@@ -65,7 +65,7 @@ kanbanwebapi.kanban.getBlockTransactionCount(blockHashOrBlockNumber [, callback]
 
 
 
-### eth.getBalance
+### kanban.getBalance
 ```
 kanbanwebapi.kanban.getBalance(address [, defaultBlock] [, callback])
 ```

@@ -4224,7 +4224,7 @@ SolidityFunction.prototype.request = function () {
     var format = this.unpackOutput.bind(this);
 
     return {
-        method: this._constant ? 'eth_call' : 'eth_sendTransaction',
+        method: this._constant ? 'eth_call' : 'kanban_sendTransaction',
         callback: callback,
         params: [payload],
         format: format
@@ -5454,7 +5454,7 @@ var methods = function () {
 
     var sendTransaction = new Method({
         name: 'sendTransaction',
-        call: 'eth_sendTransaction',
+        call: 'kanban_sendTransaction',
         params: 1,
         inputFormatter: [formatters.inputTransactionFormatter]
     });
