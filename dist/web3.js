@@ -5304,7 +5304,7 @@ var blockCall = function (args) {
 };
 
 var transactionFromBlockCall = function (args) {
-    return (utils.isString(args[0]) && args[0].indexOf('0x') === 0) ? 'eth_getTransactionByBlockHashAndIndex' : 'eth_getTransactionByBlockNumberAndIndex';
+    return (utils.isString(args[0]) && args[0].indexOf('0x') === 0) ? 'kanban_getTransactionByBlockHashAndIndex' : 'kanban_getTransactionByBlockNumberAndIndex';
 };
 
 var uncleCall = function (args) {
