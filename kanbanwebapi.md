@@ -250,4 +250,20 @@ kanbanwebapi.kanban.sendTransaction(transactionObject)
     + <b>nonce</b> - Number: (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
 
 #### Return Type
- - TO DO update return type with more detail
+ - "transactionHash" - String - 32 byte hash of the transaction if one is available
+
+
+### kanban.getStorageAt
+
+```
+kanbanwebapi.kanban.getStorageAt(address, position [, defaultBlock])
+```
+
+#### Parameters
+ - <b>address</b> - String - The address of the smart contract
+ - <b>position</b> - Number - The index position of the storage.
+ - <b>defaultBlock</b> - String|Number - (optional, default "latest") The block number in decimal or hex format. Or the string "genesis", "latest" or "pending".
+
+#### Return Type
+ - String - The value in storage at the given position.
+
