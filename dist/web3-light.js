@@ -5417,7 +5417,7 @@ var methods = function () {
 
     var getTransaction = new Method({
         name: 'getTransaction',
-        call: 'eth_getTransactionByHash',
+        call: 'kanban_getTransactionByHash',
         params: 1,
         outputFormatter: formatters.outputTransactionFormatter
     });

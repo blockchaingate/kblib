@@ -50,6 +50,29 @@ kanbanwebapi.kanban.getBlock(blockHashOrBlockNumber [, returnTransactionObjects]
     * <b>transactions</b> - Array: Array of transaction objects, or 32 Bytes transaction hashes depending on the returnTransactionObjects parameter.
 
 
+### kanban.getTransaction
+```
+kanbanwebapi.kanban.getTransaction(transactionHash)
+```
+
+#### Parameters
+ - transactionHash - String - The hash of the transaction to be looked up
+
+#### Return Type
+ - transaction Object:
+   * hash 32 Bytes - String: Hash of the transaction.
+   * nonce - Number: The number of transactions made by the sender prior to this one.
+   * blockHash 32 Bytes - String: Hash of the block where this transaction was in. null when its pending.
+   * blockNumber - Number: Block number where this transaction was in. null when its pending.
+   * transactionIndex - Number: Integer of the transactions index position in the block. null when its pending.
+   * from - String: Address of the sender.
+   * to - String: Address of the receiver. null when its a contract creation transaction.
+   * value - String: Value transferred in wei.
+   * gasPrice - String: The wei per unit of gas provided by the sender in wei.
+   * gas - Number: Gas provided by the sender.
+   * input - String: The data sent along with the transaction.
+
+
 ### kanban.getTransactionCount
 ```
 kanbanwebapi.kanban.getTransactionCount(address [, defaultBlock])
