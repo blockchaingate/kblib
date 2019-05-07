@@ -265,5 +265,19 @@ kanbanwebapi.kanban.getStorageAt(address, position [, defaultBlock])
  - <b>defaultBlock</b> - String|Number - (optional, default "latest") The block number in decimal or hex format. Or the string "genesis", "latest" or "pending".
 
 #### Return Type
- - String - The value in storage at the given position.
+ - String - The value in storage at the given position, as a hex string
+
+
+### kanban.getCode
+
+```
+kanbanwebapi.kanban.getCode(address [, defaultBlock])
+```
+
+#### Parameters
+ - <b>address</b> - String - The address of the smart contract
+ - <b>defaultBlock</b> - String|Number - (optional, default "latest") The block number in decimal or hex format. Or the string "genesis", "latest" or "pending".
+
+#### Return Type
+ - String - The code at the given address, as a hex string
 

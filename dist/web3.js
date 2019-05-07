@@ -5377,7 +5377,7 @@ var methods = function () {
 
     var getCode = new Method({
         name: 'getCode',
-        call: 'eth_getCode',
+        call: 'kanban_getCode',
         params: 2,
         inputFormatter: [formatters.inputAddressFormatter, formatters.inputDefaultBlockNumberFormatter]
     });
