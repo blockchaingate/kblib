@@ -559,7 +559,7 @@ describe('contract', function () {
             var signature = 'send(address,uint256)';
             var address = '0x1234567890123456789012345678901234567891';
             provider.injectValidation(function (payload) {
-                assert.equal(payload.method, 'eth_estimateGas');
+                assert.equal(payload.method, 'kanban_estimateGas');
                 assert.deepEqual(payload.params, [{
                     data: '0x' + sha3(signature).slice(0, 8) +
                         '0000000000000000000000001234567890123456789012345678901234567891' +

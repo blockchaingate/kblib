@@ -301,3 +301,24 @@ Executes a message call transaction, which is directly executed in the VM of the
 
 #### Return Type
  - String - The returned data of the call, e.g. a smart contract functions return value.
+
+
+### kanban.estimateGas
+
+```
+kanbanwebapi.kanban.estimateGas(callObject)
+```
+Executes a message call transaction, which is directly executed in the VM of the node, but never mined into the blockchain.
+#### Parameters
+ - <b>callObject</b> - transaction Object - The transaction object to send:
+    + <b>from</b> - String|Number: (optional) The address for the sending account. Uses the web3.eth.defaultAccount property, if not specified. Or an address or index of a local wallet in web3.eth.accounts.wallet.
+    + <b>to</b> - String: (optional) The destination address of the message, left undefined for a contract-creation transaction.
+    + <b>coin</b> - String (optional) The type of coin you wish to send. Currently supports ("FAB", "BTC", "ETH"). Default "FAB". 
+    + <b>value</b> - Number|String|BN|BigNumber: (optional) The value transferred for the transaction in wei, also the endowment if it’s a contract-creation transaction.
+    + <b>gas</b> - Number: (optional, default: To-Be-Determined) The amount of gas to use for the transaction (unused gas is refunded).
+    + <b>gasPrice</b> - Number|String|BN|BigNumber: (optional) The price of gas for this transaction in wei, defaults to web3.eth.gasPrice.
+    + <b>data</b> - String: (optional) Either a ABI byte string containing the data of the function call on a contract, or in the case of a contract-creation transaction the initialisation code.
+    + <b>nonce</b> - Number: (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
+
+#### Return Type
+ - Number - The amount of gas used in the simulated execution of the call
