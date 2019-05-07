@@ -249,7 +249,19 @@ Sends a transaction to the network.
     + <b>nonce</b> - Number: (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
 
 #### Return Type
- - "transactionHash" - String - 32 byte hash of the transaction if one is available
+ - "transactionHash" - String - 32 byte hash of the transaction
+
+
+### kanban.sendRawTransaction
+```
+kanbanwebapi.kanban.sendRawTransaction(signedTransactionData)
+```
+Sends an already signed transaction, generated for example using kanbanwebapi.kanban.accounts.signTransaction
+#### Parameters
+ - <b>signedTransactionData</b> - String - signed transaction data in hex format
+
+#### Return Type
+ - "transactionHash" - String - 32 byte hash of the transaction
 
 
 ### kanban.getStorageAt

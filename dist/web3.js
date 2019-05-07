@@ -5447,7 +5447,7 @@ var methods = function () {
 
     var sendRawTransaction = new Method({
         name: 'sendRawTransaction',
-        call: 'eth_sendRawTransaction',
+        call: 'kanban_sendRawTransaction',
         params: 1,
         inputFormatter: [null]
     });
