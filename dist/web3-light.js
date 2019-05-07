@@ -5461,7 +5461,7 @@ var methods = function () {
 
     var signTransaction = new Method({
         name: 'signTransaction',
-        call: 'eth_signTransaction',
+        call: 'kanban_signTransaction',
         params: 1,
         inputFormatter: [formatters.inputTransactionFormatter]
     });

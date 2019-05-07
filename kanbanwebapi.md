@@ -252,6 +252,39 @@ Sends a transaction to the network.
  - "transactionHash" - String - 32 byte hash of the transaction
 
 
+### kanban.signTransaction
+```
+kanbanwebapi.kanban.signTransaction(transactionOptions)
+```
+Signs a transaction with the private key of the given address. If the given address is a local unlocked account, the transaction will be signed locally.
+#### Parameters
+ - <b>transactionOptions</b> - transaction Object - The transaction object to send:
+      * <b>from</b> - String|Number: The address for the sending account. Uses the kanbanwebapi.kanban.defaultAccount property, if not specified. Or an address or index of a local wallet in kanbanwebapi.kanban.accounts.wallet
+      * <b>nonce</b> - String: (optional) The nonce to use when signing this transaction. Default will use web3.eth.getTransactionCount().
+      * <b>chainId</b> - String: (optional) The chain id to use when signing this transaction. Default will use web3.eth.net.getId().
+      * <b>to</b> - String: (optional) The receiver of the transaction, can be empty when deploying a contract.
+      * <b>data</b> - String: (optional) The call data of the transaction, can be empty for simple value transfers.
+      * <b>value</b> - String: (optional) The value of the transaction in wei.
+      * <b>gasPrice</b> - String: (optional) The gas price set by this transaction, if empty, it will use web3.eth.gasPrice()
+      * <b>gas</b> - String: The gas provided by the transaction.
+ - <b>address</b>  - String - (optional) The account address
+
+#### Return Type
+ - Object :
+   * <b>raw</b> - String - The RLP encoded transaction, ready to be sent using kanbanwebapi.kanban.sendSignedTransaction
+   * <b>tx</b> - Object :
+      + <b>nonce</b> - String - The nonce to used when signing this transaction as a hexidecimal string
+      + <b>gasPrice</b> - String - The gas price set by this transaction in hexadecimal format
+      + <b>gas</b> - The gas provided by the transaction in hexadecimal format
+      + <b>to</b> - String - The receiver address of the transaction, can be empty when deploying a contract.
+      + <b>value</b> - String - The hexadecimal value of the transaction in wei.
+      + <b>input</b> - String - hexadecimal data/input field supplied for the transaction
+      + <b>v</b> - String - Recovery value + 27
+      + <b>r</b> - String - First 32 bytes of the signature
+      + <b>s</b> - String - Next 32 bytes of the signature
+      + <b>hash</b> - String - Hash of the transaction
+
+
 ### kanban.sendRawTransaction
 ```
 kanbanwebapi.kanban.sendRawTransaction(signedTransactionData)
@@ -261,7 +294,7 @@ Sends an already signed transaction, generated for example using kanbanwebapi.ka
  - <b>signedTransactionData</b> - String - signed transaction data in hex format
 
 #### Return Type
- - "transactionHash" - String - 32 byte hash of the transaction
+ - String - 32 byte hash of the transaction
 
 
 ### kanban.getStorageAt
