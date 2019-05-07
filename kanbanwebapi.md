@@ -12,7 +12,7 @@
 | kanban.hashrate            | Number                    | number of hashes per second that the node is mining with         |
 | kanban.syncing             | syncing object or boolean | if node is syncing, returns syncing object, otherwise false      |
 | kanban.gasPrice            | BigNumber                 | current gas price oracle determined by median of last few blocks |// confirm if should exist
-| kanban.accounts            | array of accounts         | array of addresses controlled by node                            |// confirm return type & if works
+| kanban.accounts            | array of accounts         | array of addresses controlled by node                            |// confirm return type
 | kanban.blockNumber         | Object                    | object containing "blockNumber" and "blockNumberHex"             |
 | kanban.protocolVersion     | String                    | protocol version of the node in hexadecimal format               |// confirm if kanban version
 
@@ -23,7 +23,7 @@
 ```
 kanbanwebapi.kanban.getBlock(blockHashOrBlockNumber [, returnTransactionObjects])
 ```
-
+Returns a block matching the block number or block hash.
 #### Parameters
  - <b>blockHashOrBlockNumber</b> - String|Number - The block number or block hash. Or the string "genesis", "latest" or "pending" as in the default block parameter.
  - <b>returnTransactionObjects</b> - Boolean - (optional, default false) If true, the returned block will contain all transactions as objects, if false it will only contains the transaction hashes.
@@ -54,7 +54,7 @@ kanbanwebapi.kanban.getBlock(blockHashOrBlockNumber [, returnTransactionObjects]
 ```
 kanbanwebapi.kanban.getTransaction(transactionHash)
 ```
-
+Returns a transaction matching the given transaction hash.
 #### Parameters
  - <b>transactionHash</b> - String - The hash of the transaction to be looked up
 
@@ -77,7 +77,7 @@ kanbanwebapi.kanban.getTransaction(transactionHash)
 ```
 kanbanwebapi.kanban.getTransactionFromBlock(blockHashOrNumber, indexNumber)
 ```
-
+Returns a transaction based on a block hash or number and the transactions index position.
 #### Parameters
  - <b>blockHashOrNumber</b> - String|Number - The hash or block number of the block containing the transaction
  - <b>indexNumber</b> - Number - The index of the transaction within the block
@@ -103,7 +103,7 @@ kanbanwebapi.kanban.getTransactionFromBlock(blockHashOrNumber, indexNumber)
 ```
 kanbanwebapi.kanban.getTransactionReceipt(transactionHash)
 ```
-
+Returns the receipt of a transaction by transaction hash.
 #### Parameters
  - <b>transactionHash</b> - String - The hash of the transaction to be looked up
 
@@ -126,7 +126,7 @@ kanbanwebapi.kanban.getTransactionReceipt(transactionHash)
 ```
 kanbanwebapi.kanban.getTransactionCount(address [, defaultBlock])
 ```
-
+Get the numbers of transactions sent from this address.
 #### Parameters
  - <b>address</b> - String - The address that you want to see the transaction count of
  - <b>defaultBlock</b> - String|Number - (optional, default "latest") The block number in decimal or hex format. Or the string "genesis", "latest" or "pending".
@@ -139,7 +139,7 @@ kanbanwebapi.kanban.getTransactionCount(address [, defaultBlock])
 ```
 kanbanwebapi.kanban.getBlockTransactionCount(blockHashOrBlockNumber)
 ```
-
+Returns the number of transaction in a given block.
 #### Parameters
  - <b>blockHashOrBlockNumber</b> - String|Number - The block number or block hash. Or the string "genesis", "latest" or "pending" as in the default block parameter.
 
@@ -147,15 +147,14 @@ kanbanwebapi.kanban.getBlockTransactionCount(blockHashOrBlockNumber)
  - Number - The number of transactions in the given block
 
 
-
 ### kanban.getUncle
 ```
 kanbanwebapi.kanban.getUncle(blockHashOrNumber, uncleIndex)
 ```
-
+Returns a blocks uncle by a given uncle index position.
 #### Parameters
- - <b>blockHashOrNumber</b> - String|Number - The hash or block number of the block containing the transaction
- - <b>uncleIndex</b> - Number - The index of the uncle for the chosen block
+ - <b>blockHashOrNumber</b> - String|Number - The hash or block number. Or the string "genesis", "latest" or "pending" as in the default block parameter.
+ - <b>uncleIndex</b> - Number - The index position of the uncle
 
 #### Return Type
  - block object:
@@ -183,7 +182,7 @@ kanbanwebapi.kanban.getUncle(blockHashOrNumber, uncleIndex)
 ```
 kanbanwebapi.kanban.getBalance(address [, defaultBlock])
 ```
-
+Get the balance of an address at a given block.
 #### Parameters
  - <b>address</b>  - String - The address to get the balance of
  - <b>defaultBlock</b>  - Number|String - (optional) - if you pass this parameter it will not use the default block set with kanbanwebapi.kanban.defaultBlock.
@@ -199,7 +198,7 @@ kanbanwebapi.kanban.getBalance(address [, defaultBlock])
 ```
 kanbanwebapi.personal.newAccount(password)
 ```
-
+Create a new account on the node that kanbanwebapi is connected to with its provider. The RPC method used is personal_newAccount. 
 #### Parameters
  - <b> password</b>  - String - the password you wish to use to secure the account
 
@@ -211,7 +210,7 @@ kanbanwebapi.personal.newAccount(password)
 ```
 kanbanwebapi.personal.unlockAccount(address, password, unlockDuration)
 ```
-
+Unlocks the given account.
 #### Parameters
  - <b> address</b>  - String - The account address to unlock
  - <b> password</b>  - String - The account password
@@ -225,7 +224,7 @@ kanbanwebapi.personal.unlockAccount(address, password, unlockDuration)
 ```
 kanbanwebapi.kanban.lockAccount(address)
 ```
-
+Locks the given account.
 #### Parameters
  - <b>address</b>  - String - The account address to lock
 
@@ -237,7 +236,7 @@ kanbanwebapi.kanban.lockAccount(address)
 ```
 kanbanwebapi.kanban.sendTransaction(transactionObject)
 ```
-
+Sends a transaction to the network.
 #### Parameters
  - <b>transactionObject</b> - transaction Object - The transaction object to send:
     + <b>from</b> - String|Number: The address for the sending account. Uses the web3.eth.defaultAccount property, if not specified. Or an address or index of a local wallet in web3.eth.accounts.wallet.
@@ -258,9 +257,9 @@ kanbanwebapi.kanban.sendTransaction(transactionObject)
 ```
 kanbanwebapi.kanban.getStorageAt(address, position [, defaultBlock])
 ```
-
+Get the storage at a specific position of an address.
 #### Parameters
- - <b>address</b> - String - The address of the smart contract
+ - <b>address</b> - String - The address to get the storage from.
  - <b>position</b> - Number - The index position of the storage.
  - <b>defaultBlock</b> - String|Number - (optional, default "latest") The block number in decimal or hex format. Or the string "genesis", "latest" or "pending".
 
@@ -273,7 +272,7 @@ kanbanwebapi.kanban.getStorageAt(address, position [, defaultBlock])
 ```
 kanbanwebapi.kanban.getCode(address [, defaultBlock])
 ```
-
+Get the code at a specific address.
 #### Parameters
  - <b>address</b> - String - The address of the smart contract
  - <b>defaultBlock</b> - String|Number - (optional, default "latest") The block number in decimal or hex format. Or the string "genesis", "latest" or "pending".
