@@ -276,7 +276,7 @@ describe('contract', function () {
             var address = '0x1234567890123456789012345678901234567891';
 
             provider.injectValidation(function (payload) {
-                assert.equal(payload.method, 'eth_call');
+                assert.equal(payload.method, 'kanban_call');
                 assert.deepEqual(payload.params, [{
                     data: '0x' + sha3(signature).slice(0, 8) + '0000000000000000000000001234567890123456789012345678901234567891',
                     to: address
@@ -297,7 +297,7 @@ describe('contract', function () {
             var address = '0x1234567890123456789012345678901234567891';
 
             provider.injectValidation(function (payload) {
-                assert.equal(payload.method, 'eth_call');
+                assert.equal(payload.method, 'kanban_call');
                 assert.deepEqual(payload.params, [{
                     data: '0x' + sha3(signature).slice(0, 8) + '0000000000000000000000001234567890123456789012345678901234567891',
                     to: address
@@ -338,7 +338,7 @@ describe('contract', function () {
             var signature = 'balance(address)';
             var address = '0x1234567890123456789012345678901234567891';
             provider.injectValidation(function (payload) {
-                assert.equal(payload.method, 'eth_call');
+                assert.equal(payload.method, 'kanban_call');
                 assert.deepEqual(payload.params, [{
                     data: '0x' + sha3(signature).slice(0, 8) + '0000000000000000000000001234567890123456789012345678901234567891',
                     to: address,
@@ -361,7 +361,7 @@ describe('contract', function () {
             var signature = 'balance(address)';
             var address = '0x1234567890123456789012345678901234567891';
             provider.injectValidation(function (payload) {
-                assert.equal(payload.method, 'eth_call');
+                assert.equal(payload.method, 'kanban_call');
                 assert.deepEqual(payload.params, [{
                     data: '0x' + sha3(signature).slice(0, 8) + '0000000000000000000000001234567890123456789012345678901234567891',
                     to: address,
@@ -386,7 +386,7 @@ describe('contract', function () {
             var signature = 'balance(address)';
             var address = '0x1234567890123456789012345678901234567891';
             provider.injectValidation(function (payload) {
-                assert.equal(payload.method, 'eth_call');
+                assert.equal(payload.method, 'kanban_call');
                 assert.deepEqual(payload.params, [{
                     data: '0x' + sha3(signature).slice(0, 8) + '0000000000000000000000001234567890123456789012345678901234567891',
                     to: address,
@@ -409,7 +409,7 @@ describe('contract', function () {
             var signature = 'balance(address)';
             var address = '0x1234567890123456789012345678901234567891';
             provider.injectValidation(function (payload) {
-                assert.equal(payload.method, 'eth_call');
+                assert.equal(payload.method, 'kanban_call');
                 assert.deepEqual(payload.params, [{
                     data: '0x' + sha3(signature).slice(0, 8) + '0000000000000000000000001234567890123456789012345678901234567891',
                     to: address,
@@ -587,7 +587,7 @@ describe('contract', function () {
             }]);
 
             provider.injectValidation(function (payload) {
-                assert.equal(payload.method, 'eth_call');
+                assert.equal(payload.method, 'kanban_call');
                 assert.deepEqual(payload.params, [{
                     data: '0x' + sha3(signature).slice(0, 8) +
                         '0000000000000000000000000000000000000000000000000000000000000020' +
@@ -614,7 +614,7 @@ describe('contract', function () {
                 result: '0x0000000000000000000000000000000000000000000000000000000000000005'
             }]);
             provider.injectValidation(function (payload) {
-                assert.equal(payload.method, 'eth_call');
+                assert.equal(payload.method, 'kanban_call');
                 assert.deepEqual(payload.params, [{
                     data: '0x' + sha3(signature).slice(0, 8) +
                         '0000000000000000000000000000000000000000000000000000000000000020' +

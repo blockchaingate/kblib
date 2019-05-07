@@ -25,7 +25,7 @@ describe('web3.eth.sendIBANTransaction', function () {
         provider.injectValidation(function (payload) {
             if (step === 0) {
                 step++;
-                assert.equal(payload.method, 'eth_call');
+                assert.equal(payload.method, 'kanban_call');
                 assert.deepEqual(payload.params, [{
                    data: "0x3b3b57de5852454700000000000000000000000000000000000000000000000000000000",
                    to: web3.eth.icapNamereg().address

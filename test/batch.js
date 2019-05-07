@@ -126,7 +126,7 @@ describe('lib/web3/batch', function () {
 
                 assert.equal(first.method, 'eth_getBalance');
                 assert.deepEqual(first.params, ['0x0000000000000000000000000000000000000000', 'latest']);
-                assert.equal(second.method, 'eth_call');
+                assert.equal(second.method, 'kanban_call');
                 assert.deepEqual(second.params, [{
                     'to': '0x1000000000000000000000000000000000000001',
                     'data': '0xe3d670d70000000000000000000000001000000000000000000000000000000000000001'
@@ -184,7 +184,7 @@ describe('lib/web3/batch', function () {
 
                 assert.equal(first.method, 'eth_getBalance');
                 assert.deepEqual(first.params, ['0x0000000000000000000000000000000000000000', 'latest']);
-                assert.equal(second.method, 'eth_call');
+                assert.equal(second.method, 'kanban_call');
                 assert.deepEqual(second.params, [{
                     'to': '0x1000000000000000000000000000000000000001',
                     'data': '0xe3d670d70000000000000000000000001000000000000000000000000000000000000001'
