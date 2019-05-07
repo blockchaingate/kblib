@@ -253,7 +253,6 @@ Sends a transaction to the network.
 
 
 ### kanban.getStorageAt
-
 ```
 kanbanwebapi.kanban.getStorageAt(address, position [, defaultBlock])
 ```
@@ -268,7 +267,6 @@ Get the storage at a specific position of an address.
 
 
 ### kanban.getCode
-
 ```
 kanbanwebapi.kanban.getCode(address [, defaultBlock])
 ```
@@ -282,7 +280,6 @@ Get the code at a specific address.
 
 
 ### kanban.call
-
 ```
 kanbanwebapi.kanban.call(callObject [, defaultBlock])
 ```
@@ -304,11 +301,10 @@ Executes a message call transaction, which is directly executed in the VM of the
 
 
 ### kanban.estimateGas
-
 ```
 kanbanwebapi.kanban.estimateGas(callObject)
 ```
-Executes a message call transaction, which is directly executed in the VM of the node, but never mined into the blockchain.
+Executes a message call or transaction and returns the amount of the gas used.
 #### Parameters
  - <b>callObject</b> - transaction Object - The transaction object to send:
     + <b>from</b> - String|Number: (optional) The address for the sending account. Uses the web3.eth.defaultAccount property, if not specified. Or an address or index of a local wallet in web3.eth.accounts.wallet.
