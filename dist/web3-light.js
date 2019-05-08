@@ -5545,7 +5545,7 @@ var properties = function () {
         }),
         new Property({
             name: 'hashrate',
-            getter: 'eth_hashrate',
+            getter: 'kanban_hashrate',
             outputFormatter: utils.toDecimal
         }),
         new Property({
