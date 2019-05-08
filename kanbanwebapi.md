@@ -15,7 +15,7 @@
 | kanban.accounts            | array of accounts         | array of addresses controlled by node                            |// confirm return type
 | kanban.blockNumber         | Object                    | object containing "blockNumber" and "blockNumberHex"             |
 | kanban.protocolVersion     | String                    | protocol version of the node in hexadecimal format               |// confirm if kanban version
-| version.network            | String                    | which network is currently connected to                          |// eg. 1 = mainnet,  2 = testnet1,
+| version.network            | String                    | which kanban network the node is a part of                       |// eg. 1 = mainnet,  2 = testnet1,
 
 
 ### Methods
