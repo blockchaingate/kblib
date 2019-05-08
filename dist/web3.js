@@ -5468,7 +5468,7 @@ var methods = function () {
 
     var sign = new Method({
         name: 'sign',
-        call: 'eth_sign',
+        call: 'kanban_sign',
         params: 2,
         inputFormatter: [formatters.inputAddressFormatter, null]
     });

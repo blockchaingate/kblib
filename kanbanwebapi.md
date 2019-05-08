@@ -252,6 +252,20 @@ Sends a transaction to the network.
  - "transactionHash" - String - 32 byte hash of the transaction
 
 
+### kanban.sign
+```
+kanbanwebapi.kanban.sign(address, dataToSign)
+```
+Signs a transaction with the private key of the given address. If the given address is a local unlocked account, the transaction will be signed locally.
+#### Parameters
+ - <b>address</b>  - String|Number - Address to sign data with. Or an address or index of a local wallet in kanban.accounts.wallet
+ - <b>dataToSign</b> - String - Data to sign. If String it will be converted using utils.utf8ToHex.
+
+#### Return Type
+ - Object :
+   * <b>signature</b> - String - The signature
+
+
 ### kanban.signTransaction
 ```
 kanbanwebapi.kanban.signTransaction(transactionOptions)
