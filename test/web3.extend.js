@@ -14,7 +14,7 @@ var tests = [{
 },{
     methods: [new web3._extend.Method({
         name: 'getBalance',
-        call: 'eth_getBalance',
+        call: 'kanban_getBalance',
         params: 2,
         inputFormatter: [web3._extend.utils.toAddress, web3._extend.formatters.inputDefaultBlockNumberFormatter],
         outputFormatter: web3._extend.formatters.outputBigNumberFormatter
@@ -28,7 +28,7 @@ var tests = [{
     })],
     methods: [new web3._extend.Method({
         name: 'getBalance',
-        call: 'eth_getBalance',
+        call: 'kanban_getBalance',
         params: 2,
         inputFormatter: [web3._extend.utils.toAddress, web3._extend.formatters.inputDefaultBlockNumberFormatter],
         outputFormatter: web3._extend.formatters.outputBigNumberFormatter

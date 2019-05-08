@@ -5362,7 +5362,7 @@ Object.defineProperty(Eth.prototype, 'defaultAccount', {
 var methods = function () {
     var getBalance = new Method({
         name: 'getBalance',
-        call: 'eth_getBalance',
+        call: 'kanban_getBalance',
         params: 2,
         inputFormatter: [formatters.inputAddressFormatter, formatters.inputDefaultBlockNumberFormatter],
         outputFormatter: formatters.outputBigNumberFormatter
