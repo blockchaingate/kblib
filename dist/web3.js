@@ -5498,13 +5498,13 @@ var methods = function () {
 
     var submitWork = new Method({
         name: 'submitWork',
-        call: 'eth_submitWork',
+        call: 'kanban_submitWork',
         params: 3
     });
 
     var getWork = new Method({
         name: 'getWork',
-        call: 'eth_getWork',
+        call: 'kanban_getWork',
         params: 0
     });
 

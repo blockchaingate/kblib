@@ -377,3 +377,31 @@ Executes a message call or transaction and returns the amount of the gas used.
 
 #### Return Type
  - Number - The amount of gas used in the simulated execution of the call
+
+
+### kanban.getWork
+```
+kanbanwebapi.kanban.getWork()
+```
+Executes a message call or transaction and returns the amount of the gas used.
+#### Parameters
+ - *none*
+#### Return Type
+ - Array (3 elements) :
+   * String (32 Bytes) at index 0: current block header pow-hash
+   * String (32 Bytes) at index 1: the seed hash used for the DAG.
+   * String (32 Bytes) at index 2: the boundary condition (“target”), 2^256 / difficulty.
+
+
+### kanban.submitWork
+```
+kanbanwebapi.kanban.submitWork(callObject)
+```
+Executes a message call or transaction and returns the amount of the gas used.
+#### Parameters
+   - <b>nonce</b> - String (8 Bytes) - The nonce found (64 bits)
+   - <b>powHash</b> - String (32 Bytes) - The header’s pow-hash (256 bits)
+   - <b>digest</b> - String (32 Bytes) - The mix digest (256 bits)
+
+#### Return Type
+ - Boolean - Returns true if the provided solution is valid, otherwise false.
