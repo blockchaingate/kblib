@@ -20,6 +20,18 @@
 
 ### Methods
 
+### sha3
+```
+kanbanwebapi.sha3(stringToHash)
+```
+Will calculate the keccak256 of the input.
+#### Parameters
+ - <b>stringToHash</b> - String - The string to be hashed
+
+#### Return Type
+ - String - sha3/keccak256 hashed version of stringToHash
+
+
 ### kanban.getBlock
 ```
 kanbanwebapi.kanban.getBlock(blockHashOrBlockNumber [, returnTransactionObjects])
