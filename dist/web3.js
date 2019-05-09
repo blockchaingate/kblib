@@ -5503,8 +5503,14 @@ var methods = function () {
     });
 
     var getWork = new Method({
-        name: 'getWork',
-        call: 'kanban_getWork',
+      name: 'getWork',
+      call: 'kanban_getWork',
+      params: 0
+    });
+
+    var getPendingTransactions = new Method({
+        name: 'getPendingTransactions',
+        call: 'kanban_pendingTransactions',
         params: 0
     });
 
@@ -5528,7 +5534,9 @@ var methods = function () {
         sign,
         submitWork,
         getLogs,
-        getWork
+        getWork,
+        getPendingTransactions
+
     ];
 };
 

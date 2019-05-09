@@ -122,6 +122,27 @@ Returns the receipt of a transaction by transaction hash.
       * <b>gasUsed</b> - Number: The amount of gas used by this specific transaction alone.
       * <b>logs</b> - Array: Array of log objects, which this transaction generated.
 
+### kanban.pendingTransactions
+```
+kanbanwebapi.kanban.pendingTransactions()
+```
+Returns a list of pending transactions.
+#### Parameters
+ - *none*
+#### Return Type
+ - Array of transaction objects:
+   * <b>hash</b> 32 Bytes - String: Hash of the transaction.
+   * <b>nonce</b> - Number: The number of transactions made by the sender prior to this one.
+   * <b>blockHash</b> 32 Bytes - String: Hash of the block where this transaction was in. null when its pending.
+   * <b>blockNumber</b> - Number: Block number where this transaction was in. null when its pending.
+   * <b>transactionIndex</b> - Number: Integer of the transactions index position in the block. null when its pending.
+   * <b>from</b> - String: Address of the sender.
+   * <b>to</b> - String: Address of the receiver. null when its a contract creation transaction.
+   * <b>value</b> - String: Value transferred in wei.
+   * <b>gasPrice</b> - String: The wei per unit of gas provided by the sender in wei.
+   * <b>gas</b> - Number: Gas provided by the sender.
+   * <b>input</b> - String: The data sent along with the transaction.
+
 
 ### kanban.getTransactionCount
 ```
