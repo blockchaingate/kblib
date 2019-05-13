@@ -1,7 +1,52 @@
 # kanbanwebapi documentation
 
+## Table of Contents
 
-## Web3.eth
+   - [Kanbanwebapi](#Kanbanwebapi)
+      * [sha3](#sha3)
+   - [Kanbanwebapi.kanban](#Kanbanwebapi.kanban)
+      * [Properties](#Properties)
+      * [kanban.getBlock](#kanban.getBlock)
+      * [kanban.getTransaction](#kanban.getTransaction)
+      * [kanban.getTransactionFromBlock](#kanban.getTransactionFromBlock)
+      * [kanban.getTransactionReceipt](#kanban.getTransactionReceipt)
+      * [kanban.pendingTransactions](#kanban.pendingTransactions)
+      * [kanban.getTransactionCount](#kanban.getTransactionCount)
+      * [kanban.getBlockTransactionCount](#kanban.getBlockTransactionCount)
+      * [kanban.getUncle](#kanban.getUncle)
+      * [kanban.getBalance](#kanban.getBalance)
+      * [kanban.sendTransaction](#kanban.sendTransaction)
+      * [kanban.sign](#kanban.sign)
+      * [kanban.signTransaction](#kanban.signTransaction)
+      * [kanban.sendRawTransaction](#kanban.sendRawTransaction)
+      * [kanban.getStorageAt](#kanban.getStorageAt)
+      * [kanban.getCode](#kanban.getCode)
+      * [kanban.call](#kanban.call)
+      * [kanban.estimateGas](#kanban.estimateGas)
+      * [kanban.getWork](#kanban.getWork)
+      * [kanban.submitWork](#kanban.submitWork)
+   - [Kanbanwebapi.kanban.personal](#Kanbanwebapi.kanban.personal)
+      * [personal.newAccount](#personal.newAccount)
+      * [personal.unlockAccount](#personal.unlockAccount)
+      * [personal.lockAccount](#personal.lockAccount)
+      * [](#)
+
+
+## Kanbanwebapi
+
+### sha3
+```
+kanbanwebapi.sha3(stringToHash)
+```
+Will calculate the keccak256 of the input.
+#### Parameters
+ - <b>stringToHash</b> - String - The string to be hashed
+
+#### Return Type
+ - String - sha3/keccak256 hashed version of stringToHash
+
+
+## Kanbanwebapi.kanban
 
 ### Properties
 
@@ -16,20 +61,6 @@
 | kanban.blockNumber         | Object                    | object containing "blockNumber" and "blockNumberHex"             |
 | kanban.protocolVersion     | String                    | protocol version of the node in hexadecimal format               |confirm if kanban version
 | version.network            | String                    | which kanban network the node is a part of                       |eg. 1 = mainnet,  2 = testnet1,
-
-
-### Methods
-
-### sha3
-```
-kanbanwebapi.sha3(stringToHash)
-```
-Will calculate the keccak256 of the input.
-#### Parameters
- - <b>stringToHash</b> - String - The string to be hashed
-
-#### Return Type
- - String - sha3/keccak256 hashed version of stringToHash
 
 
 ### kanban.getBlock
@@ -228,44 +259,6 @@ Get the balance of an address at a given block.
     * <b>FAB</b> - String - The FABcoin balacne in hexadecimal format
 
 
-### personal.newAccount
-```
-kanbanwebapi.personal.newAccount(password)
-```
-Create a new account on the node that kanbanwebapi is connected to with its provider. The RPC method used is personal_newAccount. 
-#### Parameters
- - <b> password</b>  - String - the password you wish to use to secure the account
-
-#### Return Type
- - String - Address of the newly created account
-
-
-### personal.unlockAccount
-```
-kanbanwebapi.personal.unlockAccount(address, password, unlockDuration)
-```
-Unlocks the given account.
-#### Parameters
- - <b> address</b>  - String - The account address to unlock
- - <b> password</b>  - String - The account password
- - <b> unlockDuration</b>  - Number - The duration for the account to remain unlocked.
-
-#### Return Type
- - Boolean - True if the account was unlocked successfully otherwise false
-
-
-### personal.lockAccount
-```
-kanbanwebapi.kanban.lockAccount(address)
-```
-Locks the given account.
-#### Parameters
- - <b>address</b>  - String - The account address to lock
-
-#### Return Type
- - Boolean - True if the account was locked successfully otherwise false
-
-
 ### kanban.sendTransaction
 ```
 kanbanwebapi.kanban.sendTransaction(transactionObject)
@@ -273,12 +266,12 @@ kanbanwebapi.kanban.sendTransaction(transactionObject)
 Sends a transaction to the network.
 #### Parameters
  - <b>transactionObject</b> - transaction Object - The transaction object to send:
-    + <b>from</b> - String|Number: The address for the sending account. Uses the web3.eth.defaultAccount property, if not specified. Or an address or index of a local wallet in web3.eth.accounts.wallet.
+    + <b>from</b> - String|Number: The address for the sending account. Uses the kanbanwebapi.kanban.defaultAccount property, if not specified. Or an address or index of a local wallet in kanbanwebapi.kanban.accounts.wallet.
     + <b>to</b> - String: (optional) The destination address of the message, left undefined for a contract-creation transaction.
     + <b>coin</b> - String (optional) The type of coin you wish to send. Currently supports ("FAB", "BTC", "ETH"). Default "FAB". 
     + <b>value</b> - Number|String|BN|BigNumber: (optional) The value transferred for the transaction in wei, also the endowment if it’s a contract-creation transaction.
     + <b>gas</b> - Number: (optional, default: To-Be-Determined) The amount of gas to use for the transaction (unused gas is refunded).
-    + <b>gasPrice</b> - Number|String|BN|BigNumber: (optional) The price of gas for this transaction in wei, defaults to web3.eth.gasPrice.
+    + <b>gasPrice</b> - Number|String|BN|BigNumber: (optional) The price of gas for this transaction in wei, defaults to kanbanwebapi.kanban.gasPrice.
     + <b>data</b> - String: (optional) Either a ABI byte string containing the data of the function call on a contract, or in the case of a contract-creation transaction the initialisation code.
     + <b>nonce</b> - Number: (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
 
@@ -308,12 +301,12 @@ Signs a transaction with the private key of the given address. If the given addr
 #### Parameters
  - <b>transactionOptions</b> - transaction Object - The transaction object to send:
       * <b>from</b> - String|Number: The address for the sending account. Uses the kanbanwebapi.kanban.defaultAccount property, if not specified. Or an address or index of a local wallet in kanbanwebapi.kanban.accounts.wallet
-      * <b>nonce</b> - String: (optional) The nonce to use when signing this transaction. Default will use web3.eth.getTransactionCount().
-      * <b>chainId</b> - String: (optional) The chain id to use when signing this transaction. Default will use web3.eth.net.getId().
+      * <b>nonce</b> - String: (optional) The nonce to use when signing this transaction. Default will use kanbanwebapi.kanban.getTransactionCount().
+      * <b>chainId</b> - String: (optional) The chain id to use when signing this transaction. Default will use kanbanwebapi.kanban.net.getId().
       * <b>to</b> - String: (optional) The receiver of the transaction, can be empty when deploying a contract.
       * <b>data</b> - String: (optional) The call data of the transaction, can be empty for simple value transfers.
       * <b>value</b> - String: (optional) The value of the transaction in wei.
-      * <b>gasPrice</b> - String: (optional) The gas price set by this transaction, if empty, it will use web3.eth.gasPrice()
+      * <b>gasPrice</b> - String: (optional) The gas price set by this transaction, if empty, it will use kanbanwebapi.kanban.gasPrice()
       * <b>gas</b> - String: The gas provided by the transaction.
  - <b>address</b>  - String - (optional) The account address
 
@@ -379,12 +372,12 @@ kanbanwebapi.kanban.call(callObject [, defaultBlock])
 Executes a message call transaction, which is directly executed in the VM of the node, but never mined into the blockchain.
 #### Parameters
  - <b>callObject</b> - transaction Object - The transaction object to send:
-    + <b>from</b> - String|Number: (optional) The address for the sending account. Uses the web3.eth.defaultAccount property, if not specified. Or an address or index of a local wallet in web3.eth.accounts.wallet.
+    + <b>from</b> - String|Number: (optional) The address for the sending account. Uses the kanbanwebapi.kanban.defaultAccount property, if not specified. Or an address or index of a local wallet in kanbanwebapi.kanban.accounts.wallet.
     + <b>to</b> - String: (optional) The destination address of the message, left undefined for a contract-creation transaction.
     + <b>coin</b> - String (optional) The type of coin you wish to send. Currently supports ("FAB", "BTC", "ETH"). Default "FAB". 
     + <b>value</b> - Number|String|BN|BigNumber: (optional) The value transferred for the transaction in wei, also the endowment if it’s a contract-creation transaction.
     + <b>gas</b> - Number: (optional, default: To-Be-Determined) The amount of gas to use for the transaction (unused gas is refunded).
-    + <b>gasPrice</b> - Number|String|BN|BigNumber: (optional) The price of gas for this transaction in wei, defaults to web3.eth.gasPrice.
+    + <b>gasPrice</b> - Number|String|BN|BigNumber: (optional) The price of gas for this transaction in wei, defaults to kanbanwebapi.kanban.gasPrice.
     + <b>data</b> - String: (optional) Either a ABI byte string containing the data of the function call on a contract, or in the case of a contract-creation transaction the initialisation code.
     + <b>nonce</b> - Number: (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
  - <b>defaultBlock</b> - String|Number - (optional, default "latest") The block number in decimal or hex format. Or the string "genesis", "latest" or "pending".
@@ -400,12 +393,12 @@ kanbanwebapi.kanban.estimateGas(callObject)
 Executes a message call or transaction and returns the amount of the gas used.
 #### Parameters
  - <b>callObject</b> - transaction Object - The transaction object to send:
-    + <b>from</b> - String|Number: (optional) The address for the sending account. Uses the web3.eth.defaultAccount property, if not specified. Or an address or index of a local wallet in web3.eth.accounts.wallet.
+    + <b>from</b> - String|Number: (optional) The address for the sending account. Uses the kanbanwebapi.kanban.defaultAccount property, if not specified. Or an address or index of a local wallet in kanbanwebapi.kanban.accounts.wallet.
     + <b>to</b> - String: (optional) The destination address of the message, left undefined for a contract-creation transaction.
     + <b>coin</b> - String (optional) The type of coin you wish to send. Currently supports ("FAB", "BTC", "ETH"). Default "FAB". 
     + <b>value</b> - Number|String|BN|BigNumber: (optional) The value transferred for the transaction in wei, also the endowment if it’s a contract-creation transaction.
     + <b>gas</b> - Number: (optional, default: To-Be-Determined) The amount of gas to use for the transaction (unused gas is refunded).
-    + <b>gasPrice</b> - Number|String|BN|BigNumber: (optional) The price of gas for this transaction in wei, defaults to web3.eth.gasPrice.
+    + <b>gasPrice</b> - Number|String|BN|BigNumber: (optional) The price of gas for this transaction in wei, defaults to kanbanwebapi.kanban.gasPrice.
     + <b>data</b> - String: (optional) Either a ABI byte string containing the data of the function call on a contract, or in the case of a contract-creation transaction the initialisation code.
     + <b>nonce</b> - Number: (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
 
@@ -439,3 +432,45 @@ Executes a message call or transaction and returns the amount of the gas used.
 
 #### Return Type
  - Boolean - Returns true if the provided solution is valid, otherwise false.
+
+
+
+## Kanbanwebapi.kanban.personal
+
+
+### personal.newAccount
+```
+kanbanwebapi.personal.newAccount(password)
+```
+Create a new account on the node that kanbanwebapi is connected to with its provider. The RPC method used is personal_newAccount. 
+#### Parameters
+ - <b> password</b>  - String - the password you wish to use to secure the account
+
+#### Return Type
+ - String - Address of the newly created account
+
+
+### personal.unlockAccount
+```
+kanbanwebapi.personal.unlockAccount(address, password, unlockDuration)
+```
+Unlocks the given account.
+#### Parameters
+ - <b> address</b>  - String - The account address to unlock
+ - <b> password</b>  - String - The account password
+ - <b> unlockDuration</b>  - Number - The duration for the account to remain unlocked.
+
+#### Return Type
+ - Boolean - True if the account was unlocked successfully otherwise false
+
+
+### personal.lockAccount
+```
+kanbanwebapi.kanban.lockAccount(address)
+```
+Locks the given account.
+#### Parameters
+ - <b>address</b>  - String - The account address to lock
+
+#### Return Type
+ - Boolean - True if the account was locked successfully otherwise false
