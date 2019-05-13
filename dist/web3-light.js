@@ -3775,7 +3775,7 @@ var inputTransactionFormatter = function (options){
 };
 
 /**
- * Formats the input of the eth_getLogs command
+ * Formats the input of the kanban_getLogs command
  *
  * @method inputGetLogsFormatter
  * @param {Object} getLogs options
@@ -5490,7 +5490,7 @@ var methods = function () {
 
     var getLogs = new Method({
         name: 'getLogs',
-        call: 'eth_getLogs',
+        call: 'kanban_getLogs',
         params: 1,
         inputFormatter: [formatters.inputGetLogsFormatter],
         outputFormatter: formatters.outputLogFormatter
