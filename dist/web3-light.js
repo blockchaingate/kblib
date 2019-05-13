@@ -5316,7 +5316,7 @@ var getBlockTransactionCountCall = function (args) {
 };
 
 var uncleCountCall = function (args) {
-    return (utils.isString(args[0]) && args[0].indexOf('0x') === 0) ? 'eth_getUncleCountByBlockHash' : 'eth_getUncleCountByBlockNumber';
+    return (utils.isString(args[0]) && args[0].indexOf('0x') === 0) ? 'kanban_getUncleCountByBlockHash' : 'kanban_getUncleCountByBlockNumber';
 };
 
 function Eth(web3) {
