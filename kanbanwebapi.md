@@ -31,8 +31,31 @@
    * [personal.newAccount](#personal.newAccount)
    * [personal.unlockAccount](#personal.unlockAccount)
    * [personal.lockAccount](#personal.lockAccount)
-   * [](#)
-
+- [Kanbanwebapi._extend.utils](#Kanbanwebapi._extend.utils)
+   * [utils.padLeft](#utils.padLeft)
+   * [utils.padRight](#utils.padRight)
+   * [utils.toHex](#utils.toHex)
+   * [utils.toDecimal](#utils.toDecimal)
+   * [utils.fromDecimal](#utils.fromDecimal)
+   * [utils.toUtf8](#utils.toUtf8)
+   * [utils.toAscii](#utils.toAscii)
+   * [utils.fromUtf8](#utils.fromUtf8)
+   * [utils.fromAscii](#utils.fromAscii)
+   * [utils.toWei](#utils.toWei)
+   * [utils.fromWei](#utils.fromWei)
+   * [utils.toBigNumber](#utils.toBigNumber)
+   * [utils.toTwosComplement](#utils.toTwosComplement)
+   * [utils.isBigNumber](#utils.isBigNumber)
+   * [utils.isStrictAddress](#utils.isStrictAddress)
+   * [utils.isAddress](#utils.isAddress)
+   * [utils.isChecksumAddress](#utils.isChecksumAddress)
+   * [utils.toChecksumAddress](#utils.toChecksumAddress)
+   * [utils.isFunction](#utils.isFunction)
+   * [utils.isString](#utils.isString)
+   * [utils.isObject](#utils.isObject)
+   * [utils.isBoolean](#utils.isBoolean)
+   * [utils.isArray](#utils.isArray)
+   * [utils.isJson](#utils.isJson)
 
 ## Kanbanwebapi
 
@@ -541,4 +564,326 @@ Locks the given account.
 
 [Back to top](#Table-of-Contents)
 
-## Kanbanwebapi.net
+## Kanbanwebapi._extend.utils
+
+### utils.padLeft
+```
+kanbanwebapi._extend.utils.padLeft(string, characterAmount [, sign])
+```
+Adds a padding on the left of a string, Useful for adding paddings to HEX strings.
+#### Parameters
+ - <b>string</b> - String - The string to add padding on the left
+ - <b>characterAmount</b> - Number - The number of characters the total string should have
+ - <b>sign</b> - String - (optional, default '0') The character sign to use
+
+#### Return Type
+ - String - The padded string
+
+[Back to top](#Table-of-Contents)
+
+### utils.padRight
+```
+kanbanwebapi._extend.utils.padRight(string, characterAmount [, sign])
+```
+Adds a padding on the right of a string, Useful for adding paddings to HEX strings.
+#### Parameters
+ - <b>string</b> - String - The string to add padding on the left
+ - <b>characterAmount</b> - Number - The number of characters the total string should have
+ - <b>sign</b> - String - (optional, default '0') The character sign to use
+
+#### Return Type
+ - String - The padded string
+
+[Back to top](#Table-of-Contents)
+
+### utils.toHex
+```
+kanbanwebapi._extend.utils.toHex(mixed)
+```
+Will auto convert any given value to HEX. Number strings will interpreted as numbers. Text strings will be interpreted as UTF-8 strings.
+#### Parameters
+ - <b>mixed</b> - String|Number|BN|BigNumber - The input to convert to hex.
+
+#### Return Type
+ - String - The resulting hex string
+
+[Back to top](#Table-of-Contents)
+
+### utils.toDecimal
+```
+kanbanwebapi._extend.utils.toDecimal(hex)
+```
+Returns the number representation of a given HEX value. This is not useful for big numbers
+#### Parameters
+ - <b>hexString</b> - String|HEX - A string to convert to decimal representation
+
+#### Return Type
+ - Number - The decimal representation of the hex string
+
+[Back to top](#Table-of-Contents)
+
+### utils.fromDecimal
+```
+kanbanwebapi._extend.utils.fromDecimal(number)
+```
+Returns the HEX representation of a given number value.
+#### Parameters
+ - <b>number</b> - String|Number|BN|BigNumber - A number as a string or number
+
+#### Return Type
+ - String - A hex string representation of the number
+
+[Back to top](#Table-of-Contents)
+
+### utils.toUtf8
+```
+kanbanwebapi._extend.utils.toUtf8(hex)
+```
+Returns the UTF-8 string representation of a given HEX value.
+#### Parameters
+ - <b>hex</b> - String - A hex string to convert to a UTF-8 string
+
+#### Return Type
+ - String - The UTF-8 string
+
+[Back to top](#Table-of-Contents)
+
+### utils.toAscii
+```
+kanbanwebapi._extend.utils.toAscii(hex)
+```
+Returns the ASCII string representation of a given HEX value.
+#### Parameters
+ - <b>hex</b> - String - A hex string to convert to an ASCII string
+
+#### Return Type
+ - String - The ASCII string
+
+[Back to top](#Table-of-Contents)
+
+### utils.fromUtf8
+```
+kanbanwebapi._extend.utils.fromUtf8(string)
+```
+Returns the HEX representation of a given UTF-8 string.
+#### Parameters
+ - <b>string</b> - String - A UTF-8 string to convert to as hex string.
+
+#### Return Type
+ - String - The hex string
+
+[Back to top](#Table-of-Contents)
+
+### utils.fromAscii
+```
+kanbanwebapi._extend.utils.fromAscii(string [, length])
+```
+Returns the HEX representation of a given ASCII string. If you would like to transform an ASCII string into a valid bytes4, bytes8 etc. value then please pass the correct length as the second parameter
+#### Parameters
+ - <b>string</b> - String - The ASCII string to convert to a hex string
+ - <b>length</b> - Number - (optional, default 32) The length of the returned hex string.
+
+#### Return Type
+ - String - The hex string
+
+[Back to top](#Table-of-Contents)
+
+### utils.toWei
+```
+kanbanwebapi._extend.utils.toWei(number [, unit])
+```
+Converts any ether value into wei // TO DO: change this?
+#### Parameters
+ - <b>number</b> - String|BN - The value in the unit provided
+ - <b>unit</b> - String - (optional, default 'ether') The ether value to convert from. Possible values omitted.
+
+#### Return Type
+ - String | BN - If a string is given, it returns a number string, otherwise returns a BN.js instance
+
+[Back to top](#Table-of-Contents)
+
+### utils.fromWei
+```
+kanbanwebapi._extend.utils.fromWei(number [, unit])
+```
+Converts any wei value into an ether value.
+#### Parameters
+ - <b>number</b> - String|BN - The value in wei
+ - <b>unit</b> - String - (optional, default 'ether') The ether value to convert to. Possible values omitted.
+
+#### Return Type
+ - String - It always returns a string number.
+
+[Back to top](#Table-of-Contents)
+
+### utils.toBigNumber
+```
+kanbanwebapi._extend.utils.toBigNumber(number)
+```
+Conver a number from various forms to to a BigNumber
+#### Parameters
+ - <b>number</b> - String|Number|Hex - Parameter Description
+
+#### Return Type
+ - BigNumber - BigNumber format of the number
+
+[Back to top](#Table-of-Contents)
+
+### utils.toTwosComplement
+```
+kanbanwebapi._extend.utils.toTwosComplement()
+```
+Converts a negative numer into a two’s complement.
+#### Parameters
+ - <b>number</b> - Number|String|BigNumber - The number to convert.
+
+#### Return Type
+ - String - The converted hex string
+
+[Back to top](#Table-of-Contents)
+
+### utils.isBigNumber
+```
+kanbanwebapi._extend.utils.isBigNumber(bigNumber)
+```
+Description goes here
+#### Parameters
+ - <b>bigNumber</b> - BigNumber Object - A BigNumber.js instance
+
+#### Return Type
+ - Boolean - true if bigNumber is a an instance of BigNumber
+
+[Back to top](#Table-of-Contents)
+
+### utils.isStrictAddress
+```
+kanbanwebapi._extend.utils.isStrictAddress(address [, chainId])
+```
+Checks if a given string is a valid Ethereum address, including the reuirement that begin wit '0x'. It will also check the checksum, if the address has both upper and lowercase letters.
+#### Parameters
+ - <b>address</b> - String - An address string
+ - <b>chainId</b> - Number - Chain id where checksummed address should be valid, defaults to null.
+
+#### Return Type
+ - Boolean - true if the address is valid and prefixed with '0x'
+
+[Back to top](#Table-of-Contents)
+
+### utils.isAddress
+```
+kanbanwebapi._extend.utils.isAddress(address [, chainId])
+```
+Checks if a given string is a valid Ethereum address. It will also check the checksum, if the address has both upper and lowercase letters.
+#### Parameters
+ - <b>address</b> - String - An address string
+ - <b>chainId</b> - Number - Chain id where checksummed address should be valid, defaults to null.
+
+#### Return Type
+ - Boolean - true if the address is valid
+
+[Back to top](#Table-of-Contents)
+
+### utils.isChecksumAddress
+```
+kanbanwebapi._extend.utils.isChecksumAddress(address)
+```
+Checks if a given string is a valid Ethereum address and ikf the address has both upper and lowercase letters.
+#### Parameters
+ - <b>address</b> - String - An address string
+
+#### Return Type
+ - Boolean - true if the address is valid and contains mixed case
+
+[Back to top](#Table-of-Contents)
+
+### utils.toChecksumAddress
+```
+kanbanwebapi._extend.utils.toChecksumAddress(address [, chainId])
+```
+Will convert an upper or lowercase Ethereum address to a checksum address.
+#### Parameters
+ - <b>address</b> - String - An address string
+ - <b>chainId</b> - Number - Chain id where checksummed address should be valid, defaults to null.
+
+#### Return Type
+ - String - The checksum address
+
+[Back to top](#Table-of-Contents)
+
+### utils.isFunction
+```
+kanbanwebapi._extend.utils.isFunction(function)
+```
+Checks if the passed parameter is a function
+#### Parameters
+ - <b>function</b> - Object|other - The object you wish to verify is a function
+
+#### Return Type
+ - Boolean - true if the passed parameter is a function
+
+[Back to top](#Table-of-Contents)
+
+### utils.isString
+```
+kanbanwebapi._extend.utils.isString(string)
+```
+Checks if the passed parameter is a string
+#### Parameters
+ - <b>string</b> - String|other - some passed parameter
+
+#### Return Type
+ - Boolean - true if the passed parameter is a String
+
+[Back to top](#Table-of-Contents)
+
+### utils.isObject
+```
+kanbanwebapi._extend.utils.isObject(object)
+```
+Checks if the passed parameter is an object
+#### Parameters
+ - <b>object</b> - Object|other - some passed parameter
+
+#### Return Type
+ - Boolean - true if the passed parameter is an Object
+
+[Back to top](#Table-of-Contents)
+
+### utils.isBoolean
+```
+kanbanwebapi._extend.utils.isBoolean(boolean)
+```
+Checks if the passed parameter is a boolean
+#### Parameters
+ - <b>boolean</b> - Boolean|other - some passed parameter
+
+#### Return Type
+ - Boolean - true if the passed parameter is a Boolean
+
+[Back to top](#Table-of-Contents)
+
+### utils.isArray
+```
+kanbanwebapi._extend.utils.isArray(array)
+```
+Checks if the passed parameter is an array
+#### Parameters
+ - <b>array</b> - Array|other - some passed parameter
+
+#### Return Type
+ - Boolean - true if the passed parameter is an Array
+
+[Back to top](#Table-of-Contents)
+
+### utils.isJson
+```
+kanbanwebapi._extend.utils.isString(string)
+```
+Checks if the passed parameter is a valid JSON string
+#### Parameters
+ - <b>string</b> - String|other - some passed parameter
+
+#### Return Type
+ - Boolean - true if the passed parameter is valid JSON string
+
+[Back to top](#Table-of-Contents)
