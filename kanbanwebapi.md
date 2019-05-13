@@ -11,11 +11,11 @@
 | kanban.mining              | Boolean                   | checks whether the node is mining or not                         |
 | kanban.hashrate            | Number                    | number of hashes per second that the node is mining with         |
 | kanban.syncing             | syncing object or boolean | if node is syncing, returns syncing object, otherwise false      |
-| kanban.gasPrice            | BigNumber                 | current gas price oracle determined by median of last few blocks |// confirm if should exist
-| kanban.accounts            | array of accounts         | array of addresses controlled by node                            |// confirm return type
+| kanban.gasPrice            | BigNumber                 | current gas price oracle determined by median of last few blocks |
+| kanban.accounts            | array of String           | array of addresses controlled by node                            |
 | kanban.blockNumber         | Object                    | object containing "blockNumber" and "blockNumberHex"             |
-| kanban.protocolVersion     | String                    | protocol version of the node in hexadecimal format               |// confirm if kanban version
-| version.network            | String                    | which kanban network the node is a part of                       |// eg. 1 = mainnet,  2 = testnet1,
+| kanban.protocolVersion     | String                    | protocol version of the node in hexadecimal format               |confirm if kanban version
+| version.network            | String                    | which kanban network the node is a part of                       |eg. 1 = mainnet,  2 = testnet1,
 
 
 ### Methods
