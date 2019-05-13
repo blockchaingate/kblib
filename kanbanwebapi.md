@@ -14,6 +14,7 @@
       * [kanban.getTransactionCount](#kanban.getTransactionCount)
       * [kanban.getBlockTransactionCount](#kanban.getBlockTransactionCount)
       * [kanban.getUncle](#kanban.getUncle)
+      * [kanban.getUncleCount](#kanban.getUncleCount)
       * [kanban.getBalance](#kanban.getBalance)
       * [kanban.sendTransaction](#kanban.sendTransaction)
       * [kanban.sign](#kanban.sign)
@@ -241,6 +242,18 @@ Returns a blocks uncle by a given uncle index position.
     * <b>gasUsed</b> - Number: The total used gas by all transactions in this block.
     * <b>timestamp</b> - Number: The unix timestamp for when the block was collated.
     * <b>transactions</b> - Array: Array of transaction objects, or 32 Bytes transaction hashes depending on the returnTransactionObjects parameter.
+
+
+### kanban.getUncleCount
+```
+kanbanwebapi.kanban.getUncleCount(blockHashOrNumber)
+```
+Returns then number of uncles for a given block.
+#### Parameters
+ - <b>blockHashOrNumber</b> - String|Number - The hash or block number. Or the string "genesis", "latest" or "pending" as in the default block parameter. If left blank, this method will not default to anything.
+
+#### Return Type
+ - Number : The chosen block's uncle count
 
 
 ### kanban.getBalance
