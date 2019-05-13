@@ -2,35 +2,36 @@
 
 ## Table of Contents
 
-   - [Kanbanwebapi](#Kanbanwebapi)
-      * [sha3](#sha3)
-   - [Kanbanwebapi.kanban](#Kanbanwebapi.kanban)
-      * [Properties](#Properties)
-      * [kanban.getBlock](#kanban.getBlock)
-      * [kanban.getTransaction](#kanban.getTransaction)
-      * [kanban.getTransactionFromBlock](#kanban.getTransactionFromBlock)
-      * [kanban.getTransactionReceipt](#kanban.getTransactionReceipt)
-      * [kanban.pendingTransactions](#kanban.pendingTransactions)
-      * [kanban.getTransactionCount](#kanban.getTransactionCount)
-      * [kanban.getBlockTransactionCount](#kanban.getBlockTransactionCount)
-      * [kanban.getUncle](#kanban.getUncle)
-      * [kanban.getUncleCount](#kanban.getUncleCount)
-      * [kanban.getBalance](#kanban.getBalance)
-      * [kanban.sendTransaction](#kanban.sendTransaction)
-      * [kanban.sign](#kanban.sign)
-      * [kanban.signTransaction](#kanban.signTransaction)
-      * [kanban.sendRawTransaction](#kanban.sendRawTransaction)
-      * [kanban.getStorageAt](#kanban.getStorageAt)
-      * [kanban.getCode](#kanban.getCode)
-      * [kanban.call](#kanban.call)
-      * [kanban.estimateGas](#kanban.estimateGas)
-      * [kanban.getWork](#kanban.getWork)
-      * [kanban.submitWork](#kanban.submitWork)
-   - [Kanbanwebapi.kanban.personal](#Kanbanwebapi.kanban.personal)
-      * [personal.newAccount](#personal.newAccount)
-      * [personal.unlockAccount](#personal.unlockAccount)
-      * [personal.lockAccount](#personal.lockAccount)
-      * [](#)
+- [Kanbanwebapi](#Kanbanwebapi)
+   * [sha3](#sha3)
+- [Kanbanwebapi.kanban](#Kanbanwebapi.kanban)
+   * [Properties](#Properties)
+   * [kanban.getBlock](#kanban.getBlock)
+   * [kanban.getTransaction](#kanban.getTransaction)
+   * [kanban.getTransactionFromBlock](#kanban.getTransactionFromBlock)
+   * [kanban.getTransactionReceipt](#kanban.getTransactionReceipt)
+   * [kanban.pendingTransactions](#kanban.pendingTransactions)
+   * [kanban.getTransactionCount](#kanban.getTransactionCount)
+   * [kanban.getBlockTransactionCount](#kanban.getBlockTransactionCount)
+   * [kanban.getUncle](#kanban.getUncle)
+   * [kanban.getUncleCount](#kanban.getUncleCount)
+   * [kanban.getBalance](#kanban.getBalance)
+   * [kanban.sendTransaction](#kanban.sendTransaction)
+   * [kanban.sign](#kanban.sign)
+   * [kanban.signTransaction](#kanban.signTransaction)
+   * [kanban.sendRawTransaction](#kanban.sendRawTransaction)
+   * [kanban.getStorageAt](#kanban.getStorageAt)
+   * [kanban.getCode](#kanban.getCode)
+   * [kanban.call](#kanban.call)
+   * [kanban.estimateGas](#kanban.estimateGas)
+   * [kanban.getWork](#kanban.getWork)
+   * [kanban.submitWork](#kanban.submitWork)
+   * [kanban.getLogs](#kanban.getLogs)
+- [Kanbanwebapi.kanban.personal](#Kanbanwebapi.kanban.personal)
+   * [personal.newAccount](#personal.newAccount)
+   * [personal.unlockAccount](#personal.unlockAccount)
+   * [personal.lockAccount](#personal.lockAccount)
+   * [](#)
 
 
 ## Kanbanwebapi
@@ -62,7 +63,10 @@ Will calculate the keccak256 of the input.
 | kanban.blockNumber         | Object                    | object containing "blockNumber" and "blockNumberHex"             |
 | kanban.protocolVersion     | String                    | protocol version of the node in hexadecimal format               |confirm if kanban version
 | version.network            | String                    | which kanban network the node is a part of                       |eg. 1 = mainnet,  2 = testnet1,
+| net.peerCount              | Number                    | Returns number of peers currently connected to the client        |
+| net.listening              | Boolean                   | Returns true if client is listening for network connections.     |
 
+[Back to top](#Table-of-Contents)
 
 ### kanban.getBlock
 ```
@@ -94,6 +98,7 @@ Returns a block matching the block number or block hash.
     * <b>timestamp</b> - Number: The unix timestamp for when the block was collated.
     * <b>transactions</b> - Array: Array of transaction objects, or 32 Bytes transaction hashes depending on the returnTransactionObjects parameter.
 
+[Back to top](#Table-of-Contents)
 
 ### kanban.getTransaction
 ```
@@ -141,6 +146,7 @@ Returns a transaction based on a block hash or number and the transactions index
    * <b>gas</b> - Number: Gas provided by the sender.
    * <b>input</b> - String: The data sent along with the transaction.
 
+[Back to top](#Table-of-Contents)
 
 ### kanban.getTransactionReceipt
 ```
@@ -164,6 +170,8 @@ Returns the receipt of a transaction by transaction hash.
       * <b>gasUsed</b> - Number: The amount of gas used by this specific transaction alone.
       * <b>logs</b> - Array: Array of log objects, which this transaction generated.
 
+[Back to top](#Table-of-Contents)
+
 ### kanban.pendingTransactions
 ```
 kanbanwebapi.kanban.pendingTransactions()
@@ -185,6 +193,7 @@ Returns a list of pending transactions.
    * <b>gas</b> - Number: Gas provided by the sender.
    * <b>input</b> - String: The data sent along with the transaction.
 
+[Back to top](#Table-of-Contents)
 
 ### kanban.getTransactionCount
 ```
@@ -198,6 +207,7 @@ Get the numbers of transactions sent from this address.
 #### Return Type
  - Number - The number of transactions sent from the address in the given (or latest) block
 
+[Back to top](#Table-of-Contents)
 
 ### kanban.getBlockTransactionCount
 ```
@@ -210,6 +220,7 @@ Returns the number of transaction in a given block.
 #### Return Type
  - Number - The number of transactions in the given block
 
+[Back to top](#Table-of-Contents)
 
 ### kanban.getUncle
 ```
@@ -241,6 +252,7 @@ Returns a blocks uncle by a given uncle index position.
     * <b>timestamp</b> - Number: The unix timestamp for when the block was collated.
     * <b>transactions</b> - Array: Array of transaction objects, or 32 Bytes transaction hashes depending on the returnTransactionObjects parameter.
 
+[Back to top](#Table-of-Contents)
 
 ### kanban.getUncleCount
 ```
@@ -253,6 +265,7 @@ Returns then number of uncles for a given block.
 #### Return Type
  - Number : The chosen block's uncle count
 
+[Back to top](#Table-of-Contents)
 
 ### kanban.getBalance
 ```
@@ -269,6 +282,7 @@ Get the balance of an address at a given block.
     * <b>ETH</b> - String - The Ether balance in hexadecimal format
     * <b>FAB</b> - String - The FABcoin balacne in hexadecimal format
 
+[Back to top](#Table-of-Contents)
 
 ### kanban.sendTransaction
 ```
@@ -289,6 +303,7 @@ Sends a transaction to the network.
 #### Return Type
  - "transactionHash" - String - 32 byte hash of the transaction
 
+[Back to top](#Table-of-Contents)
 
 ### kanban.sign
 ```
@@ -303,6 +318,7 @@ Signs a transaction with the private key of the given address. If the given addr
  - Object :
    * <b>signature</b> - String - The signature
 
+[Back to top](#Table-of-Contents)
 
 ### kanban.signTransaction
 ```
@@ -336,6 +352,7 @@ Signs a transaction with the private key of the given address. If the given addr
       + <b>s</b> - String - Next 32 bytes of the signature
       + <b>hash</b> - String - Hash of the transaction
 
+[Back to top](#Table-of-Contents)
 
 ### kanban.sendRawTransaction
 ```
@@ -348,6 +365,7 @@ Sends an already signed transaction, generated for example using kanbanwebapi.ka
 #### Return Type
  - String - 32 byte hash of the transaction
 
+[Back to top](#Table-of-Contents)
 
 ### kanban.getStorageAt
 ```
@@ -362,6 +380,7 @@ Get the storage at a specific position of an address.
 #### Return Type
  - String - The value in storage at the given position, as a hex string
 
+[Back to top](#Table-of-Contents)
 
 ### kanban.getCode
 ```
@@ -375,6 +394,7 @@ Get the code at a specific address.
 #### Return Type
  - String - The code at the given address, as a hex string
 
+[Back to top](#Table-of-Contents)
 
 ### kanban.call
 ```
@@ -396,6 +416,7 @@ Executes a message call transaction, which is directly executed in the VM of the
 #### Return Type
  - String - The returned data of the call, e.g. a smart contract functions return value.
 
+[Back to top](#Table-of-Contents)
 
 ### kanban.estimateGas
 ```
@@ -416,6 +437,7 @@ Executes a message call or transaction and returns the amount of the gas used.
 #### Return Type
  - Number - The amount of gas used in the simulated execution of the call
 
+[Back to top](#Table-of-Contents)
 
 ### kanban.getWork
 ```
@@ -430,6 +452,7 @@ Executes a message call or transaction and returns the amount of the gas used.
    * String (32 Bytes) at index 1: the seed hash used for the DAG.
    * String (32 Bytes) at index 2: the boundary condition (“target”), 2^256 / difficulty.
 
+[Back to top](#Table-of-Contents)
 
 ### kanban.submitWork
 ```
@@ -444,6 +467,7 @@ Executes a message call or transaction and returns the amount of the gas used.
 #### Return Type
  - Boolean - Returns true if the provided solution is valid, otherwise false.
 
+[Back to top](#Table-of-Contents)
 
 ### kanban.getLogs
 ```
@@ -452,11 +476,12 @@ kanbanwebapi.kanban.getLogs(options)
 Returns an array of all logs matching a given filter object.
 #### Parameters
    - filter object::
-      * fromBlock - Number|String - 
-      * toBlock - Number|String - 
-      * address - DATA|Array - 
-      * topics - Array of - 
-      * blockhash - 
+      * fromBlock - Number|String - (optional, default 'latest') integer block number or 'latest', 'pending', or 'earliest'
+      * toBlock - Number|String - (optional, default 'latest') integer block number or 'latest', 'pending', or 'earliest'
+      * address - String|Array - (optional) Contract address or a list of addresses from which logs should originate.
+      * topics - Array of String- (optional) array of 32 Byte topic strings. Topis are order-dependent. Each topic can also be an array of String with "or" options 
+      * blockhash - String (32 Byte hex) - (optional) Restricts the logs returned to the single block with the 32-byte hash blochHash. using blockHash is equivalent to fromBlock = toBlock = the block number with hash blockHash. In order to use blockHash, fromBlock and toBlock must not be specified.
+
 #### Return Type
    - Array of log objects:
       * for filters created with kanban_newBlockFilter, the returned are block hashes (32 Byte hex string)
@@ -471,6 +496,7 @@ Returns an array of all logs matching a given filter object.
          + data - String - contains one or more 32 Byte non-indexed arguments of the log.
          + topics - Array of String - Array of 0 to 4 32 Byte strings of indexed log arguments.
 
+[Back to top](#Table-of-Contents)
 
 ## Kanbanwebapi.kanban.personal
 
@@ -485,6 +511,7 @@ Create a new account on the node that kanbanwebapi is connected to with its prov
 #### Return Type
  - String - Address of the newly created account
 
+[Back to top](#Table-of-Contents)
 
 ### personal.unlockAccount
 ```
@@ -499,6 +526,7 @@ Unlocks the given account.
 #### Return Type
  - Boolean - True if the account was unlocked successfully otherwise false
 
+[Back to top](#Table-of-Contents)
 
 ### personal.lockAccount
 ```
@@ -510,3 +538,7 @@ Locks the given account.
 
 #### Return Type
  - Boolean - True if the account was locked successfully otherwise false
+
+[Back to top](#Table-of-Contents)
+
+## Kanbanwebapi.net
