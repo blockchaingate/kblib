@@ -142,8 +142,6 @@ Returns a transaction based on a block hash or number and the transactions index
    * <b>input</b> - String: The data sent along with the transaction.
 
 
-
-
 ### kanban.getTransactionReceipt
 ```
 kanbanwebapi.kanban.getTransactionReceipt(transactionHash)
@@ -447,9 +445,34 @@ Executes a message call or transaction and returns the amount of the gas used.
  - Boolean - Returns true if the provided solution is valid, otherwise false.
 
 
+### kanban.getLogs
+```
+kanbanwebapi.kanban.getLogs(options)
+```
+Returns an array of all logs matching a given filter object.
+#### Parameters
+   - filter object::
+      * fromBlock - Number|String - 
+      * toBlock - Number|String - 
+      * address - DATA|Array - 
+      * topics - Array of - 
+      * blockhash - 
+#### Return Type
+   - Array of log objects:
+      * for filters created with kanban_newBlockFilter, the returned are block hashes (32 Byte hex string)
+      * for filters created with kanban_newPendingTransactonFilter, the returned are transaction hashes (32 Byte hex string) 
+      * for filters created with kanban_newFilter logs are objects with the following parameters:
+         + type - String - 'pending' when the log is pending, 'mined' if log is already mined
+         + logIndex - Number - integer of the transactions index position log was created from. null when its pending log. 
+         + transactionHash - String - (32 Byte hex string) - hash of the transactions this log was created from. null when its pending log.
+         + blockHash - String (32 Byte hex string ) - hash of the block this log was in. null when its pending. null when its pending log.
+         + blockNumber - Number - the block number this log was in. null when its pending. null when its pending log.
+         + address - String (20 Byte hex string) - address from which this log originated
+         + data - String - contains one or more 32 Byte non-indexed arguments of the log.
+         + topics - Array of String - Array of 0 to 4 32 Byte strings of indexed log arguments.
+
 
 ## Kanbanwebapi.kanban.personal
-
 
 ### personal.newAccount
 ```
