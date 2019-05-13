@@ -31,6 +31,9 @@
    * [personal.newAccount](#personal.newAccount)
    * [personal.unlockAccount](#personal.unlockAccount)
    * [personal.lockAccount](#personal.lockAccount)
+   * [personal.importRawKey](#personal.importRawKey)
+   * [personal.ecRecover](#personal.ecRecover)
+   * [personal.sendTransaction](#personal.sendTransaction)
 - [Kanbanwebapi._extend.utils](#Kanbanwebapi._extend.utils)
    * [utils.padLeft](#utils.padLeft)
    * [utils.padRight](#utils.padRight)
@@ -70,24 +73,26 @@ Will calculate the keccak256 of the input.
 #### Return Type
  - String - sha3/keccak256 hashed version of stringToHash
 
+[Back to top](#Table-of-Contents)
 
 ## Kanbanwebapi.kanban
 
 ### Properties
 
-| Property                   | Return-type               | Description                                                      |
-|----------------------------|---------------------------|------------------------------------------------------------------|
-| kanban.coinbase            | String                    | the coinbase address to which mining rewards will go             |
-| kanban.mining              | Boolean                   | checks whether the node is mining or not                         |
-| kanban.hashrate            | Number                    | number of hashes per second that the node is mining with         |
-| kanban.syncing             | syncing object or boolean | if node is syncing, returns syncing object, otherwise false      |
-| kanban.gasPrice            | BigNumber                 | current gas price oracle determined by median of last few blocks |
-| kanban.accounts            | array of String           | array of addresses controlled by node                            |
-| kanban.blockNumber         | Object                    | object containing "blockNumber" and "blockNumberHex"             |
-| kanban.protocolVersion     | String                    | protocol version of the node in hexadecimal format               |confirm if kanban version
-| version.network            | String                    | which kanban network the node is a part of                       |eg. 1 = mainnet,  2 = testnet1,
-| net.peerCount              | Number                    | Returns number of peers currently connected to the client        |
-| net.listening              | Boolean                   | Returns true if client is listening for network connections.     |
+| Property                     | Return-type               | Description                                                      |
+|------------------------------|---------------------------|------------------------------------------------------------------|
+| kanban.coinbase              | String                    | the coinbase address to which mining rewards will go             |
+| kanban.mining                | Boolean                   | checks whether the node is mining or not                         |
+| kanban.hashrate              | Number                    | number of hashes per second that the node is mining with         |
+| kanban.syncing               | syncing object or boolean | if node is syncing, returns syncing object, otherwise false      |
+| kanban.gasPrice              | BigNumber                 | current gas price oracle determined by median of last few blocks |
+| kanban.accounts              | array of String           | array of addresses controlled by node                            |
+| kanban.blockNumber           | Object                    | object containing "blockNumber" and "blockNumberHex"             |
+| kanban.protocolVersion       | String                    | protocol version of the node in hexadecimal format               |confirm if kanban version
+| version.network              | String                    | which kanban network the node is a part of                       |eg. 1 = mainnet,  2 = testnet1,
+| net.peerCount                | Number                    | Returns number of peers currently connected to the client        |
+| net.listening                | Boolean                   | Returns true if client is listening for network connections.     |
+| kanban.personal.listAccounts | Array of Strings          | Returns an array of addresses controlled by the node             |               
 
 [Back to top](#Table-of-Contents)
 
@@ -553,7 +558,7 @@ Unlocks the given account.
 
 ### personal.lockAccount
 ```
-kanbanwebapi.kanban.lockAccount(address)
+kanbanwebapi.personal.lockAccount(address)
 ```
 Locks the given account.
 #### Parameters
@@ -561,6 +566,56 @@ Locks the given account.
 
 #### Return Type
  - Boolean - True if the account was locked successfully otherwise false
+
+[Back to top](#Table-of-Contents)
+
+### personal.importRawKey
+```
+kanbanwebapi.personal.importRawKey(privateKey, password)
+```
+Imports the given private key into the key store, encrypting it with the passphrase. Returns the address of the new account.
+#### Parameters
+ - <b>privateKey</b> - String - An unencrypted private key (hex string).
+ - <b>password</b> - String - The password of the account. Warning: Sending your account password over an unsecured HTTP RPC connection is highly unsecure.
+
+#### Return Type
+ - String - The address of the new account.
+
+[Back to top](#Table-of-Contents)
+
+### personal.ecRecover
+```
+kanbanwebapi.personal.ecRecover(dataThatWasSigned, signature)
+```
+Recovers the account that signed the data.
+#### Parameters
+ - <b>dataThatWasSigned</b> - String - Data that was signed. If String it will be converted using web3.utils.utf8ToHex.
+ - <b>signature</b> - String - The signature.
+
+#### Return Type
+ - String - The address of the original signer of the data
+
+[Back to top](#Table-of-Contents)
+
+### personal.sendTransaction
+```
+kanbanwebapi.personal.sendTransaction(transactionObject, password)
+```
+This method sends a transaction over the management API.
+#### Parameters
+ - <b>transactionObject</b> - transaction Object - The transaction object to send:
+    + <b>from</b> - String|Number: The address for the sending account. Uses the kanbanwebapi.kanban.defaultAccount property, if not specified. Or an address or index of a local wallet in kanbanwebapi.kanban.accounts.wallet.
+    + <b>to</b> - String: (optional) The destination address of the message, left undefined for a contract-creation transaction.
+    + <b>coin</b> - String (optional) The type of coin you wish to send. Currently supports ("FAB", "BTC", "ETH"). Default "FAB". 
+    + <b>value</b> - Number|String|BN|BigNumber: (optional) The value transferred for the transaction in wei, also the endowment if it’s a contract-creation transaction.
+    + <b>gas</b> - Number: (optional, default: To-Be-Determined) The amount of gas to use for the transaction (unused gas is refunded).
+    + <b>gasPrice</b> - Number|String|BN|BigNumber: (optional) The price of gas for this transaction in wei, defaults to kanbanwebapi.kanban.gasPrice.
+    + <b>data</b> - String: (optional) Either a ABI byte string containing the data of the function call on a contract, or in the case of a contract-creation transaction the initialisation code.
+    + <b>nonce</b> - Number: (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
+ - <b>password</b> - the passphrase for the account.  Warning: Sending your account password over an unsecured HTTP RPC connection is highly unsecure.
+
+#### Return Type
+ - "transactionHash" - String - 32 byte hash of the transaction
 
 [Back to top](#Table-of-Contents)
 
