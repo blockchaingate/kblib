@@ -2535,7 +2535,7 @@ var BigNumber = require('bignumber.js');
 function Web3 (provider) {
     this._requestManager = new RequestManager(provider);
     this.currentProvider = provider;
-    this.eth = new Eth(this);
+    this.kanban = new Eth(this);
     this.db = new DB(this);
     this.shh = new Shh(this);
     this.net = new Net(this);
@@ -3782,10 +3782,10 @@ var inputTransactionFormatter = function (options){
  * @returns {Object}
  */
 var inputGetLogsFormatter = function (options) {
-    if (options.fromBlock)
-        options.fromBlock = inputBlockNumberFormatter(options.fromBlock);
-    if (options.toBlock)
-        options.toBlock = inputBlockNumberFormatter(options.toBlock);
+    if (options) {
+        if (options.fromBlock) { options.fromBlock = inputBlockNumberFormatter(options.fromBlock);}
+        if (options.toBlock) { options.toBlock = inputBlockNumberFormatter(options.toBlock);}
+    }
 };
 
 /**
@@ -3938,6 +3938,14 @@ var outputPostFormatter = function(post){
     return post;
 };
 
+var utf8ToHexFormatter = function (data) {
+    if (utils.isString(data)) {
+        return utils.toHex(data);
+    } else {
+        throw new Error('not a string');
+    }
+};
+
 var inputAddressFormatter = function (address) {
     var iban = new Iban(address);
     if (iban.isValid() && iban.isDirect()) {
@@ -3949,7 +3957,6 @@ var inputAddressFormatter = function (address) {
     }
     throw new Error('invalid address');
 };
-
 
 var outputSyncingFormatter = function(result) {
     if (!result) {
@@ -3981,9 +3988,9 @@ module.exports = {
     outputBlockFormatter: outputBlockFormatter,
     outputLogFormatter: outputLogFormatter,
     outputPostFormatter: outputPostFormatter,
-    outputSyncingFormatter: outputSyncingFormatter
+    outputSyncingFormatter: outputSyncingFormatter,
+    utf8ToHexFormatter: utf8ToHexFormatter
 };
-
 
 },{"../utils/config":18,"../utils/utils":20,"./iban":33}],31:[function(require,module,exports){
 /*
@@ -5364,8 +5371,7 @@ var methods = function () {
         name: 'getBalance',
         call: 'kanban_getBalance',
         params: 2,
-        inputFormatter: [formatters.inputAddressFormatter, formatters.inputDefaultBlockNumberFormatter],
-        outputFormatter: formatters.outputBigNumberFormatter
+        inputFormatter: [formatters.inputAddressFormatter, formatters.inputDefaultBlockNumberFormatter]
     });
 
     var getStorageAt = new Method({
@@ -5470,7 +5476,7 @@ var methods = function () {
         name: 'sign',
         call: 'kanban_sign',
         params: 2,
-        inputFormatter: [formatters.inputAddressFormatter, null]
+        inputFormatter: [formatters.inputAddressFormatter, formatters.utf8ToHexFormatter]
     });
 
     var call = new Method({
@@ -5508,6 +5514,12 @@ var methods = function () {
         params: 0
     });
 
+    var getPendingTransactions = new Method({
+        name: 'getPendingTransactions',
+        call: 'kanban_pendingTransactions',
+        params: 0
+    });
+
     return [
         getBalance,
         getStorageAt,
@@ -5528,7 +5540,8 @@ var methods = function () {
         sign,
         submitWork,
         getLogs,
-        getWork
+        getWork,
+        getPendingTransactions
     ];
 };
 
@@ -5564,8 +5577,7 @@ var properties = function () {
         }),
         new Property({
             name: 'blockNumber',
-            getter: 'kanban_blockNumber',
-            outputFormatter: utils.toDecimal
+            getter: 'kanban_blockNumber'
         }),
         new Property({
             name: 'protocolVersion',
@@ -5721,7 +5733,9 @@ var methods = function () {
     var ecRecover = new Method({
         name: 'ecRecover',
 		call: 'personal_ecRecover',
-		params: 2
+        params: 2,
+        inputFormatter: [formatters.utf8ToHexFormatter, null]
+
     });
 
     var unlockAccount = new Method({
