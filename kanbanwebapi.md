@@ -86,6 +86,7 @@ Will calculate the keccak256 of the input.
 
 | Property                     | Return-type               | Description                                                      |
 |------------------------------|---------------------------|------------------------------------------------------------------|
+| settings                     | Object                    | contains properties set for this instance of the module          |
 | kanban.coinbase              | String                    | the coinbase address to which mining rewards will go             |
 | kanban.mining                | Boolean                   | checks whether the node is mining or not                         |
 | kanban.hashrate              | Number                    | number of hashes per second that the node is mining with         |
@@ -97,7 +98,8 @@ Will calculate the keccak256 of the input.
 | version.network              | String                    | which kanban network the node is a part of                       |eg. 1 = mainnet,  2 = testnet1,
 | net.peerCount                | Number                    | Returns number of peers currently connected to the client        |
 | net.listening                | Boolean                   | Returns true if client is listening for network connections.     |
-| kanban.personal.listAccounts | Array of Strings          | Returns an array of addresses controlled by the node             |               
+| kanban.personal.listAccounts | Array of Strings          | Returns an array of addresses controlled by the node             |
+
 
 [Back to top](#Table-of-Contents)
 
