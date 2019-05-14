@@ -2616,7 +2616,7 @@ var properties = function () {
         }),
         new Property({
             name: 'version.ethereum',
-            getter: 'eth_protocolVersion',
+            getter: 'kanban_protocolVersion',
             inputFormatter: utils.toDecimal
         }),
         new Property({
@@ -4224,7 +4224,7 @@ SolidityFunction.prototype.request = function () {
     var format = this.unpackOutput.bind(this);
 
     return {
-        method: this._constant ? 'kanban_call' : 'eth_sendTransaction',
+        method: this._constant ? 'kanban_call' : 'kanban_sendTransaction',
         callback: callback,
         params: [payload],
         format: format
@@ -5300,7 +5300,7 @@ var Iban = require('../iban');
 var transfer = require('../transfer');
 
 var blockCall = function (args) {
-    return (utils.isString(args[0]) && args[0].indexOf('0x') === 0) ? "eth_getBlockByHash" : "eth_getBlockByNumber";
+    return (utils.isString(args[0]) && args[0].indexOf('0x') === 0) ? "kanban_getBlockByHash" : "kanban_getBlockByNumber";
 };
 
 var transactionFromBlockCall = function (args) {
@@ -5312,7 +5312,7 @@ var uncleCall = function (args) {
 };
 
 var getBlockTransactionCountCall = function (args) {
-    return (utils.isString(args[0]) && args[0].indexOf('0x') === 0) ? 'eth_getBlockTransactionCountByHash' : 'eth_getBlockTransactionCountByNumber';
+    return (utils.isString(args[0]) && args[0].indexOf('0x') === 0) ? 'kanban_getBlockTransactionCountByHash' : 'kanban_getBlockTransactionCountByNumber';
 };
 
 var uncleCountCall = function (args) {
@@ -5439,7 +5439,7 @@ var methods = function () {
 
     var getTransactionCount = new Method({
         name: 'getTransactionCount',
-        call: 'eth_getTransactionCount',
+        call: 'kanban_getTransactionCount',
         params: 2,
         inputFormatter: [null, formatters.inputDefaultBlockNumberFormatter],
         outputFormatter: utils.toDecimal
@@ -5454,7 +5454,7 @@ var methods = function () {
 
     var sendTransaction = new Method({
         name: 'sendTransaction',
-        call: 'eth_sendTransaction',
+        call: 'kanban_sendTransaction',
         params: 1,
         inputFormatter: [formatters.inputTransactionFormatter]
     });
@@ -5537,11 +5537,11 @@ var properties = function () {
     return [
         new Property({
             name: 'coinbase',
-            getter: 'eth_coinbase'
+            getter: 'kanban_coinbase'
         }),
         new Property({
             name: 'mining',
-            getter: 'eth_mining'
+            getter: 'kanban_mining'
         }),
         new Property({
             name: 'hashrate',
@@ -5550,26 +5550,26 @@ var properties = function () {
         }),
         new Property({
             name: 'syncing',
-            getter: 'eth_syncing',
+            getter: 'kanban_syncing',
             outputFormatter: formatters.outputSyncingFormatter
         }),
         new Property({
             name: 'gasPrice',
-            getter: 'eth_gasPrice',
+            getter: 'kanban_gasPrice',
             outputFormatter: formatters.outputBigNumberFormatter
         }),
         new Property({
             name: 'accounts',
-            getter: 'eth_accounts'
+            getter: 'kanban_accounts'
         }),
         new Property({
             name: 'blockNumber',
-            getter: 'eth_blockNumber',
+            getter: 'kanban_blockNumber',
             outputFormatter: utils.toDecimal
         }),
         new Property({
             name: 'protocolVersion',
-            getter: 'eth_protocolVersion'
+            getter: 'kanban_protocolVersion'
         })
     ];
 };
@@ -6095,13 +6095,13 @@ var eth = function () {
             case 'latest':
                 args.shift();
                 this.params = 0;
-                return 'eth_newBlockFilter';
+                return 'kanban_newBlockFilter';
             case 'pending':
                 args.shift();
                 this.params = 0;
-                return 'eth_newPendingTransactionFilter';
+                return 'kanban_newPendingTransactionFilter';
             default:
-                return 'eth_newFilter';
+                return 'kanban_newFilter';
         }
     };
 
@@ -6113,19 +6113,19 @@ var eth = function () {
 
     var uninstallFilter = new Method({
         name: 'uninstallFilter',
-        call: 'eth_uninstallFilter',
+        call: 'kanban_uninstallFilter',
         params: 1
     });
 
     var getLogs = new Method({
         name: 'getLogs',
-        call: 'eth_getFilterLogs',
+        call: 'kanban_getFilterLogs',
         params: 1
     });
 
     var poll = new Method({
         name: 'poll',
-        call: 'eth_getFilterChanges',
+        call: 'kanban_getFilterChanges',
         params: 1
     });
 
@@ -6699,7 +6699,7 @@ var pollSyncing = function(self) {
     };
 
     self.requestManager.startPolling({
-        method: 'eth_syncing',
+        method: 'kanban_syncing',
         params: [],
     }, self.pollId, onMessage, self.stopWatching.bind(self));
 
