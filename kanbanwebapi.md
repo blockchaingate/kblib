@@ -59,6 +59,11 @@
    * [utils.isBoolean](#utils.isBoolean)
    * [utils.isArray](#utils.isArray)
    * [utils.isJson](#utils.isJson)
+- [Kanbanwebapi.iban](#Kanbanwebapi.iban)
+   * [iban.fromAddress](#iban.fromAddress)
+   * [iban.fromBban](#iban.fromBban)
+   * [iban.createIndirect](#iban.createIndirect)
+   * [iban.isValid](#iban.isValid)
 
 ## Kanbanwebapi
 
@@ -940,5 +945,61 @@ Checks if the passed parameter is a valid JSON string
 
 #### Return Type
  - Boolean - true if the passed parameter is valid JSON string
+
+[Back to top](#Table-of-Contents)
+
+## Kanbanwebapi.iban
+
+### iban.fromAddress
+```
+kanbanwebapi.iban.fromAddress(address)
+```
+Singleton: Converts an Ethereum address to a direct IBAN instance.
+#### Parameters
+ - <b>address</b> - String - The Kanban address to convert
+
+#### Return Type
+ - Object - The IBAN instance
+
+[Back to top](#Table-of-Contents)
+
+### iban.fromBban
+```
+kanbanwebapi.iban.fromBban(bbanAddress)
+```
+Singleton: Converts an BBAN address to a direct IBAN instance.
+#### Parameters
+ - <b>address</b> - String - The BBAN address to convert
+
+#### Return Type
+ - Object - The IBAN instance
+
+[Back to top](#Table-of-Contents)
+
+### iban.createIndirect
+```
+kanbanwebapi.iban.createIndirect(options)
+```
+Singleton: Creates an indirect IBAN address from a institution and identifier.
+#### Parameters
+ - <b>options</b> - Object:
+   * <b>institution</b> - the isntitution to be assigned 
+   * <b>identifier</b> - the identifier to be assigned
+
+#### Return Type
+ - Object - The IBAN instance
+
+[Back to top](#Table-of-Contents)
+
+### iban.isValid
+```
+kanbanwebapi.iban.isValid(ibanAddress)
+```
+Singleton: Checks if an IBAN address is valid.
+#### Parameters
+ - <b>ibanAddress</b> - String - the IBAN address to check.
+
+#### Return Type
+ - Boolean - true if ibanAddress is a valid IBAN address.
 
 [Back to top](#Table-of-Contents)
