@@ -4,7 +4,7 @@
  * b. Finding the account address using which the message was signed
  */
 var Web3 = require('../index.js');
-var ethURL = ""; 
+var kanbanURL = ""; 
 var defaultAc = ""; 
 var defaultAcPWD=""; 
 var signatureContractCodeReadable="\n\tcontract SignatureVerifier {\n\t\tfunction verify( bytes32 hash, uint8 v, bytes32 r, bytes32 s) \n"+ 
@@ -30,8 +30,8 @@ function setPassword(pwd){
     defaultAcPWD = pwd;
 }
 
-function setEthereumURL(url){
-    ethURL = url;
+function setKanbanURL(url){
+    kanbanURL = url;
 }
 
 function setMessage(msg){
@@ -43,7 +43,7 @@ function initializeEthereumConnection(){
     return true;
   }
   
-  kanbanWeb3 = new Web3(new Web3.providers.HttpProvider(ethURL));
+  kanbanWeb3 = new Web3(new Web3.providers.HttpProvider(kanbanURL));
   
   if(kanbanWeb3.isConnected()==true){
       if(defaultAc==''){
@@ -152,7 +152,7 @@ function execute(){
     console.log("\te. Message for signing");
     console.log("**********************************************************************");
 
-    if(ethURL==''){
+    if(kanbanURL==''){
         console.log("Error: Ethereum URL is not specified");
         return;
     }
@@ -175,7 +175,7 @@ function execute(){
     
 
     console.log("Following parameters applied");
-    console.log("\ta. Ethereum URL                  :",ethURL);
+    console.log("\ta. Kanban URL                  :",kanbanURL);
     console.log("\tb. Ethereum Account Address      :",defaultAc);
     console.log("\tc. Ethereum Account Passphrase   :",defaultAcPWD);
     console.log("\td. Signature Contract Address    :",sigContractAddress);
@@ -212,7 +212,7 @@ function execute(){
 //setContractAddress('<Provide the deployed contract address>');
 
 // Value 4- If required please update with a different message
-setEthereumURL('http://localhost:8545');
+setKanbanURL('http://localhost:8545');
 
 // Value 5- If required please update with a Ethereum URL
 setMessage('This the test sign message');
