@@ -821,7 +821,7 @@ Description goes here
 ```
 kanbanwebapi._extend.utils.isStrictAddress(address [, chainId])
 ```
-Checks if a given string is a valid Ethereum address, including the reuirement that begin wit '0x'. It will also check the checksum, if the address has both upper and lowercase letters.
+Checks if a given string is a valid Kanban address, including the reuirement that begin wit '0x'. It will also check the checksum, if the address has both upper and lowercase letters.
 #### Parameters
  - <b>address</b> - String - An address string
  - <b>chainId</b> - Number - Chain id where checksummed address should be valid, defaults to null.
@@ -835,7 +835,7 @@ Checks if a given string is a valid Ethereum address, including the reuirement t
 ```
 kanbanwebapi._extend.utils.isAddress(address [, chainId])
 ```
-Checks if a given string is a valid Ethereum address. It will also check the checksum, if the address has both upper and lowercase letters.
+Checks if a given string is a valid Kanban address. It will also check the checksum, if the address has both upper and lowercase letters.
 #### Parameters
  - <b>address</b> - String - An address string
  - <b>chainId</b> - Number - Chain id where checksummed address should be valid, defaults to null.
@@ -849,7 +849,7 @@ Checks if a given string is a valid Ethereum address. It will also check the che
 ```
 kanbanwebapi._extend.utils.isChecksumAddress(address)
 ```
-Checks if a given string is a valid Ethereum address and ikf the address has both upper and lowercase letters.
+Checks if a given string is a valid Kanban address and ikf the address has both upper and lowercase letters.
 #### Parameters
  - <b>address</b> - String - An address string
 
@@ -862,7 +862,7 @@ Checks if a given string is a valid Ethereum address and ikf the address has bot
 ```
 kanbanwebapi._extend.utils.toChecksumAddress(address [, chainId])
 ```
-Will convert an upper or lowercase Ethereum address to a checksum address.
+Will convert an upper or lowercase Kanban address to a checksum address.
 #### Parameters
  - <b>address</b> - String - An address string
  - <b>chainId</b> - Number - Chain id where checksummed address should be valid, defaults to null.
@@ -956,7 +956,7 @@ Checks if the passed parameter is a valid JSON string
 ```
 kanbanwebapi.iban.fromAddress(address)
 ```
-Singleton: Converts an Ethereum address to a direct IBAN instance.
+Singleton: Converts an Kanban address to a direct IBAN instance.
 #### Parameters
  - <b>address</b> - String - The Kanban address to convert
 
