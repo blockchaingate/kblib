@@ -21,7 +21,7 @@ var tests = [{
     }],
     result: '0xf',
     formattedResult: '0xf',
-    call: 'eth_newFilter'
+    call: 'kanban_newFilter'
 },{
     args: [{
         fromBlock: 'latest',
@@ -36,22 +36,22 @@ var tests = [{
     }],
     result: '0xf',
     formattedResult: '0xf',
-    call: 'eth_newFilter'
+    call: 'kanban_newFilter'
 },{
     args: ['latest'],
     formattedArgs: [],
     result: '0xf',
     formattedResult: '0xf',
-    call: 'eth_newBlockFilter'
+    call: 'kanban_newBlockFilter'
 },{
     args: ['pending'],
     formattedArgs: [],
     result: '0xf',
     formattedResult: '0xf',
-    call: 'eth_newPendingTransactionFilter'
+    call: 'kanban_newPendingTransactionFilter'
 }];
 
-describe('web3.eth', function () {
+describe('web3.kanban', function () {
     describe(method, function () {
         tests.forEach(function (test, index) {
             it('property test: ' + index, function (done) {
@@ -69,7 +69,7 @@ describe('web3.eth', function () {
                });
 
                // call
-               var filter = web3.eth[method].apply(web3.eth, test.args);
+               var filter = web3.kanban[method].apply(web3.kanban, test.args);
 
                // test filter.get
                if(typeof test.args === 'object') {
@@ -79,7 +79,7 @@ describe('web3.eth', function () {
                    provider.injectResult(logs);
                    provider.injectValidation(function (payload) {
                        assert.equal(payload.jsonrpc, '2.0');
-                       assert.equal(payload.method, 'eth_getFilterLogs');
+                       assert.equal(payload.method, 'kanban_getFilterLogs');
                        assert.deepEqual(payload.params, [test.formattedResult]);
                    });
 
@@ -112,7 +112,7 @@ describe('web3.eth', function () {
                     assert.deepEqual(errors.InvalidConnection(), err);
                     done();
                 });
-                web3.eth[method].apply(web3.eth, args);
+                web3.kanban[method].apply(web3.kanban, args);
             })
         });
     });

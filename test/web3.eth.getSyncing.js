@@ -5,7 +5,7 @@ var Web3 = require('../index');
 var assert = chai.assert;
 var FakeHttpProvider = require('./helpers/FakeHttpProvider');
 
-describe('eth', function () {
+describe('kanban', function () {
     describe('getSyncing', function () {
         it('syncing object', function (done) {
             // given
@@ -18,11 +18,11 @@ describe('eth', function () {
             });
             provider.injectValidation(function(payload) {
                 assert.equal(payload.jsonrpc, '2.0', 'failed');
-                assert.equal(payload.method, 'eth_syncing');
+                assert.equal(payload.method, 'kanban_syncing');
             });
 
             // call
-            web3.eth.getSyncing(function(err, res){
+            web3.kanban.getSyncing(function(err, res){
                 assert.deepEqual(res, {
                     startingBlock: 11,
                     currentBlock: 11,
@@ -39,11 +39,11 @@ describe('eth', function () {
             provider.injectResult(false);
             provider.injectValidation(function(payload) {
                 assert.equal(payload.jsonrpc, '2.0', 'failed');
-                assert.equal(payload.method, 'eth_syncing');
+                assert.equal(payload.method, 'kanban_syncing');
             });
 
             // call
-            web3.eth.getSyncing(function(err, res){
+            web3.kanban.getSyncing(function(err, res){
                 assert.strictEqual(res, false);
                 done();
             });

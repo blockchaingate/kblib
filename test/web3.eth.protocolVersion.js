@@ -8,10 +8,10 @@ var method = 'protocolVersion';
 
 var tests = [{
     result: ['1234'],
-    call: 'eth_'+ method
+    call: 'kanban_'+ method
 }];
 
-describe('eth.protocolVersion', function () {
+describe('kanban.protocolVersion', function () {
     describe(method, function () {
         tests.forEach(function (test, index) {
             it('property test: ' + index, function () {
@@ -27,7 +27,7 @@ describe('eth.protocolVersion', function () {
                 });
 
                 // when
-                var result = web3.eth[method];
+                var result = web3.kanban[method];
 
                 // then
                 assert.deepEqual(test.result, result);

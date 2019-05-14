@@ -24,4 +24,4 @@ var tests = [{
     call: 'kanban_getUncleCountByBlockNumber'
 }];
 
-testMethod.runTests('eth', method, tests);
+testMethod.runTests('kanban', method, tests);

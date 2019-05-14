@@ -48,5 +48,5 @@ var tests = [{
     call: 'kanban_getTransactionByBlockNumberAndIndex'
 }];
 
-testMethod.runTests('eth', method, tests);
+testMethod.runTests('kanban', method, tests);
 

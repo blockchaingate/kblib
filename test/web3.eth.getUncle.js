@@ -133,4 +133,4 @@ var tests = [{
     call: 'kanban_getUncleByBlockNumberAndIndex'
 }];
 
-testMethod.runTests('eth', method, tests);
+testMethod.runTests('kanban', method, tests);

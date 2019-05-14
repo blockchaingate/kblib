@@ -21,7 +21,7 @@ describe('web3', function() {
         u.methodExists(web3, 'reset');
 
         u.propertyExists(web3, 'providers');
-        u.propertyExists(web3, 'eth');
+        u.propertyExists(web3, 'kanban');
         u.propertyExists(web3, 'db');
         u.propertyExists(web3, 'shh');
     });

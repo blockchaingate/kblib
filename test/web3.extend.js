@@ -8,7 +8,7 @@ var web3 = new Web3();
 var tests = [{
     properties: [new web3._extend.Property({
         name: 'gasPrice',
-        getter: 'eth_gasPrice',
+        getter: 'kanban_gasPrice',
         outputFormatter: web3._extend.formatters.outputBigNumberFormatter
     })]
 },{
@@ -23,7 +23,7 @@ var tests = [{
     property: 'admin',
     properties: [new web3._extend.Property({
         name: 'gasPrice',
-        getter: 'eth_gasPrice',
+        getter: 'kanban_gasPrice',
         outputFormatter: web3._extend.formatters.outputBigNumberFormatter
     })],
     methods: [new web3._extend.Method({

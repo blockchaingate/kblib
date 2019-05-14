@@ -3,7 +3,7 @@ var FakeHttpProvider = require('./helpers/FakeHttpProvider');
 var Web3 = require('../index');
 
 
-describe('web3.eth.contract', function() {
+describe('web3.kanban.contract', function() {
     it('should create simple contract with one method from abi with explicit type name', function () {
         
         // given
@@ -26,7 +26,7 @@ describe('web3.eth.contract', function() {
     
         // when
         var web3 = new Web3();
-        var myCon = web3.eth.contract(description).at(address);
+        var myCon = web3.kanban.contract(description).at(address);
 
         // then
         assert.equal('function', typeof myCon.test); 
@@ -55,7 +55,7 @@ describe('web3.eth.contract', function() {
 
         // when
         var web3 = new Web3();
-        var myCon = web3.eth.contract(description).at(address);
+        var myCon = web3.kanban.contract(description).at(address);
 
         // then
         assert.equal('function', typeof myCon.test); 
@@ -98,7 +98,7 @@ describe('web3.eth.contract', function() {
         
         // when
         var web3 = new Web3();
-        var myCon = web3.eth.contract(description).at(address);
+        var myCon = web3.kanban.contract(description).at(address);
 
         // then
         assert.equal('function', typeof myCon.test); 
@@ -143,7 +143,7 @@ describe('web3.eth.contract', function() {
         
         // when
         var web3 = new Web3();
-        var myCon = web3.eth.contract(description).at(address);
+        var myCon = web3.kanban.contract(description).at(address);
 
         // then
         assert.equal('function', typeof myCon.test); 
@@ -172,7 +172,7 @@ describe('web3.eth.contract', function() {
 
         // when
         var web3 = new Web3();
-        var myCon = web3.eth.contract(description).at(address);
+        var myCon = web3.kanban.contract(description).at(address);
 
         // then
         assert.equal('undefined', typeof myCon.test); 
@@ -201,7 +201,7 @@ describe('web3.eth.contract', function() {
 
         // when
         var web3 = new Web3();
-        var myCon = web3.eth.contract(description).at(address);
+        var myCon = web3.kanban.contract(description).at(address);
 
         // then
         assert.equal('function', typeof myCon.test); 
@@ -232,20 +232,20 @@ describe('web3.eth.contract', function() {
         provider.injectValidation(function (payload) {
             if (steps === 1) {
                 assert.equal(payload.jsonrpc, '2.0');
-                assert.equal(payload.method, 'eth_sendTransaction');
+                assert.equal(payload.method, 'kanban_sendTransaction');
                 assert.equal(payload.params[0].data, code + '0000000000000000000000000000000000000000000000000000000000000002');
                 steps++;
 
 
             } else if (steps === 2) {
                 assert.equal(payload.jsonrpc, '2.0');
-                assert.equal(payload.method, 'eth_newBlockFilter');
+                assert.equal(payload.method, 'kanban_newBlockFilter');
                 steps++;
             }
         });
 
-        web3.eth.contract(description).new(2, {from: address, data: code}, function(e, myCon){
-            myCon._eth._requestManager.reset();
+        web3.kanban.contract(description).new(2, {from: address, data: code}, function(e, myCon){
+            myCon._kanban._requestManager.reset();
             done();
         });
     });

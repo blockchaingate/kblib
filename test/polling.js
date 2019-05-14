@@ -6,35 +6,35 @@ var FakeHttpProvider = require('./helpers/FakeHttpProvider');
 var utils = require('../lib/utils/utils');
 
 var tests = [{
-    protocol: 'eth',
+    protocol: 'kanban',
     args: ['latest'],
     firstResult: 1,
     firstPayload: {
-        method: "eth_newBlockFilter",
+        method: "kanban_newBlockFilter",
         params: []
     },
     secondResult: ['0x1234'],
     secondPayload: {
-        method: "eth_getFilterChanges"
+        method: "kanban_getFilterChanges"
     }
 },
 {
-    protocol: 'eth',
+    protocol: 'kanban',
     args: ['pending'],
     firstResult: 1,
     firstPayload: {
-        method: "eth_newPendingTransactionFilter",
+        method: "kanban_newPendingTransactionFilter",
         params: []
     },
     secondResult: ['0x1234'],
     secondPayload: {
-        method: "eth_getFilterChanges"
+        method: "kanban_getFilterChanges"
     }
 }];
 
 var testPolling = function (tests) {
     
-    describe('web3.eth.filter.polling', function () {
+    describe('web3.kanban.filter.polling', function () {
         tests.forEach(function (test, index) {
             it('should create && successfully poll filter', function (done) {
 

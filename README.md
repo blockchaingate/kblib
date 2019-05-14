@@ -77,7 +77,7 @@ component install ethereum/web3.js
 Use the `web3` object directly from the global namespace:
 
 ```js
-console.log(web3); // {eth: .., shh: ...} // It's here!
+console.log(web3); // {kanban: .., shh: ...} // It's here!
 ```
 
 Set a provider (`HttpProvider`):
@@ -100,8 +100,8 @@ web3.setProvider(new web3.providers.HttpProvider('http://' + BasicAuthUsername +
 There you go, now you can use it:
 
 ```js
-var coinbase = web3.eth.coinbase;
-var balance = web3.eth.getBalance(coinbase);
+var coinbase = web3.kanban.coinbase;
+var balance = web3.kanban.getBalance(coinbase);
 ```
 
 You can find more examples in the [`example`](https://github.com/ethereum/web3.js/tree/master/example) directory.

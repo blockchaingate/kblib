@@ -9,10 +9,10 @@ var method = 'hashrate';
 var tests = [{
     result: '0x788a8',
     formattedResult: 493736,
-    call: 'eth_'+ method
+    call: 'kanban_'+ method
 }];
 
-describe('web3.eth', function () {
+describe('web3.kanban', function () {
     describe(method, function () {
         tests.forEach(function (test, index) {
             it('property test: ' + index, function () {
@@ -28,7 +28,7 @@ describe('web3.eth', function () {
                 });
 
                 // when
-                var result = web3.eth[method];
+                var result = web3.kanban[method];
 
                 // then
                 assert.strictEqual(test.formattedResult, result);

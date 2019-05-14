@@ -9,8 +9,8 @@ var tests = [{
     formattedArgs: [],
     result: true,
     formattedResult: true,
-    call: 'eth_'+ method
+    call: 'kanban_'+ method
 }];
 
-testMethod.runTests('eth', method, tests);
+testMethod.runTests('kanban', method, tests);
 

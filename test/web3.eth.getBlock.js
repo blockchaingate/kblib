@@ -117,20 +117,20 @@ var tests = [{
     formattedArgs: ['0x47d33b27bb249a2dbab4c0612bf9caf4c1950855', false],
     result: blockResult,
     formattedResult: formattedBlockResult,
-    call: 'eth_'+ method + 'ByHash'
+    call: 'kanban_'+ method + 'ByHash'
 },{
     args: [436],
     formattedArgs: ['0x1b4', false],
     result: blockResult,
     formattedResult: formattedBlockResult,
-    call: 'eth_'+ method + 'ByNumber'
+    call: 'kanban_'+ method + 'ByNumber'
 },{
     args: [436, true],
     formattedArgs: ['0x1b4', true],
     result: blockResultWithTx,
     formattedResult: formattedBlockResultWithTx,
-    call: 'eth_'+ method + 'ByNumber'
+    call: 'kanban_'+ method + 'ByNumber'
 }];
 
-testMethod.runTests('eth', method, tests);
+testMethod.runTests('kanban', method, tests);
 

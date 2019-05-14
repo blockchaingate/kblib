@@ -40,8 +40,8 @@ describe('lib/web3/batch', function () {
             });
 
             var batch = web3.createBatch(); 
-            batch.add(web3.eth.getBalance.request('0x0000000000000000000000000000000000000000', 'latest', callback));
-            batch.add(web3.eth.getBalance.request('0x0000000000000000000000000000000000000005', 'latest', callback2));
+            batch.add(web3.kanban.getBalance.request('0x0000000000000000000000000000000000000000', 'latest', callback));
+            batch.add(web3.kanban.getBalance.request('0x0000000000000000000000000000000000000005', 'latest', callback2));
             batch.execute();
         });
         
@@ -71,14 +71,14 @@ describe('lib/web3/batch', function () {
                 var first = payload[0];
                 var second = payload[1];
 
-                assert.equal(first.method, 'eth_accounts');
+                assert.equal(first.method, 'kanban_accounts');
                 assert.deepEqual(first.params, []);
                 assert.equal(second.method, 'net_peerCount');
                 assert.deepEqual(second.params, []);
             });
 
             var batch = web3.createBatch(); 
-            batch.add(web3.eth.getAccounts.request(callback));
+            batch.add(web3.kanban.getAccounts.request(callback));
             batch.add(web3.net.getPeerCount.request(callback2));
             batch.execute();
         });
@@ -134,8 +134,8 @@ describe('lib/web3/batch', function () {
             });
 
             var batch = web3.createBatch(); 
-            batch.add(web3.eth.getBalance.request('0x0000000000000000000000000000000000000000', 'latest', callback));
-            batch.add(web3.eth.contract(abi).at(address).balance.request(address, callback2));
+            batch.add(web3.kanban.getBalance.request('0x0000000000000000000000000000000000000000', 'latest', callback));
+            batch.add(web3.kanban.contract(abi).at(address).balance.request(address, callback2));
             provider.injectBatchResults([result, result2]);
             batch.execute();
         });
@@ -192,8 +192,8 @@ describe('lib/web3/batch', function () {
             });
 
             var batch = web3.createBatch(); 
-            batch.add(web3.eth.getBalance.request('0x0000000000000000000000000000000000000000', 'latest', callback));
-            batch.add(web3.eth.contract(abi).at(address).balance.request(address, callback2));
+            batch.add(web3.kanban.getBalance.request('0x0000000000000000000000000000000000000000', 'latest', callback));
+            batch.add(web3.kanban.contract(abi).at(address).balance.request(address, callback2));
             provider.injectBatchResults([result, result2], true); // injects error
             batch.execute();
         });

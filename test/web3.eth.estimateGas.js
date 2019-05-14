@@ -18,8 +18,8 @@ var tests = [{
     }],
     result: '0x31981',
     formattedResult: 203137,
-    call: 'eth_'+ method
+    call: 'kanban_'+ method
 }];
 
-testMethod.runTests('eth', method, tests);
+testMethod.runTests('kanban', method, tests);
 

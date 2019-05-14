@@ -63,8 +63,8 @@ var tests = [{
     formattedArgs: ['0x2dbab4c0612bf9caf4c195085547dc0612bf9caf4c1950855'],
     result: txResult,
     formattedResult: formattedTxResult,
-    call: 'eth_'+ method
+    call: 'kanban_'+ method
 }];
 
-testMethod.runTests('eth', method, tests);
+testMethod.runTests('kanban', method, tests);
 
