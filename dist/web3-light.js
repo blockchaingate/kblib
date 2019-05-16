@@ -5646,7 +5646,7 @@ var Net = function (web3) {
     });
 };
 
-/// @returns an array of objects describing web3.kanban api properties
+/// @returns an array of objects describing web3.eth api properties
 var properties = function () {
     return [
         new Property({
