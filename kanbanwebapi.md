@@ -315,7 +315,7 @@ Get the balance of an address at a given block.
  - balance object:
     * <b>BTC</b> - String - The Bitcoin balance in hexadecimal format
     * <b>ETH</b> - String - The Ether balance in hexadecimal format
-    * <b>FAB</b> - String - The FABcoin balacne in hexadecimal format
+    * <b>FAB</b> - String - The FABcoin balance in hexadecimal format
 
 [Back to top](#Table-of-Contents)
 
@@ -332,7 +332,7 @@ Sends a transaction to the network.
     + <b>value</b> - Number|String|BN|BigNumber: (optional) The value transferred for the transaction in wei, also the endowment if it’s a contract-creation transaction.
     + <b>gas</b> - Number: (optional, default: To-Be-Determined) The amount of gas to use for the transaction (unused gas is refunded).
     + <b>gasPrice</b> - Number|String|BN|BigNumber: (optional) The price of gas for this transaction in wei, defaults to kanbanwebapi.kanban.gasPrice.
-    + <b>data</b> - String: (optional) Either a ABI byte string containing the data of the function call on a contract, or in the case of a contract-creation transaction the initialisation code.
+    + <b>data</b> - String: (optional) Either a ABI byte string containing the data of the function call on a contract, or in the case of a contract-creation transaction the initialization code.
     + <b>nonce</b> - Number: (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
 
 #### Return Type
@@ -376,7 +376,7 @@ Signs a transaction with the private key of the given address. If the given addr
  - Object :
    * <b>raw</b> - String - The RLP encoded transaction, ready to be sent using kanbanwebapi.kanban.sendSignedTransaction
    * <b>tx</b> - Object :
-      + <b>nonce</b> - String - The nonce to used when signing this transaction as a hexidecimal string
+      + <b>nonce</b> - String - The nonce to used when signing this transaction as a hexadecimal string
       + <b>gasPrice</b> - String - The gas price set by this transaction in hexadecimal format
       + <b>gas</b> - The gas provided by the transaction in hexadecimal format
       + <b>to</b> - String - The receiver address of the transaction, can be empty when deploying a contract.
@@ -444,7 +444,7 @@ Executes a message call transaction, which is directly executed in the VM of the
     + <b>value</b> - Number|String|BN|BigNumber: (optional) The value transferred for the transaction in wei, also the endowment if it’s a contract-creation transaction.
     + <b>gas</b> - Number: (optional, default: To-Be-Determined) The amount of gas to use for the transaction (unused gas is refunded).
     + <b>gasPrice</b> - Number|String|BN|BigNumber: (optional) The price of gas for this transaction in wei, defaults to kanbanwebapi.kanban.gasPrice.
-    + <b>data</b> - String: (optional) Either a ABI byte string containing the data of the function call on a contract, or in the case of a contract-creation transaction the initialisation code.
+    + <b>data</b> - String: (optional) Either a ABI byte string containing the data of the function call on a contract, or in the case of a contract-creation transaction the initialization code.
     + <b>nonce</b> - Number: (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
  - <b>defaultBlock</b> - String|Number - (optional, default "latest") The block number in decimal or hex format. Or the string "genesis", "latest" or "pending".
 
@@ -466,7 +466,7 @@ Executes a message call or transaction and returns the amount of the gas used.
     + <b>value</b> - Number|String|BN|BigNumber: (optional) The value transferred for the transaction in wei, also the endowment if it’s a contract-creation transaction.
     + <b>gas</b> - Number: (optional, default: To-Be-Determined) The amount of gas to use for the transaction (unused gas is refunded).
     + <b>gasPrice</b> - Number|String|BN|BigNumber: (optional) The price of gas for this transaction in wei, defaults to kanbanwebapi.kanban.gasPrice.
-    + <b>data</b> - String: (optional) Either a ABI byte string containing the data of the function call on a contract, or in the case of a contract-creation transaction the initialisation code.
+    + <b>data</b> - String: (optional) Either a ABI byte string containing the data of the function call on a contract, or in the case of a contract-creation transaction the initialization code.
     + <b>nonce</b> - Number: (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
 
 #### Return Type
@@ -514,13 +514,13 @@ Returns an array of all logs matching a given filter object.
       * fromBlock - Number|String - (optional, default 'latest') integer block number or 'latest', 'pending', or 'earliest'
       * toBlock - Number|String - (optional, default 'latest') integer block number or 'latest', 'pending', or 'earliest'
       * address - String|Array - (optional) Contract address or a list of addresses from which logs should originate.
-      * topics - Array of String- (optional) array of 32 Byte topic strings. Topis are order-dependent. Each topic can also be an array of String with "or" options 
+      * topics - Array of String- (optional) array of 32 Byte topic strings. Topics are order-dependent. Each topic can also be an array of String with "or" options 
       * blockhash - String (32 Byte hex) - (optional) Restricts the logs returned to the single block with the 32-byte hash blochHash. using blockHash is equivalent to fromBlock = toBlock = the block number with hash blockHash. In order to use blockHash, fromBlock and toBlock must not be specified.
 
 #### Return Type
    - Array of log objects:
       * for filters created with kanban_newBlockFilter, the returned are block hashes (32 Byte hex string)
-      * for filters created with kanban_newPendingTransactonFilter, the returned are transaction hashes (32 Byte hex string) 
+      * for filters created with kanban_newPendingTransactionFilter, the returned are transaction hashes (32 Byte hex string) 
       * for filters created with kanban_newFilter logs are objects with the following parameters:
          + type - String - 'pending' when the log is pending, 'mined' if log is already mined
          + logIndex - Number - integer of the transactions index position log was created from. null when its pending log. 
@@ -617,7 +617,7 @@ This method sends a transaction over the management API.
     + <b>value</b> - Number|String|BN|BigNumber: (optional) The value transferred for the transaction in wei, also the endowment if it’s a contract-creation transaction.
     + <b>gas</b> - Number: (optional, default: To-Be-Determined) The amount of gas to use for the transaction (unused gas is refunded).
     + <b>gasPrice</b> - Number|String|BN|BigNumber: (optional) The price of gas for this transaction in wei, defaults to kanbanwebapi.kanban.gasPrice.
-    + <b>data</b> - String: (optional) Either a ABI byte string containing the data of the function call on a contract, or in the case of a contract-creation transaction the initialisation code.
+    + <b>data</b> - String: (optional) Either a ABI byte string containing the data of the function call on a contract, or in the case of a contract-creation transaction the initialization code.
     + <b>nonce</b> - Number: (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
  - <b>password</b> - the passphrase for the account.  Warning: Sending your account password over an unsecured HTTP RPC connection is highly unsecure.
 
@@ -782,7 +782,7 @@ Converts any wei value into an ether value.
 ```
 kanbanwebapi._extend.utils.toBigNumber(number)
 ```
-Conver a number from various forms to to a BigNumber
+Convert a number from various forms to to a BigNumber
 #### Parameters
  - <b>number</b> - String|Number|Hex - Parameter Description
 
@@ -795,7 +795,7 @@ Conver a number from various forms to to a BigNumber
 ```
 kanbanwebapi._extend.utils.toTwosComplement()
 ```
-Converts a negative numer into a two’s complement.
+Converts a negative number into a two’s complement.
 #### Parameters
  - <b>number</b> - Number|String|BigNumber - The number to convert.
 
@@ -821,7 +821,7 @@ Description goes here
 ```
 kanbanwebapi._extend.utils.isStrictAddress(address [, chainId])
 ```
-Checks if a given string is a valid Kanban address, including the reuirement that begin wit '0x'. It will also check the checksum, if the address has both upper and lowercase letters.
+Checks if a given string is a valid Kanban address, including the requirement that begin wit '0x'. It will also check the checksum, if the address has both upper and lowercase letters.
 #### Parameters
  - <b>address</b> - String - An address string
  - <b>chainId</b> - Number - Chain id where checksummed address should be valid, defaults to null.
@@ -985,7 +985,7 @@ kanbanwebapi.iban.createIndirect(options)
 Singleton: Creates an indirect IBAN address from a institution and identifier.
 #### Parameters
  - <b>options</b> - Object:
-   * <b>institution</b> - the isntitution to be assigned 
+   * <b>institution</b> - the institution to be assigned 
    * <b>identifier</b> - the identifier to be assigned
 
 #### Return Type
