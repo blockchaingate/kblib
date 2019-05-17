@@ -3,22 +3,22 @@
 
 <head>
 <script type="text/javascript" src="../node_modules/bignumber.js/bignumber.min.js"></script>
-<script type="text/javascript" src="../dist/web3-light.js"></script>
+<script type="text/javascript" src="../dist/kblib-light.js"></script>
 <script type="text/javascript">
    
-    var Web3 = require('web3');
-    var web3 = new Web3();
-    web3.setProvider(new web3.providers.HttpProvider());
+    var Kblib = require('kblib');
+    var kblib = new Kblib();
+    kblib.setProvider(new kblib.providers.HttpProvider());
 
     function watchBalance() {
-        var coinbase = web3.kanban.coinbase;
+        var coinbase = kblib.kanban.coinbase;
 
-        var originalBalance = web3.kanban.getBalance(coinbase).toNumber();
+        var originalBalance = kblib.kanban.getBalance(coinbase).toNumber();
         document.getElementById('coinbase').innerText = 'coinbase: ' + coinbase;
         document.getElementById('original').innerText = ' original balance: ' + originalBalance + '    watching...';
 
-        web3.kanban.filter('latest').watch(function() {
-            var currentBalance = web3.kanban.getBalance(coinbase).toNumber();
+        kblib.kanban.filter('latest').watch(function() {
+            var currentBalance = kblib.kanban.getBalance(coinbase).toNumber();
             document.getElementById("current").innerText = 'current: ' + currentBalance;
             document.getElementById("diff").innerText = 'diff:    ' + (currentBalance - originalBalance);
         });

@@ -1,8 +1,8 @@
 var chai = require('chai');
 var assert = chai.assert;
-var Jsonrpc = require('../lib/web3/jsonrpc');
+var Jsonrpc = require('../lib/kblib/jsonrpc');
 
-describe('lib/web3/jsonrpc', function () {
+describe('lib/kblib/jsonrpc', function () {
     describe('id', function () {
         it('should increment the id', function () {
             

@@ -3,7 +3,7 @@
  * a. Signing a message by an Ethereum user
  * b. Finding the account address using which the message was signed
  */
-var Web3 = require('../index.js');
+var Kblib = require('../index.js');
 var kanbanURL = ""; 
 var defaultAc = ""; 
 var defaultAcPWD=""; 
@@ -16,7 +16,7 @@ var sigContractInstance = null;
 var strAbi='[{"constant":true,"inputs":[{"name":"hash","type":"bytes32"},{"name":"v","type":"uint8"},{"name":"r","type":"bytes32"},{"name":"s","type":"bytes32"}],"name":"verify","outputs":[{"name":"returnAddress","type":"address"}],"payable":false,"type":"function"}]';
 var signMessage=""; 
 
-var kanbanWeb3 = null;
+var kanbanKblib = null;
 
 function setContractAddress(conAddress){
     sigContractAddress = conAddress;
@@ -39,15 +39,15 @@ function setMessage(msg){
 }
 
 function initializeEthereumConnection(){
-   if(kanbanWeb3!=null && kanbanWeb3.isConnected()==true)  {
+   if(kanbanKblib!=null && kanbanKblib.isConnected()==true)  {
     return true;
   }
   
-  kanbanWeb3 = new Web3(new Web3.providers.HttpProvider(kanbanURL));
+  kanbanKblib = new Kblib(new Kblib.providers.HttpProvider(kanbanURL));
   
-  if(kanbanWeb3.isConnected()==true){
+  if(kanbanKblib.isConnected()==true){
       if(defaultAc==''){
-        defaultAc=kanbanWeb3.kanban.accounts[1];
+        defaultAc=kanbanKblib.kanban.accounts[1];
       }
       return true;
   }
@@ -57,7 +57,7 @@ function initializeEthereumConnection(){
 
 function unlockAccount(acAddress){
   if(acAddress!=undefined && acAddress!=null){
-    var state=kanbanWeb3.personal.unlockAccount(defaultAc, defaultAcPWD, 100);
+    var state=kanbanKblib.personal.unlockAccount(defaultAc, defaultAcPWD, 100);
     return state;
   }
 
@@ -67,11 +67,11 @@ function unlockAccount(acAddress){
 
 function initializeContract(){
     initializeEthereumConnection();
-    if(kanbanWeb3.isConnected()==false){
+    if(kanbanKblib.isConnected()==false){
         return;
     }  
     var abi = JSON.parse(strAbi);
-    var contract = kanbanWeb3.kanban.contract(abi);
+    var contract = kanbanKblib.kanban.contract(abi);
 
     sigContractInstance =  contract.at(sigContractAddress)  
 }
@@ -79,14 +79,14 @@ function initializeContract(){
 function signMessage(message){
 
     initializeEthereumConnection();
-    if(kanbanWeb3.isConnected()==false){
+    if(kanbanKblib.isConnected()==false){
         return false;
     }
     
     var state=unlockAccount(defaultAc);
     
     const msg = new Buffer(message);
-    const sig = kanbanWeb3.kanban.sign(defaultAc, '0x' + msg.toString('hex'));
+    const sig = kanbanKblib.kanban.sign(defaultAc, '0x' + msg.toString('hex'));
 
     return sig;
 }
@@ -94,7 +94,7 @@ function signMessage(message){
 function verifySignedByAc(message, sig){
     initializeEthereumConnection();
 
-    if(kanbanWeb3.isConnected()==false){
+    if(kanbanKblib.isConnected()==false){
         return false;
     }
     initializeContract();
@@ -105,7 +105,7 @@ function verifySignedByAc(message, sig){
     // So while finding who signed it we need to prefix this part 
     const prefix = new Buffer("\x19Ethereum Signed Message:\n");
     const msg = new Buffer(message);
-    const prefixedMsg = kanbanWeb3.sha3(
+    const prefixedMsg = kanbanKblib.sha3(
     Buffer.concat([prefix, new Buffer(String(msg.length)), msg]).toString('utf8')
     );
 
@@ -118,7 +118,7 @@ function verifySignedByAc(message, sig){
 
 function splitSig(sig) {
   return {
-    v: kanbanWeb3.toDecimal('0x' + sig.slice(130, 132)),
+    v: kanbanKblib.toDecimal('0x' + sig.slice(130, 132)),
     r: sig.slice(0, 66),
     s: sig.slice(66, 130)
   }

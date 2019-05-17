@@ -84,10 +84,10 @@ Set a provider (`HttpProvider`):
 
 ```js
 if (typeof web3 !== 'undefined') {
-  web3 = new Web3(web3.currentProvider);
+  web3 = new Kblib(web3.currentProvider);
 } else {
-  // Set the provider you want from Web3.providers
-  web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+  // Set the provider you want from Kblib.providers
+  web3 = new Kblib(new Kblib.providers.HttpProvider("http://localhost:8545"));
 }
 ```
 
@@ -113,8 +113,8 @@ To migrate to this version, please follow the guide:
 
 ```diff
 -var web3 = require('web3');
-+var Web3 = require('web3');
-+var web3 = new Web3();
++var Kblib = require('web3');
++var web3 = new Kblib();
 ```
 ## Contribute!
 

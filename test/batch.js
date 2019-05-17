@@ -1,17 +1,17 @@
 var chai = require('chai');
 var assert = chai.assert;
-var Web3 = require('../index');
-var web3 = new Web3();
+var Kblib = require('../index');
+var kblib = new Kblib();
 var FakeHttpProvider = require('./helpers/FakeHttpProvider');
 var bn = require('bignumber.js');
 
-describe('lib/web3/batch', function () {
+describe('lib/kblib/batch', function () {
     describe('execute', function () {
         it('should execute batch request', function (done) {
             
             var provider = new FakeHttpProvider();
-            web3.setProvider(provider);
-            web3.reset();
+            kblib.setProvider(provider);
+            kblib.reset();
 
             var result = '0x126';
             var result2 = '0x127';
@@ -39,17 +39,17 @@ describe('lib/web3/batch', function () {
                 assert.deepEqual(second.params, ['0x0000000000000000000000000000000000000005', 'latest']);
             });
 
-            var batch = web3.createBatch(); 
-            batch.add(web3.kanban.getBalance.request('0x0000000000000000000000000000000000000000', 'latest', callback));
-            batch.add(web3.kanban.getBalance.request('0x0000000000000000000000000000000000000005', 'latest', callback2));
+            var batch = kblib.createBatch(); 
+            batch.add(kblib.kanban.getBalance.request('0x0000000000000000000000000000000000000000', 'latest', callback));
+            batch.add(kblib.kanban.getBalance.request('0x0000000000000000000000000000000000000005', 'latest', callback2));
             batch.execute();
         });
         
         it('should execute batch request for async properties', function (done) {
             
             var provider = new FakeHttpProvider();
-            web3.setProvider(provider);
-            web3.reset();
+            kblib.setProvider(provider);
+            kblib.reset();
 
             var result = [];
             var result2 = '0xb';
@@ -77,17 +77,17 @@ describe('lib/web3/batch', function () {
                 assert.deepEqual(second.params, []);
             });
 
-            var batch = web3.createBatch(); 
-            batch.add(web3.kanban.getAccounts.request(callback));
-            batch.add(web3.net.getPeerCount.request(callback2));
+            var batch = kblib.createBatch(); 
+            batch.add(kblib.kanban.getAccounts.request(callback));
+            batch.add(kblib.net.getPeerCount.request(callback2));
             batch.execute();
         });
 
         it('should execute batch request with contract', function (done) {
             
             var provider = new FakeHttpProvider();
-            web3.setProvider(provider);
-            web3.reset();
+            kblib.setProvider(provider);
+            kblib.reset();
 
             var abi = [{
                 "name": "balance(address)",
@@ -133,9 +133,9 @@ describe('lib/web3/batch', function () {
                 }]);
             });
 
-            var batch = web3.createBatch(); 
-            batch.add(web3.kanban.getBalance.request('0x0000000000000000000000000000000000000000', 'latest', callback));
-            batch.add(web3.kanban.contract(abi).at(address).balance.request(address, callback2));
+            var batch = kblib.createBatch(); 
+            batch.add(kblib.kanban.getBalance.request('0x0000000000000000000000000000000000000000', 'latest', callback));
+            batch.add(kblib.kanban.contract(abi).at(address).balance.request(address, callback2));
             provider.injectBatchResults([result, result2]);
             batch.execute();
         });
@@ -143,8 +143,8 @@ describe('lib/web3/batch', function () {
         it('should execute batch requests and receive errors', function (done) {
             
             var provider = new FakeHttpProvider();
-            web3.setProvider(provider);
-            web3.reset();
+            kblib.setProvider(provider);
+            kblib.reset();
 
             var abi = [{
                 "name": "balance(address)",
@@ -191,9 +191,9 @@ describe('lib/web3/batch', function () {
                 }]);
             });
 
-            var batch = web3.createBatch(); 
-            batch.add(web3.kanban.getBalance.request('0x0000000000000000000000000000000000000000', 'latest', callback));
-            batch.add(web3.kanban.contract(abi).at(address).balance.request(address, callback2));
+            var batch = kblib.createBatch(); 
+            batch.add(kblib.kanban.getBalance.request('0x0000000000000000000000000000000000000000', 'latest', callback));
+            batch.add(kblib.kanban.contract(abi).at(address).balance.request(address, callback2));
             provider.injectBatchResults([result, result2], true); // injects error
             batch.execute();
         });

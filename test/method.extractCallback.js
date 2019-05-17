@@ -1,8 +1,8 @@
 var chai = require('chai');
 var assert = chai.assert;
-var Method = require('../lib/web3/method');
+var Method = require('../lib/kblib/method');
 
-describe('lib/web3/method', function () {
+describe('lib/kblib/method', function () {
     describe('extractCallback', function () {
         it('should extract callback', function () {
             

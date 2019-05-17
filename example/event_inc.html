@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <script type="text/javascript" src="../dist/web3.js"></script>
+    <script type="text/javascript" src="../dist/kblib.js"></script>
     <script type="text/javascript">
 
-        var Web3 = require('web3');
-        var web3 = new Web3();
-        web3.setProvider(new web3.providers.HttpProvider('http://localhost:8545'));
+        var Kblib = require('kblib');
+        var kblib = new Kblib();
+        kblib.setProvider(new kblib.providers.HttpProvider('http://localhost:8545'));
 
         var source = "" +
         "pragma solidity ^0.4.6;" +
@@ -22,7 +22,7 @@
         "    uint x; " +
         "}";
 
-        var compiled = web3.kanban.compile.solidity(source);
+        var compiled = kblib.kanban.compile.solidity(source);
         var code = compiled.code;
         var abi = compiled.info.abiDefinition;
 
@@ -36,12 +36,12 @@
     
         var createContract = function () {
             // let's assume that we have a private key to coinbase ;)
-            web3.kanban.defaultAccount = web3.kanban.coinbase;
+            kblib.kanban.defaultAccount = kblib.kanban.coinbase;
             
             document.getElementById('create').style.visibility = 'hidden';
             document.getElementById('status').innerText = "transaction sent, waiting for confirmation";
 
-            web3.kanban.contract(abi).new({data: code}, function (err, c) {
+            kblib.kanban.contract(abi).new({data: code}, function (err, c) {
                 if (err) {
                     console.error(err);
                     return;

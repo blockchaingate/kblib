@@ -1,11 +1,11 @@
 {
-  "name": "web3",
-  "namespace": "ethereum",
-  "version": "0.17.0-alpha",
-  "description": "Ethereum Compatible JavaScript API",
+  "name": "kblib",
+  "namespace": "kanban",
+  "version": "0.20.7",
+  "description": "Kanban Compatible JavaScript API",
   "main": [
-    "./dist/web3.js",
-    "./dist/web3.min.js"
+    "./dist/kblib.js",
+    "./dist/kblib.min.js"
   ],
   "dependencies": {
     "bignumber.js": ">=2.0.0 <=5.0.0",

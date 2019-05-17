@@ -1,12 +1,12 @@
 var chai = require('chai');
 var assert = chai.assert;
-var RequestManager = require('../lib/web3/requestmanager');
+var RequestManager = require('../lib/kblib/requestmanager');
 var FakeHttpProvider = require('./helpers/FakeHttpProvider');
 
 // TODO: handling errors!
 // TODO: validation of params!
 
-describe('lib/web3/requestmanager', function () {
+describe('lib/kblib/requestmanager', function () {
     describe('send', function () {
         it('should return expected result synchronously', function () {
             var provider = new FakeHttpProvider();

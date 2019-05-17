@@ -1,7 +1,7 @@
 var chai = require('chai');
 var assert = chai.assert;
-var SolidityEvent = require('../lib/web3/event');
-var Web3 = require('../index');
+var SolidityEvent = require('../lib/kblib/event');
+var Kblib = require('../index');
 
 
 var address = '0x1234567890123456789012345678901234567890';
@@ -218,12 +218,12 @@ var tests = [{
     }
 }];
 
-describe('lib/web3/event', function () {
+describe('lib/kblib/event', function () {
     describe('encode', function () {
         tests.forEach(function (test, index) {
             it('test no: ' + index, function () {
-                var web3 = new Web3();
-                var event = new SolidityEvent(web3, test.abi, address);
+                var kblib = new Kblib();
+                var event = new SolidityEvent(kblib, test.abi, address);
                 event.signature = function () { // inject signature
                     return signature.slice(2);
                 };

@@ -1,8 +1,8 @@
 {
-  "name": "web3",
+  "name": "kblib",
   "namespace": "ethereum",
   "version": "0.20.7",
-  "description": "Ethereum JavaScript API, middleware to talk to a ethereum node over RPC",
+  "description": "Kanban JavaScript API, middleware to talk to a kanban node over RPC",
   "main": "./index.js",
   "directories": {
     "lib": "./lib"
@@ -42,14 +42,6 @@
     "lint": "jshint *.js lib",
     "test": "mocha; jshint *.js lib",
     "test-coveralls": "istanbul cover _mocha -- -R spec && cat coverage/lcov.info | coveralls --verbose"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ethereum/web3.js.git"
-  },
-  "homepage": "https://github.com/ethereum/web3.js",
-  "bugs": {
-    "url": "https://github.com/ethereum/web3.js/issues"
   },
   "keywords": [
     "ethereum",

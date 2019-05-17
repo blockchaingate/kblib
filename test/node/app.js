@@ -1,5 +1,5 @@
-var web3 = require('web3');
+var kblib = require('kblib');
 
-console.log(web3.version.api);
+console.log(kblib.version.api);
 
 

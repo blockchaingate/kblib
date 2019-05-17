@@ -1,7 +1,7 @@
 var chai = require('chai');
 var assert = chai.assert;
-var Web3 = require('../index');
-var web3 = new Web3();
+var Kblib = require('../index');
+var kblib = new Kblib();
 var FakeHttpProvider = require('./helpers/FakeHttpProvider');
 
 // use sendTransaction as dummy
@@ -27,7 +27,7 @@ describe('async', function () {
             
             // given
             var provider = new FakeHttpProvider();
-            web3.setProvider(provider);
+            kblib.setProvider(provider);
             provider.injectResult(test.result);
             provider.injectValidation(function (payload) {
                 assert.equal(payload.jsonrpc, '2.0');
@@ -36,7 +36,7 @@ describe('async', function () {
             });
 
             // when 
-            web3.kanban[method](test.input, function(error, result){
+            kblib.kanban[method](test.input, function(error, result){
 
                 // then
                 assert.isNull(error);
@@ -51,7 +51,7 @@ describe('async', function () {
             
             // given
             var provider = new FakeHttpProvider();
-            web3.setProvider(provider);
+            kblib.setProvider(provider);
             provider.injectError({
                     message: test.result,
                     code: -32603
@@ -63,7 +63,7 @@ describe('async', function () {
             });
 
             // when 
-            web3.kanban[method](test.input, function(error, result){
+            kblib.kanban[method](test.input, function(error, result){
 
                 // then
                 assert.isUndefined(result);

@@ -1,8 +1,8 @@
 var chai = require('chai');
 var assert = chai.assert;
 var BigNumber = require('bignumber.js');
-var AllSolidityEvents = require('../lib/web3/allevents');
-var Web3 = require('../index');
+var AllSolidityEvents = require('../lib/kblib/allevents');
+var Kblib = require('../index');
 
 
 var name = 'event1';
@@ -131,12 +131,12 @@ var tests = [{
     }
 }];
 
-describe('lib/web3/allevents', function () {
+describe('lib/kblib/allevents', function () {
     describe('decode', function () {
         tests.forEach(function (test, index) {
             it('test no: ' + index, function () {
-                var web3 = new Web3();
-                var allEvents = new AllSolidityEvents(web3, test.abi, address);
+                var kblib = new Kblib();
+                var allEvents = new AllSolidityEvents(kblib, test.abi, address);
 
                 var result = allEvents.decode(test.data);
                 assert.deepEqual(result, test.expected);

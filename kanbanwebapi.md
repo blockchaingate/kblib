@@ -596,7 +596,7 @@ kanbanwebapi.personal.ecRecover(dataThatWasSigned, signature)
 ```
 Recovers the account that signed the data.
 #### Parameters
- - <b>dataThatWasSigned</b> - String - Data that was signed. If String it will be converted using web3.utils.utf8ToHex.
+ - <b>dataThatWasSigned</b> - String - Data that was signed. If String it will be converted using kblib.utils.utf8ToHex.
  - <b>signature</b> - String - The signature.
 
 #### Return Type

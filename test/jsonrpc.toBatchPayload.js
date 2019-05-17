@@ -1,5 +1,5 @@
 var assert = require('assert');
-var Jsonrpc = require('../lib/web3/jsonrpc');
+var Jsonrpc = require('../lib/kblib/jsonrpc');
 
 describe('jsonrpc', function () {
     describe('toBatchPayload', function () {

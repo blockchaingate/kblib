@@ -1,6 +1,6 @@
 var chai = require('chai');
 var assert = chai.assert;
-var formatters = require('../lib/web3/formatters.js');
+var formatters = require('../lib/kblib/formatters.js');
 var BigNumber = require('bignumber.js');
 
 var tests = [{

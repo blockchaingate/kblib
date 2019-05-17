@@ -19,8 +19,8 @@ var replace = require('gulp-replace');
 
 var DEST = path.join(__dirname, 'dist/');
 var src = 'index';
-var dst = 'web3';
-var lightDst = 'web3-light';
+var dst = 'kblib';
+var lightDst = 'kblib-light';
 
 var browserifyOptions = {
     debug: true,
@@ -65,7 +65,7 @@ gulp.task('clean', gulp.series(['lint'], function(cb) {
 
 gulp.task('light', gulp.series(['clean'], function (done) {
     browserify(browserifyOptions)
-        .require('./' + src + '.js', {expose: 'web3'})
+        .require('./' + src + '.js', {expose: 'kblib'})
         .ignore('bignumber.js')
         .require('./lib/utils/browser-bn.js', {expose: 'bignumber.js'}) // fake bignumber.js
         .add('./' + src + '.js')
@@ -82,7 +82,7 @@ gulp.task('light', gulp.series(['clean'], function (done) {
 
 gulp.task('standalone', gulp.series(['clean'], function (done) {
     browserify(browserifyOptions)
-        .require('./' + src + '.js', {expose: 'web3'})
+        .require('./' + src + '.js', {expose: 'kblib'})
         .require('bignumber.js') // expose it to dapp users
         .add('./' + src + '.js')
         .ignore('crypto')

@@ -1,13 +1,13 @@
 var chai = require('chai');
 var assert = chai.assert;
-var Web3 = require('../../index');
+var Kblib = require('../../index');
 
 var FakeHttpProvider = require('./FakeHttpProvider');
 var clone = function (object) { return JSON.parse(JSON.stringify(object)); };
 
 var runTests = function (obj, method, tests) {
 
-    var testName = obj ? 'web3.' + obj : 'web';
+    var testName = obj ? 'kblib.' + obj : 'web';
 
     describe(testName, function () {
         describe(method, function () {
@@ -16,7 +16,7 @@ var runTests = function (obj, method, tests) {
                     
                     // given
                     var provider = new FakeHttpProvider();
-                    var web3 = new Web3(provider);
+                    var kblib = new Kblib(provider);
                     provider.injectResult(test.result);
                     provider.injectValidation(function (payload) {
                         assert.equal(payload.jsonrpc, '2.0');
@@ -28,14 +28,14 @@ var runTests = function (obj, method, tests) {
 
                     // when
                     if (obj) {
-                        var result = web3[obj][method].apply(web3[obj], args);
+                        var result = kblib[obj][method].apply(kblib[obj], args);
                     } else {
-                        var result = web3[method].apply(web3, args);
+                        var result = kblib[method].apply(kblib, args);
                     }
                     // when
                     //var result = (obj)
-                        //? web3[obj][method].apply(null, test.args.slice(0))
-                        //: web3[method].apply(null, test.args.slice(0));
+                        //? kblib[obj][method].apply(null, test.args.slice(0))
+                        //: kblib[method].apply(null, test.args.slice(0));
                     
                     // then 
                     assert.deepEqual(test.formattedResult, result);
@@ -45,7 +45,7 @@ var runTests = function (obj, method, tests) {
                     
                     // given
                     var provider = new FakeHttpProvider();
-                    var web3 = new Web3(provider);
+                    var kblib = new Kblib(provider);
 
                     provider.injectResult(test.result);
                     provider.injectValidation(function (payload) {
@@ -64,9 +64,9 @@ var runTests = function (obj, method, tests) {
 
                     // when
                     if (obj) {
-                        web3[obj][method].apply(web3[obj], args);
+                        kblib[obj][method].apply(kblib[obj], args);
                     } else {
-                        web3[method].apply(web3, args);
+                        kblib[method].apply(kblib, args);
                     }
                 });
             });

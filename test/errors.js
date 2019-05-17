@@ -1,8 +1,8 @@
 var chai = require('chai');
 var assert = chai.assert;
-var errors = require('../lib/web3/errors');
+var errors = require('../lib/kblib/errors');
 
-describe('lib/web3/method', function () {
+describe('lib/kblib/method', function () {
     describe('getCall', function () {
 
         for(var key in errors) {
