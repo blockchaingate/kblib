@@ -160,11 +160,11 @@ Returns a transaction matching the given transaction hash.
 
 ### kanban.getTransactionFromBlock
 ```
-kanbanwebapi.kanban.getTransactionFromBlock(blockHashOrNumber, indexNumber)
+kanbanwebapi.kanban.getTransactionFromBlock(blockHashOrBlockNumber, indexNumber)
 ```
 Returns a transaction based on a block hash or number and the transactions index position.
 #### Parameters
- - <b>blockHashOrNumber</b> - String|Number - The hash or block number of the block containing the transaction
+ - <b>blockHashOrBlockNumber</b> - String|Number - The hash or block number of the block containing the transaction
  - <b>indexNumber</b> - Number - The index of the transaction within the block
 
 #### Return Type
@@ -237,7 +237,7 @@ kanbanwebapi.kanban.getTransactionCount(address [, defaultBlock])
 Get the numbers of transactions sent from this address.
 #### Parameters
  - <b>address</b> - String - The address that you want to see the transaction count of
- - <b>defaultBlock</b> - String|Number - (optional, default "latest") The block number in decimal or hex format. Or the string "genesis", "latest" or "pending".
+ - <b>blockNumber</b> - String|Number - (optional, default "latest") The block number in decimal or hex format. Or the string "genesis", "latest" or "pending".
 
 #### Return Type
  - Number - The number of transactions sent from the address in the given (or latest) block
@@ -259,11 +259,11 @@ Returns the number of transaction in a given block.
 
 ### kanban.getUncle
 ```
-kanbanwebapi.kanban.getUncle(blockHashOrNumber, uncleIndex)
+kanbanwebapi.kanban.getUncle(blockHashOrBlockNumber, uncleIndex)
 ```
 Returns a blocks uncle by a given uncle index position.
 #### Parameters
- - <b>blockHashOrNumber</b> - String|Number - The hash or block number. Or the string "genesis", "latest" or "pending" as in the default block parameter.
+ - <b>blockHashOrBlockNumber</b> - String|Number - The hash or block number. Or the string "genesis", "latest" or "pending" as in the default block parameter.
  - <b>uncleIndex</b> - Number - The index position of the uncle
 
 #### Return Type
@@ -291,11 +291,11 @@ Returns a blocks uncle by a given uncle index position.
 
 ### kanban.getUncleCount
 ```
-kanbanwebapi.kanban.getUncleCount(blockHashOrNumber)
+kanbanwebapi.kanban.getUncleCount(blockHashOrBlockNumber)
 ```
 Returns then number of uncles for a given block.
 #### Parameters
- - <b>blockHashOrNumber</b> - String|Number - The hash or block number. Or the string "genesis", "latest" or "pending" as in the default block parameter. If left blank, this method will not default to anything.
+ - <b>blockHashOrBlockNumber</b> - String|Number - The hash or block number. Or the string "genesis", "latest" or "pending" as in the default block parameter. If left blank, this method will not default to anything.
 
 #### Return Type
  - Number : The chosen block's uncle count
