@@ -308,7 +308,7 @@ kanbanwebapi.kanban.getBalance(address [, defaultBlock])
 ```
 Get the balance of an address at a given block.
 #### Parameters
- - <b>address</b>  - String - The address to get the balance of
+ - <b>address</b> - String - The address to get the balance of
  - <b>defaultBlock</b>  - Number|String - (optional) - if you pass this parameter it will not use the default block set with kanbanwebapi.kanban.defaultBlock.
 
 #### Return Type
