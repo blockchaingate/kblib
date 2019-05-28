@@ -1,10 +1,10 @@
-# kanbanwebapi documentation
+# kblib documentation
 
 ## Table of Contents
 
-- [Kanbanwebapi](#Kanbanwebapi)
+- [Kblib](#Kblib)
    * [sha3](#sha3)
-- [Kanbanwebapi.kanban](#Kanbanwebapi.kanban)
+- [Kblib.kanban](#Kblib.kanban)
    * [Properties](#Properties)
    * [kanban.getBlock](#kanban.getBlock)
    * [kanban.getTransaction](#kanban.getTransaction)
@@ -27,14 +27,14 @@
    * [kanban.getWork](#kanban.getWork)
    * [kanban.submitWork](#kanban.submitWork)
    * [kanban.getLogs](#kanban.getLogs)
-- [Kanbanwebapi.kanban.personal](#Kanbanwebapi.kanban.personal)
+- [Kblib.kanban.personal](#Kblib.kanban.personal)
    * [personal.newAccount](#personal.newAccount)
    * [personal.unlockAccount](#personal.unlockAccount)
    * [personal.lockAccount](#personal.lockAccount)
    * [personal.importRawKey](#personal.importRawKey)
    * [personal.ecRecover](#personal.ecRecover)
    * [personal.sendTransaction](#personal.sendTransaction)
-- [Kanbanwebapi._extend.utils](#Kanbanwebapi._extend.utils)
+- [Kblib._extend.utils](#Kblib._extend.utils)
    * [utils.padLeft](#utils.padLeft)
    * [utils.padRight](#utils.padRight)
    * [utils.toHex](#utils.toHex)
@@ -59,24 +59,24 @@
    * [utils.isBoolean](#utils.isBoolean)
    * [utils.isArray](#utils.isArray)
    * [utils.isJson](#utils.isJson)
-- [Kanbanwebapi._extend.coders](#Kanbanwebapi._extend.coders)
+- [Kblib._extend.coders](#Kblib._extend.coders)
    * [coders.encodeParam](#coders.encodeParam)
    * [coders.encodeParams](#coders.encodeParams)
    * [coders.decodeParam](#coders.decodeParam)
    * [coders.decodeParams](#coders.decodeParams)
    * [coders.encodeFunctionSignature](#coders.encodeFunctionSignature)
    * [coders.encodeFunctionCall](#coders.encodeFunctionCall)
-- [Kanbanwebapi.iban](#Kanbanwebapi.iban)
+- [Kblib.iban](#Kblib.iban)
    * [iban.fromAddress](#iban.fromAddress)
    * [iban.fromBban](#iban.fromBban)
    * [iban.createIndirect](#iban.createIndirect)
    * [iban.isValid](#iban.isValid)
 
-## Kanbanwebapi
+## Kblib
 
 ### sha3
 ```
-kanbanwebapi.sha3(stringToHash)
+kblib.sha3(stringToHash)
 ```
 Will calculate the keccak256 of the input.
 #### Parameters
@@ -87,7 +87,7 @@ Will calculate the keccak256 of the input.
 
 [Back to top](#Table-of-Contents)
 
-## Kanbanwebapi.kanban
+## Kblib.kanban
 
 ### Properties
 
@@ -112,7 +112,7 @@ Will calculate the keccak256 of the input.
 
 ### kanban.getBlock
 ```
-kanbanwebapi.kanban.getBlock(blockHashOrBlockNumber [, returnTransactionObjects])
+kblib.kanban.getBlock(blockHashOrBlockNumber [, returnTransactionObjects])
 ```
 Returns a block matching the block number or block hash.
 #### Parameters
@@ -144,7 +144,7 @@ Returns a block matching the block number or block hash.
 
 ### kanban.getTransaction
 ```
-kanbanwebapi.kanban.getTransaction(transactionHash)
+kblib.kanban.getTransaction(transactionHash)
 ```
 Returns a transaction matching the given transaction hash.
 #### Parameters
@@ -167,7 +167,7 @@ Returns a transaction matching the given transaction hash.
 
 ### kanban.getTransactionFromBlock
 ```
-kanbanwebapi.kanban.getTransactionFromBlock(blockHashOrBlockNumber, indexNumber)
+kblib.kanban.getTransactionFromBlock(blockHashOrBlockNumber, indexNumber)
 ```
 Returns a transaction based on a block hash or number and the transactions index position.
 #### Parameters
@@ -192,7 +192,7 @@ Returns a transaction based on a block hash or number and the transactions index
 
 ### kanban.getTransactionReceipt
 ```
-kanbanwebapi.kanban.getTransactionReceipt(transactionHash)
+kblib.kanban.getTransactionReceipt(transactionHash)
 ```
 Returns the receipt of a transaction by transaction hash.
 #### Parameters
@@ -216,7 +216,7 @@ Returns the receipt of a transaction by transaction hash.
 
 ### kanban.pendingTransactions
 ```
-kanbanwebapi.kanban.pendingTransactions()
+kblib.kanban.pendingTransactions()
 ```
 Returns a list of pending transactions.
 #### Parameters
@@ -239,7 +239,7 @@ Returns a list of pending transactions.
 
 ### kanban.getTransactionCount
 ```
-kanbanwebapi.kanban.getTransactionCount(address [, defaultBlock])
+kblib.kanban.getTransactionCount(address [, defaultBlock])
 ```
 Get the numbers of transactions sent from this address.
 #### Parameters
@@ -253,7 +253,7 @@ Get the numbers of transactions sent from this address.
 
 ### kanban.getBlockTransactionCount
 ```
-kanbanwebapi.kanban.getBlockTransactionCount(blockHashOrBlockNumber)
+kblib.kanban.getBlockTransactionCount(blockHashOrBlockNumber)
 ```
 Returns the number of transaction in a given block.
 #### Parameters
@@ -266,7 +266,7 @@ Returns the number of transaction in a given block.
 
 ### kanban.getUncle
 ```
-kanbanwebapi.kanban.getUncle(blockHashOrBlockNumber, uncleIndex)
+kblib.kanban.getUncle(blockHashOrBlockNumber, uncleIndex)
 ```
 Returns a blocks uncle by a given uncle index position.
 #### Parameters
@@ -298,7 +298,7 @@ Returns a blocks uncle by a given uncle index position.
 
 ### kanban.getUncleCount
 ```
-kanbanwebapi.kanban.getUncleCount(blockHashOrBlockNumber)
+kblib.kanban.getUncleCount(blockHashOrBlockNumber)
 ```
 Returns then number of uncles for a given block.
 #### Parameters
@@ -311,12 +311,12 @@ Returns then number of uncles for a given block.
 
 ### kanban.getBalance
 ```
-kanbanwebapi.kanban.getBalance(address [, defaultBlock])
+kblib.kanban.getBalance(address [, defaultBlock])
 ```
 Get the balance of an address at a given block.
 #### Parameters
  - <b>address</b> - String - The address to get the balance of
- - <b>defaultBlock</b>  - Number|String - (optional) - if you pass this parameter it will not use the default block set with kanbanwebapi.kanban.defaultBlock.
+ - <b>defaultBlock</b>  - Number|String - (optional) - if you pass this parameter it will not use the default block set with kblib.kanban.defaultBlock.
 
 #### Return Type
  - balance object:
@@ -328,17 +328,17 @@ Get the balance of an address at a given block.
 
 ### kanban.sendTransaction
 ```
-kanbanwebapi.kanban.sendTransaction(transactionObject)
+kblib.kanban.sendTransaction(transactionObject)
 ```
 Sends a transaction to the network.
 #### Parameters
  - <b>transactionObject</b> - transaction Object - The transaction object to send:
-    + <b>from</b> - String|Number: The address for the sending account. Uses the kanbanwebapi.kanban.defaultAccount property, if not specified. Or an address or index of a local wallet in kanbanwebapi.kanban.accounts.wallet.
+    + <b>from</b> - String|Number: The address for the sending account. Uses the kblib.kanban.defaultAccount property, if not specified. Or an address or index of a local wallet in kblib.kanban.accounts.wallet.
     + <b>to</b> - String: (optional) The destination address of the message, left undefined for a contract-creation transaction.
     + <b>coin</b> - String (optional) The type of coin you wish to send. Currently supports ("FAB", "BTC", "ETH"). Default "FAB". 
     + <b>value</b> - Number|String|BN|BigNumber: (optional) The value transferred for the transaction in wei, also the endowment if it’s a contract-creation transaction.
     + <b>gas</b> - Number: (optional, default: To-Be-Determined) The amount of gas to use for the transaction (unused gas is refunded).
-    + <b>gasPrice</b> - Number|String|BN|BigNumber: (optional) The price of gas for this transaction in wei, defaults to kanbanwebapi.kanban.gasPrice.
+    + <b>gasPrice</b> - Number|String|BN|BigNumber: (optional) The price of gas for this transaction in wei, defaults to kblib.kanban.gasPrice.
     + <b>data</b> - String: (optional) Either a ABI byte string containing the data of the function call on a contract, or in the case of a contract-creation transaction the initialization code.
     + <b>nonce</b> - Number: (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
 
@@ -349,7 +349,7 @@ Sends a transaction to the network.
 
 ### kanban.sign
 ```
-kanbanwebapi.kanban.sign(address, dataToSign)
+kblib.kanban.sign(address, dataToSign)
 ```
 Signs a transaction with the private key of the given address. If the given address is a local unlocked account, the transaction will be signed locally.
 #### Parameters
@@ -364,24 +364,24 @@ Signs a transaction with the private key of the given address. If the given addr
 
 ### kanban.signTransaction
 ```
-kanbanwebapi.kanban.signTransaction(transactionOptions)
+kblib.kanban.signTransaction(transactionOptions)
 ```
 Signs a transaction with the private key of the given address. If the given address is a local unlocked account, the transaction will be signed locally.
 #### Parameters
  - <b>transactionOptions</b> - transaction Object - The transaction object to send:
-      * <b>from</b> - String|Number: The address for the sending account. Uses the kanbanwebapi.kanban.defaultAccount property, if not specified. Or an address or index of a local wallet in kanbanwebapi.kanban.accounts.wallet
-      * <b>nonce</b> - String: (optional) The nonce to use when signing this transaction. Default will use kanbanwebapi.kanban.getTransactionCount().
-      * <b>chainId</b> - String: (optional) The chain id to use when signing this transaction. Default will use kanbanwebapi.kanban.net.getId().
+      * <b>from</b> - String|Number: The address for the sending account. Uses the kblib.kanban.defaultAccount property, if not specified. Or an address or index of a local wallet in kblib.kanban.accounts.wallet
+      * <b>nonce</b> - String: (optional) The nonce to use when signing this transaction. Default will use kblib.kanban.getTransactionCount().
+      * <b>chainId</b> - String: (optional) The chain id to use when signing this transaction. Default will use kblib.kanban.net.getId().
       * <b>to</b> - String: (optional) The receiver of the transaction, can be empty when deploying a contract.
       * <b>data</b> - String: (optional) The call data of the transaction, can be empty for simple value transfers.
       * <b>value</b> - String: (optional) The value of the transaction in wei.
-      * <b>gasPrice</b> - String: (optional) The gas price set by this transaction, if empty, it will use kanbanwebapi.kanban.gasPrice()
+      * <b>gasPrice</b> - String: (optional) The gas price set by this transaction, if empty, it will use kblib.kanban.gasPrice()
       * <b>gas</b> - String: The gas provided by the transaction.
  - <b>address</b>  - String - (optional) The account address
 
 #### Return Type
  - Object :
-   * <b>raw</b> - String - The RLP encoded transaction, ready to be sent using kanbanwebapi.kanban.sendSignedTransaction
+   * <b>raw</b> - String - The RLP encoded transaction, ready to be sent using kblib.kanban.sendSignedTransaction
    * <b>tx</b> - Object :
       + <b>nonce</b> - String - The nonce to used when signing this transaction as a hexadecimal string
       + <b>gasPrice</b> - String - The gas price set by this transaction in hexadecimal format
@@ -398,9 +398,9 @@ Signs a transaction with the private key of the given address. If the given addr
 
 ### kanban.sendRawTransaction
 ```
-kanbanwebapi.kanban.sendRawTransaction(signedTransactionData)
+kblib.kanban.sendRawTransaction(signedTransactionData)
 ```
-Sends an already signed transaction, generated for example using kanbanwebapi.kanban.accounts.signTransaction
+Sends an already signed transaction, generated for example using kblib.kanban.accounts.signTransaction
 #### Parameters
  - <b>signedTransactionData</b> - String - signed transaction data in hex format
 
@@ -411,7 +411,7 @@ Sends an already signed transaction, generated for example using kanbanwebapi.ka
 
 ### kanban.getStorageAt
 ```
-kanbanwebapi.kanban.getStorageAt(address, position [, defaultBlock])
+kblib.kanban.getStorageAt(address, position [, defaultBlock])
 ```
 Get the storage at a specific position of an address.
 #### Parameters
@@ -426,7 +426,7 @@ Get the storage at a specific position of an address.
 
 ### kanban.getCode
 ```
-kanbanwebapi.kanban.getCode(address [, defaultBlock])
+kblib.kanban.getCode(address [, defaultBlock])
 ```
 Get the code at a specific address.
 #### Parameters
@@ -440,17 +440,17 @@ Get the code at a specific address.
 
 ### kanban.call
 ```
-kanbanwebapi.kanban.call(callObject [, defaultBlock])
+kblib.kanban.call(callObject [, defaultBlock])
 ```
 Executes a message call transaction, which is directly executed in the VM of the node, but never mined into the blockchain.
 #### Parameters
  - <b>callObject</b> - transaction Object - The transaction object to send:
-    + <b>from</b> - String|Number: (optional) The address for the sending account. Uses the kanbanwebapi.kanban.defaultAccount property, if not specified. Or an address or index of a local wallet in kanbanwebapi.kanban.accounts.wallet.
+    + <b>from</b> - String|Number: (optional) The address for the sending account. Uses the kblib.kanban.defaultAccount property, if not specified. Or an address or index of a local wallet in kblib.kanban.accounts.wallet.
     + <b>to</b> - String: (optional) The destination address of the message, left undefined for a contract-creation transaction.
     + <b>coin</b> - String (optional) The type of coin you wish to send. Currently supports ("FAB", "BTC", "ETH"). Default "FAB". 
     + <b>value</b> - Number|String|BN|BigNumber: (optional) The value transferred for the transaction in wei, also the endowment if it’s a contract-creation transaction.
     + <b>gas</b> - Number: (optional, default: To-Be-Determined) The amount of gas to use for the transaction (unused gas is refunded).
-    + <b>gasPrice</b> - Number|String|BN|BigNumber: (optional) The price of gas for this transaction in wei, defaults to kanbanwebapi.kanban.gasPrice.
+    + <b>gasPrice</b> - Number|String|BN|BigNumber: (optional) The price of gas for this transaction in wei, defaults to kblib.kanban.gasPrice.
     + <b>data</b> - String: (optional) Either a ABI byte string containing the data of the function call on a contract, or in the case of a contract-creation transaction the initialization code.
     + <b>nonce</b> - Number: (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
  - <b>defaultBlock</b> - String|Number - (optional, default "latest") The block number in decimal or hex format. Or the string "genesis", "latest" or "pending".
@@ -462,17 +462,17 @@ Executes a message call transaction, which is directly executed in the VM of the
 
 ### kanban.estimateGas
 ```
-kanbanwebapi.kanban.estimateGas(callObject)
+kblib.kanban.estimateGas(callObject)
 ```
 Executes a message call or transaction and returns the amount of the gas used.
 #### Parameters
  - <b>callObject</b> - transaction Object - The transaction object to send:
-    + <b>from</b> - String|Number: (optional) The address for the sending account. Uses the kanbanwebapi.kanban.defaultAccount property, if not specified. Or an address or index of a local wallet in kanbanwebapi.kanban.accounts.wallet.
+    + <b>from</b> - String|Number: (optional) The address for the sending account. Uses the kblib.kanban.defaultAccount property, if not specified. Or an address or index of a local wallet in kblib.kanban.accounts.wallet.
     + <b>to</b> - String: (optional) The destination address of the message, left undefined for a contract-creation transaction.
     + <b>coin</b> - String (optional) The type of coin you wish to send. Currently supports ("FAB", "BTC", "ETH"). Default "FAB". 
     + <b>value</b> - Number|String|BN|BigNumber: (optional) The value transferred for the transaction in wei, also the endowment if it’s a contract-creation transaction.
     + <b>gas</b> - Number: (optional, default: To-Be-Determined) The amount of gas to use for the transaction (unused gas is refunded).
-    + <b>gasPrice</b> - Number|String|BN|BigNumber: (optional) The price of gas for this transaction in wei, defaults to kanbanwebapi.kanban.gasPrice.
+    + <b>gasPrice</b> - Number|String|BN|BigNumber: (optional) The price of gas for this transaction in wei, defaults to kblib.kanban.gasPrice.
     + <b>data</b> - String: (optional) Either a ABI byte string containing the data of the function call on a contract, or in the case of a contract-creation transaction the initialization code.
     + <b>nonce</b> - Number: (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
 
@@ -483,7 +483,7 @@ Executes a message call or transaction and returns the amount of the gas used.
 
 ### kanban.getWork
 ```
-kanbanwebapi.kanban.getWork()
+kblib.kanban.getWork()
 ```
 Executes a message call or transaction and returns the amount of the gas used.
 #### Parameters
@@ -498,7 +498,7 @@ Executes a message call or transaction and returns the amount of the gas used.
 
 ### kanban.submitWork
 ```
-kanbanwebapi.kanban.submitWork(callObject)
+kblib.kanban.submitWork(callObject)
 ```
 Executes a message call or transaction and returns the amount of the gas used.
 #### Parameters
@@ -513,7 +513,7 @@ Executes a message call or transaction and returns the amount of the gas used.
 
 ### kanban.getLogs
 ```
-kanbanwebapi.kanban.getLogs(options)
+kblib.kanban.getLogs(options)
 ```
 Returns an array of all logs matching a given filter object.
 #### Parameters
@@ -540,13 +540,13 @@ Returns an array of all logs matching a given filter object.
 
 [Back to top](#Table-of-Contents)
 
-## Kanbanwebapi.kanban.personal
+## Kblib.kanban.personal
 
 ### personal.newAccount
 ```
-kanbanwebapi.personal.newAccount(password)
+kblib.personal.newAccount(password)
 ```
-Create a new account on the node that kanbanwebapi is connected to with its provider. The RPC method used is personal_newAccount. 
+Create a new account on the node that kblib is connected to with its provider. The RPC method used is personal_newAccount. 
 #### Parameters
  - <b> password</b>  - String - the password you wish to use to secure the account
 
@@ -557,7 +557,7 @@ Create a new account on the node that kanbanwebapi is connected to with its prov
 
 ### personal.unlockAccount
 ```
-kanbanwebapi.personal.unlockAccount(address, password, unlockDuration)
+kblib.personal.unlockAccount(address, password, unlockDuration)
 ```
 Unlocks the given account.
 #### Parameters
@@ -572,7 +572,7 @@ Unlocks the given account.
 
 ### personal.lockAccount
 ```
-kanbanwebapi.personal.lockAccount(address)
+kblib.personal.lockAccount(address)
 ```
 Locks the given account.
 #### Parameters
@@ -585,7 +585,7 @@ Locks the given account.
 
 ### personal.importRawKey
 ```
-kanbanwebapi.personal.importRawKey(privateKey, password)
+kblib.personal.importRawKey(privateKey, password)
 ```
 Imports the given private key into the key store, encrypting it with the passphrase. Returns the address of the new account.
 #### Parameters
@@ -599,7 +599,7 @@ Imports the given private key into the key store, encrypting it with the passphr
 
 ### personal.ecRecover
 ```
-kanbanwebapi.personal.ecRecover(dataThatWasSigned, signature)
+kblib.personal.ecRecover(dataThatWasSigned, signature)
 ```
 Recovers the account that signed the data.
 #### Parameters
@@ -613,17 +613,17 @@ Recovers the account that signed the data.
 
 ### personal.sendTransaction
 ```
-kanbanwebapi.personal.sendTransaction(transactionObject, password)
+kblib.personal.sendTransaction(transactionObject, password)
 ```
 This method sends a transaction over the management API.
 #### Parameters
  - <b>transactionObject</b> - transaction Object - The transaction object to send:
-    + <b>from</b> - String|Number: The address for the sending account. Uses the kanbanwebapi.kanban.defaultAccount property, if not specified. Or an address or index of a local wallet in kanbanwebapi.kanban.accounts.wallet.
+    + <b>from</b> - String|Number: The address for the sending account. Uses the kblib.kanban.defaultAccount property, if not specified. Or an address or index of a local wallet in kblib.kanban.accounts.wallet.
     + <b>to</b> - String: (optional) The destination address of the message, left undefined for a contract-creation transaction.
     + <b>coin</b> - String (optional) The type of coin you wish to send. Currently supports ("FAB", "BTC", "ETH"). Default "FAB". 
     + <b>value</b> - Number|String|BN|BigNumber: (optional) The value transferred for the transaction in wei, also the endowment if it’s a contract-creation transaction.
     + <b>gas</b> - Number: (optional, default: To-Be-Determined) The amount of gas to use for the transaction (unused gas is refunded).
-    + <b>gasPrice</b> - Number|String|BN|BigNumber: (optional) The price of gas for this transaction in wei, defaults to kanbanwebapi.kanban.gasPrice.
+    + <b>gasPrice</b> - Number|String|BN|BigNumber: (optional) The price of gas for this transaction in wei, defaults to kblib.kanban.gasPrice.
     + <b>data</b> - String: (optional) Either a ABI byte string containing the data of the function call on a contract, or in the case of a contract-creation transaction the initialization code.
     + <b>nonce</b> - Number: (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
  - <b>password</b> - the passphrase for the account.  Warning: Sending your account password over an unsecured HTTP RPC connection is highly unsecure.
@@ -633,11 +633,11 @@ This method sends a transaction over the management API.
 
 [Back to top](#Table-of-Contents)
 
-## Kanbanwebapi._extend.utils
+## Kblib._extend.utils
 
 ### utils.padLeft
 ```
-kanbanwebapi._extend.utils.padLeft(string, characterAmount [, sign])
+kblib._extend.utils.padLeft(string, characterAmount [, sign])
 ```
 Adds a padding on the left of a string, Useful for adding paddings to HEX strings.
 #### Parameters
@@ -652,7 +652,7 @@ Adds a padding on the left of a string, Useful for adding paddings to HEX string
 
 ### utils.padRight
 ```
-kanbanwebapi._extend.utils.padRight(string, characterAmount [, sign])
+kblib._extend.utils.padRight(string, characterAmount [, sign])
 ```
 Adds a padding on the right of a string, Useful for adding paddings to HEX strings.
 #### Parameters
@@ -667,7 +667,7 @@ Adds a padding on the right of a string, Useful for adding paddings to HEX strin
 
 ### utils.toHex
 ```
-kanbanwebapi._extend.utils.toHex(mixed)
+kblib._extend.utils.toHex(mixed)
 ```
 Will auto convert any given value to HEX. Number strings will interpreted as numbers. Text strings will be interpreted as UTF-8 strings.
 #### Parameters
@@ -680,7 +680,7 @@ Will auto convert any given value to HEX. Number strings will interpreted as num
 
 ### utils.toDecimal
 ```
-kanbanwebapi._extend.utils.toDecimal(hex)
+kblib._extend.utils.toDecimal(hex)
 ```
 Returns the number representation of a given HEX value. This is not useful for big numbers
 #### Parameters
@@ -693,7 +693,7 @@ Returns the number representation of a given HEX value. This is not useful for b
 
 ### utils.fromDecimal
 ```
-kanbanwebapi._extend.utils.fromDecimal(number)
+kblib._extend.utils.fromDecimal(number)
 ```
 Returns the HEX representation of a given number value.
 #### Parameters
@@ -706,7 +706,7 @@ Returns the HEX representation of a given number value.
 
 ### utils.toUtf8
 ```
-kanbanwebapi._extend.utils.toUtf8(hex)
+kblib._extend.utils.toUtf8(hex)
 ```
 Returns the UTF-8 string representation of a given HEX value.
 #### Parameters
@@ -719,7 +719,7 @@ Returns the UTF-8 string representation of a given HEX value.
 
 ### utils.toAscii
 ```
-kanbanwebapi._extend.utils.toAscii(hex)
+kblib._extend.utils.toAscii(hex)
 ```
 Returns the ASCII string representation of a given HEX value.
 #### Parameters
@@ -732,7 +732,7 @@ Returns the ASCII string representation of a given HEX value.
 
 ### utils.fromUtf8
 ```
-kanbanwebapi._extend.utils.fromUtf8(string)
+kblib._extend.utils.fromUtf8(string)
 ```
 Returns the HEX representation of a given UTF-8 string.
 #### Parameters
@@ -745,7 +745,7 @@ Returns the HEX representation of a given UTF-8 string.
 
 ### utils.fromAscii
 ```
-kanbanwebapi._extend.utils.fromAscii(string [, length])
+kblib._extend.utils.fromAscii(string [, length])
 ```
 Returns the HEX representation of a given ASCII string. If you would like to transform an ASCII string into a valid bytes4, bytes8 etc. value then please pass the correct length as the second parameter
 #### Parameters
@@ -759,7 +759,7 @@ Returns the HEX representation of a given ASCII string. If you would like to tra
 
 ### utils.toWei
 ```
-kanbanwebapi._extend.utils.toWei(number [, unit])
+kblib._extend.utils.toWei(number [, unit])
 ```
 Converts any ether value into wei // TO DO: change this?
 #### Parameters
@@ -773,7 +773,7 @@ Converts any ether value into wei // TO DO: change this?
 
 ### utils.fromWei
 ```
-kanbanwebapi._extend.utils.fromWei(number [, unit])
+kblib._extend.utils.fromWei(number [, unit])
 ```
 Converts any wei value into an ether value.
 #### Parameters
@@ -787,7 +787,7 @@ Converts any wei value into an ether value.
 
 ### utils.toBigNumber
 ```
-kanbanwebapi._extend.utils.toBigNumber(number)
+kblib._extend.utils.toBigNumber(number)
 ```
 Convert a number from various forms to to a BigNumber
 #### Parameters
@@ -800,7 +800,7 @@ Convert a number from various forms to to a BigNumber
 
 ### utils.toTwosComplement
 ```
-kanbanwebapi._extend.utils.toTwosComplement()
+kblib._extend.utils.toTwosComplement()
 ```
 Converts a negative number into a two’s complement.
 #### Parameters
@@ -813,7 +813,7 @@ Converts a negative number into a two’s complement.
 
 ### utils.isBigNumber
 ```
-kanbanwebapi._extend.utils.isBigNumber(bigNumber)
+kblib._extend.utils.isBigNumber(bigNumber)
 ```
 Description goes here
 #### Parameters
@@ -826,7 +826,7 @@ Description goes here
 
 ### utils.isStrictAddress
 ```
-kanbanwebapi._extend.utils.isStrictAddress(address [, chainId])
+kblib._extend.utils.isStrictAddress(address [, chainId])
 ```
 Checks if a given string is a valid Kanban address, including the requirement that begin wit '0x'. It will also check the checksum, if the address has both upper and lowercase letters.
 #### Parameters
@@ -840,7 +840,7 @@ Checks if a given string is a valid Kanban address, including the requirement th
 
 ### utils.isAddress
 ```
-kanbanwebapi._extend.utils.isAddress(address [, chainId])
+kblib._extend.utils.isAddress(address [, chainId])
 ```
 Checks if a given string is a valid Kanban address. It will also check the checksum, if the address has both upper and lowercase letters.
 #### Parameters
@@ -854,7 +854,7 @@ Checks if a given string is a valid Kanban address. It will also check the check
 
 ### utils.isChecksumAddress
 ```
-kanbanwebapi._extend.utils.isChecksumAddress(address)
+kblib._extend.utils.isChecksumAddress(address)
 ```
 Checks if a given string is a valid Kanban address and ikf the address has both upper and lowercase letters.
 #### Parameters
@@ -867,7 +867,7 @@ Checks if a given string is a valid Kanban address and ikf the address has both 
 
 ### utils.toChecksumAddress
 ```
-kanbanwebapi._extend.utils.toChecksumAddress(address [, chainId])
+kblib._extend.utils.toChecksumAddress(address [, chainId])
 ```
 Will convert an upper or lowercase Kanban address to a checksum address.
 #### Parameters
@@ -881,7 +881,7 @@ Will convert an upper or lowercase Kanban address to a checksum address.
 
 ### utils.isFunction
 ```
-kanbanwebapi._extend.utils.isFunction(function)
+kblib._extend.utils.isFunction(function)
 ```
 Checks if the passed parameter is a function
 #### Parameters
@@ -894,7 +894,7 @@ Checks if the passed parameter is a function
 
 ### utils.isString
 ```
-kanbanwebapi._extend.utils.isString(string)
+kblib._extend.utils.isString(string)
 ```
 Checks if the passed parameter is a string
 #### Parameters
@@ -907,7 +907,7 @@ Checks if the passed parameter is a string
 
 ### utils.isObject
 ```
-kanbanwebapi._extend.utils.isObject(object)
+kblib._extend.utils.isObject(object)
 ```
 Checks if the passed parameter is an object
 #### Parameters
@@ -920,7 +920,7 @@ Checks if the passed parameter is an object
 
 ### utils.isBoolean
 ```
-kanbanwebapi._extend.utils.isBoolean(boolean)
+kblib._extend.utils.isBoolean(boolean)
 ```
 Checks if the passed parameter is a boolean
 #### Parameters
@@ -933,7 +933,7 @@ Checks if the passed parameter is a boolean
 
 ### utils.isArray
 ```
-kanbanwebapi._extend.utils.isArray(array)
+kblib._extend.utils.isArray(array)
 ```
 Checks if the passed parameter is an array
 #### Parameters
@@ -946,7 +946,7 @@ Checks if the passed parameter is an array
 
 ### utils.isJson
 ```
-kanbanwebapi._extend.utils.isString(string)
+kblib._extend.utils.isString(string)
 ```
 Checks if the passed parameter is a valid JSON string
 #### Parameters
@@ -957,11 +957,11 @@ Checks if the passed parameter is a valid JSON string
 
 [Back to top](#Table-of-Contents)
 
-## Kanbanwebapi.coders
+## Kblib.coders
 
 ### coders.encodeParam
 ```
-kanbanwebapi._extend.coders.encodeParam(type, param)
+kblib._extend.coders.encodeParam(type, param)
 ```
 Encodes one parameter for use in a smart contract ABI
 #### Parameters
@@ -975,7 +975,7 @@ Encodes one parameter for use in a smart contract ABI
 
 ### coders.encodeParams
 ```
-kanbanwebapi._extend.coders.encodeParams(types, params)
+kblib._extend.coders.encodeParams(types, params)
 ```
 Encodes an array of parameters for use in a smart contract ABI
 #### Parameters
@@ -989,7 +989,7 @@ Encodes an array of parameters for use in a smart contract ABI
 
 ### coders.decodeParam
 ```
-kanbanwebapi._extend.coders.decodeParam(type, bytes)
+kblib._extend.coders.decodeParam(type, bytes)
 ```
 Decodes an ABI encoded parameter to its JavaScript type.
 #### Parameters
@@ -1003,7 +1003,7 @@ Decodes an ABI encoded parameter to its JavaScript type.
 
 ### coders.decodeParams
 ```
-kanbanwebapi._extend.coders.decodeParams(types, bytes)
+kblib._extend.coders.decodeParams(types, bytes)
 ```
 Decodes ABI encoded parameters to their JavaScript types.
 #### Parameters
@@ -1017,7 +1017,7 @@ Decodes ABI encoded parameters to their JavaScript types.
 
 ### coders.encodeFunctionSignature
 ```
-kanbanwebapi._extend.coders.encodeFunctionSignature(functionName, types)
+kblib._extend.coders.encodeFunctionSignature(functionName, types)
 ```
 Encodes the function name to its ABI signature, which are the first 4 bytes of the sha3 hash of the function name including types.
 #### Parameters
@@ -1031,7 +1031,7 @@ Encodes the function name to its ABI signature, which are the first 4 bytes of t
 
 ### coders.encodeFunctionCall
 ```
-kanbanwebapi._extend.coders.encodeFunctionCall(functionName, types, params)
+kblib._extend.coders.encodeFunctionCall(functionName, types, params)
 ```
 Encodes the function call for use with a contract ABI. which are the first 4 bytes of the sha3 hash of the function name including parameters.
 #### Parameters
@@ -1044,11 +1044,11 @@ Encodes the function call for use with a contract ABI. which are the first 4 byt
 
 [Back to top](#Table-of-Contents)
 
-## Kanbanwebapi.iban
+## Kblib.iban
 
 ### iban.fromAddress
 ```
-kanbanwebapi.iban.fromAddress(address)
+kblib.iban.fromAddress(address)
 ```
 Singleton: Converts an Kanban address to a direct IBAN instance.
 #### Parameters
@@ -1061,7 +1061,7 @@ Singleton: Converts an Kanban address to a direct IBAN instance.
 
 ### iban.fromBban
 ```
-kanbanwebapi.iban.fromBban(bbanAddress)
+kblib.iban.fromBban(bbanAddress)
 ```
 Singleton: Converts an BBAN address to a direct IBAN instance.
 #### Parameters
@@ -1074,7 +1074,7 @@ Singleton: Converts an BBAN address to a direct IBAN instance.
 
 ### iban.createIndirect
 ```
-kanbanwebapi.iban.createIndirect(options)
+kblib.iban.createIndirect(options)
 ```
 Singleton: Creates an indirect IBAN address from a institution and identifier.
 #### Parameters
@@ -1089,7 +1089,7 @@ Singleton: Creates an indirect IBAN address from a institution and identifier.
 
 ### iban.isValid
 ```
-kanbanwebapi.iban.isValid(ibanAddress)
+kblib.iban.isValid(ibanAddress)
 ```
 Singleton: Checks if an IBAN address is valid.
 #### Parameters
