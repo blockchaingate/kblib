@@ -59,6 +59,13 @@
    * [utils.isBoolean](#utils.isBoolean)
    * [utils.isArray](#utils.isArray)
    * [utils.isJson](#utils.isJson)
+- [Kanbanwebapi._extend.coders](#Kanbanwebapi._extend.coders)
+   * [coders.encodeParam](#coders.encodeParam)
+   * [coders.encodeParams](#coders.encodeParams)
+   * [coders.decodeParam](#coders.decodeParam)
+   * [coders.decodeParams](#coders.decodeParams)
+   * [coders.encodeFunctionSignature](#coders.encodeFunctionSignature)
+   * [coders.encodeFunctionCall](#coders.encodeFunctionCall)
 - [Kanbanwebapi.iban](#Kanbanwebapi.iban)
    * [iban.fromAddress](#iban.fromAddress)
    * [iban.fromBban](#iban.fromBban)
@@ -947,6 +954,93 @@ Checks if the passed parameter is a valid JSON string
 
 #### Return Type
  - Boolean - true if the passed parameter is valid JSON string
+
+[Back to top](#Table-of-Contents)
+
+## Kanbanwebapi.coders
+
+### coders.encodeParam
+```
+kanbanwebapi._extend.coders.encodeParam(type, param)
+```
+Encodes one parameter for use in a smart contract ABI
+#### Parameters
+ - <b>type</b> - String - The type of the parameter to be encoded for the ABI
+ - <b>param</b> - String - The parameter to be encoded
+
+#### Return Type
+ - String - The ABI-encoded parameter
+
+[Back to top](#Table-of-Contents)
+
+### coders.encodeParams
+```
+kanbanwebapi._extend.coders.encodeParams(types, params)
+```
+Encodes an array of parameters for use in a smart contract ABI
+#### Parameters
+ - <b>types</b> - Array of String - The types of the parameters to be encoded for the ABI
+ - <b>params</b> - Array of String - The parameters to be encoded, in order
+
+#### Return Type
+ - String - The ABI-encoded parameters
+
+[Back to top](#Table-of-Contents)
+
+### coders.decodeParam
+```
+kanbanwebapi._extend.coders.decodeParam(type, bytes)
+```
+Decodes an ABI encoded parameter to its JavaScript type.
+#### Parameters
+ - <b>type</b> - String - The JavaScript type of the parameter
+ - <b>bytes</b> - String - The encoded parameter to be decoded
+
+#### Return Type
+ - various types - The ABI-decoded parameter. Type depends on the one supplied
+
+[Back to top](#Table-of-Contents)
+
+### coders.decodeParams
+```
+kanbanwebapi._extend.coders.decodeParams(types, bytes)
+```
+Decodes ABI encoded parameters to their JavaScript types.
+#### Parameters
+ - <b>types</b> - Array of String - The JavaScript type of the parameters
+ - <b>bytes</b> - String - A string of the encoded parameters to be decoded
+
+#### Return Type
+ - Array of various types - The ABI-decoded parameters. Types depend on the ones supplied.
+
+[Back to top](#Table-of-Contents)
+
+### coders.encodeFunctionSignature
+```
+kanbanwebapi._extend.coders.encodeFunctionSignature(functionName, types)
+```
+Encodes the function name to its ABI signature, which are the first 4 bytes of the sha3 hash of the function name including types.
+#### Parameters
+ - <b>functionName</b> - String - the name of the function
+ - <b>types</b> - String - The types of the parameters in the function signature
+
+#### Return Type
+ - String - The ABI-encoded function signature
+
+[Back to top](#Table-of-Contents)
+
+### coders.encodeFunctionCall
+```
+kanbanwebapi._extend.coders.encodeFunctionCall(functionName, types, params)
+```
+Encodes the function call for use with a contract ABI. which are the first 4 bytes of the sha3 hash of the function name including parameters.
+#### Parameters
+ - <b>functionName</b> - String - the name of the Function
+ - <b>types</b> - String - The types of the parameters in the function signature
+ - <b>params</b> - String - The parameters to be used in the function call
+
+#### Return Type
+ - String - The ABI-encoded function call
 
 [Back to top](#Table-of-Contents)
 
