@@ -369,8 +369,8 @@ kblib.kanban.signTransaction(transactionOptions)
 Signs a transaction with the private key of the given address. If the given address is a local unlocked account, the transaction will be signed locally.
 #### Parameters
  - <b>transactionOptions</b> - transaction Object - The transaction object to send:
-      * <b>from</b> - String|Number: The address for the sending account. Uses the kblib.kanban.defaultAccount property, if not specified. Or an address or index of a local wallet in kblib.kanban.accounts.wallet
-      * <b>nonce</b> - String: (optional) The nonce to use when signing this transaction. Default will use kblib.kanban.getTransactionCount().
+      * <b>from</b> - String|Number: The address for the sending account.
+      * <b>nonce</b> - String: The nonce to use when signing this transaction. Default will use kblib.kanban.getTransactionCount().
       * <b>chainId</b> - String: (optional) The chain id to use when signing this transaction. Default will use kblib.kanban.net.getId().
       * <b>to</b> - String: (optional) The receiver of the transaction, can be empty when deploying a contract.
       * <b>data</b> - String: (optional) The call data of the transaction, can be empty for simple value transfers.
@@ -548,7 +548,7 @@ kblib.personal.newAccount(password)
 ```
 Create a new account on the node that kblib is connected to with its provider. The RPC method used is personal_newAccount. 
 #### Parameters
- - <b> password</b>  - String - the password you wish to use to secure the account
+ - <b> password</b> - String - the password you wish to use to secure the account
 
 #### Return Type
  - String - Address of the newly created account
@@ -561,9 +561,9 @@ kblib.personal.unlockAccount(address, password, unlockDuration)
 ```
 Unlocks the given account.
 #### Parameters
- - <b> address</b>  - String - The account address to unlock
- - <b> password</b>  - String - The account password
- - <b> unlockDuration</b>  - Number - The duration for the account to remain unlocked.
+ - <b> address</b> - String - The account address to unlock
+ - <b> password</b> - String - The account password
+ - <b> unlockDuration</b> - Number - The duration for the account to remain unlocked.
 
 #### Return Type
  - Boolean - True if the account was unlocked successfully otherwise false
@@ -576,7 +576,7 @@ kblib.personal.lockAccount(address)
 ```
 Locks the given account.
 #### Parameters
- - <b>address</b>  - String - The account address to lock
+ - <b>address</b> - String - The account address to lock
 
 #### Return Type
  - Boolean - True if the account was locked successfully otherwise false
