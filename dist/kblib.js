@@ -1402,6 +1402,7 @@ module.exports = SolidityEvent;
 },{"../solidity/coder":36,"../utils/sha3":48,"../utils/utils":49,"./filter":11,"./formatters":12,"./methods/watches":26}],10:[function(require,module,exports){
 var formatters = require('./formatters');
 var utils = require('../utils/utils');
+var coder = require('../solidity/coder.js');
 var Method = require('./method');
 var Property = require('./property');
 
@@ -1440,6 +1441,7 @@ var extend = function (kblib) {
     ex.utils = utils;
     ex.Method = Method;
     ex.Property = Property;
+    ex.coders = coder
 
     return ex;
 };
@@ -1449,7 +1451,7 @@ var extend = function (kblib) {
 module.exports = extend;
 
 
-},{"../utils/utils":49,"./formatters":12,"./method":18,"./property":28}],11:[function(require,module,exports){
+},{"../solidity/coder.js":36,"../utils/utils":49,"./formatters":12,"./method":18,"./property":28}],11:[function(require,module,exports){
 /*
     This file is part of kblib.js.
 
@@ -1738,10 +1740,6 @@ var outputBigNumberFormatter = function (number) {
     return utils.toBigNumber(number);
 };
 
-var isPredefinedBlockNumber = function (blockNumber) {
-    return blockNumber === 'latest' || blockNumber === 'pending' || blockNumber === 'earliest';
-};
-
 var inputDefaultBlockNumberFormatter = function (blockNumber) {
     if (blockNumber === undefined) {
         return config.defaultBlock;
@@ -1752,7 +1750,7 @@ var inputDefaultBlockNumberFormatter = function (blockNumber) {
 var inputBlockNumberFormatter = function (blockNumber) {
     if (blockNumber === undefined) {
         return undefined;
-    } else if (isPredefinedBlockNumber(blockNumber)) {
+    } else if ((blockNumber === 'latest' || blockNumber === 'pending' || blockNumber === 'earliest')) {
         return blockNumber;
     }
     return utils.toHex(blockNumber);
@@ -4986,7 +4984,8 @@ module.exports = SolidityTypeBytes;
  */
 
 var f = require('./formatters');
-
+var utils = require('../utils/utils');
+var sha3 = require('../utils/sha3');
 var SolidityTypeAddress = require('./address');
 var SolidityTypeBool = require('./bool');
 var SolidityTypeInt = require('./int');
@@ -5007,6 +5006,39 @@ var isDynamic = function (solidityType, type) {
  */
 var SolidityCoder = function (types) {
     this._types = types;
+};
+
+/**
+ * Determines the function selector by encoding the function signature and taking the first 4 bytes
+ *
+ * @method encodeFunctionSignature
+ * @param {String} functionSignature
+ * @param {String[]} types
+ * @return {String} encoded function selector
+ */
+SolidityCoder.prototype.encodeFunctionSignature = function (functionName, types) {
+    let typesString = '';
+    for (let i = 0; i < types.length; i++){
+        if (i > 0)
+            { typesString.concat(',')}
+        typesString.concat(types[i]);
+    }
+    let functionSignature = `${functionName}(${types})`
+    return sha3(functionSignature).slice(0,8);
+};
+
+/**
+ * Encodes the function call, combining encodeFunctionSignature and Encode Params
+ *
+ * @method encodeFunctionCall
+ * @param {String} functionCall
+ * @return {String} encoded function call
+ */
+SolidityCoder.prototype.encodeFunctionCall = function (functionName, types, params) {
+    if (!utils.isArray(params)) {
+        params = [params];
+    }
+    return this.encodeFunctionSignature(functionName, types, params).concat(this.encodeParams(types, params)) ;
 };
 
 /**
@@ -5211,7 +5243,7 @@ var coder = new SolidityCoder([
 
 module.exports = coder;
 
-},{"./address":33,"./bool":34,"./bytes":35,"./dynamicbytes":37,"./formatters":38,"./int":39,"./real":41,"./string":42,"./uint":44,"./ureal":45}],37:[function(require,module,exports){
+},{"../utils/sha3":48,"../utils/utils":49,"./address":33,"./bool":34,"./bytes":35,"./dynamicbytes":37,"./formatters":38,"./int":39,"./real":41,"./string":42,"./uint":44,"./ureal":45}],37:[function(require,module,exports){
 var f = require('./formatters');
 var SolidityType = require('./type');
 
