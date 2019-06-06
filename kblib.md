@@ -1023,7 +1023,7 @@ kblib._extend.coders.encodeFunctionSignature(functionName, types)
 Encodes the function name to its ABI signature, which are the first 4 bytes of the sha3 hash of the function name including types.
 #### Parameters
  - <b>functionName</b> - String - the name of the function
- - <b>types</b> - Array of String | String - The types of the parameters in the function signature
+ - <b>types</b> - Array of String | String - The solidity types of the parameters in the function signature
 
 #### Return Type
  - String - The ABI-encoded function signature (pre-pended with '0x')
@@ -1037,7 +1037,7 @@ kblib._extend.coders.encodeFunctionCall(functionName, types, params)
 Encodes the function call for use with a contract ABI. which are the first 4 bytes of the sha3 hash of the function name including parameters.
 #### Parameters
  - <b>functionName</b> - String - the name of the Function
- - <b>types</b> - Array of String | String - The types of the parameters in the function signature
+ - <b>types</b> - Array of String | String - The solidity types of the parameters in the function signature
  - <b>params</b> - Array of String | String - The parameters to be used in the function call
 
 #### Return Type
