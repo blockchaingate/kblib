@@ -1,9 +1,9 @@
 # FAB/KanBan JavaScript API
 
-[![Join the chat at https://gitter.im/ethereum/web3.js](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ethereum/web3.js?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/blockchaingate/kanbanlib.js](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/blockchaingate/kanbanlib.js?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 This is derived and largely modified from the Ethereum Web3 API and not fully compatible with Web3 [JavaScript API](https://github.com/ethereum/wiki/wiki/JavaScript-API)
-which implements the [Generic JSON RPC](https://github.com/ethereum/wiki/wiki/JSON-RPC) spec. It's available on npm as a node module, for Bower and component as embeddable scripts, and as a meteor.js package.
+which implements the [Generic JSON RPC](https://github.com/blockchaingate/wiki/wiki/JSON-RPC) spec. It's available on npm as a node module, for Bower and component as embeddable scripts, and as a meteor.js package.
 
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![dependency status][dep-image]][dep-url] [![dev dependency status][dep-dev-image]][dep-dev-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Stories in Ready][waffle-image]][waffle-url]
 
@@ -11,7 +11,7 @@ which implements the [Generic JSON RPC](https://github.com/ethereum/wiki/wiki/JS
 
 You need to run a local FAB/KanBan node to use this library.
 
-[Documentation](https://github.com/ethereum/wiki/wiki/JavaScript-API)
+[Documentation](https://github.com/blockchaingate/wiki/wiki/JavaScript-API)
 
 ## Table of Contents
 
@@ -55,7 +55,7 @@ meteor add fab:kanbanlib
 CDN
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js" integrity="sha256-nWBTbvxhJgjslRyuAKJHK+XcZPlCnmIAAMixz6EefVk=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/gh/blockchaingate/kanbanlib.js@0.0.1/dist/kanbanlib.min.js" integrity="sha256-0xd06695ada9478bfc934cf30924211c80ced5c0" crossorigin="anonymous"></script>
 ```
 
 Bower
@@ -77,7 +77,7 @@ component install fab/kanbanlib.js
 Use the `kanbanlib` object directly from the global namespace:
 
 ```js
-console.log(web3); // {kanban: .., shh: ...} // It's here!
+console.log(kanbanlib); // {kanban: .., shh: ...} // It's here!
 ```
 
 Set a provider (`HttpProvider`):
