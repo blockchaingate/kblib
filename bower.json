@@ -1,0 +1,54 @@
+{
+  "name": "kblib",
+  "namespace": "kanban",
+  "version": "0.20.7",
+  "description": "Kanban Compatible JavaScript API",
+  "main": [
+    "./dist/kblib.js",
+    "./dist/kblib.min.js"
+  ],
+  "dependencies": {
+    "bignumber.js": ">=2.0.0 <=5.0.0",
+    "crypto-js": "~3.1.4"
+  },
+  "keywords": [
+    "kanban",
+    "javascript",
+    "API"
+  ],
+  "authors": [
+    {
+      "name": "Marek Kotewicz",
+      "email": "marek@ethdev.com",
+      "homepage": "https://github.com/debris"
+    },
+    {
+      "name": "Marian Oancea",
+      "email": "marian@ethdev.com",
+      "homepage": "https://github.com/cubedro"
+    },
+    {
+      "name": "Fabian Vogelsteller",
+      "email": "fabian@ethdev.com",
+      "homepage": "https://github.com/frozeman"
+    }
+  ],
+  "license": "LGPL-3.0",
+  "ignore": [
+    "example",
+    "lib",
+    "node_modules",
+    "package.json",
+    "package.js",
+    ".versions",
+    ".bowerrc",
+    ".editorconfig",
+    ".gitignore",
+    ".jshintrc",
+    ".npmignore",
+    ".travis.yml",
+    "gulpfile.js",
+    "index.js",
+    "**/*.txt"
+  ]
+}
