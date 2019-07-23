@@ -10,6 +10,7 @@
   "dependencies": {
     "bignumber.js": "github:frozeman/bignumber.js-nolookahead",
     "crypto-js": "^3.1.4",
+    "secure-random": "^1.1.2",
     "utf8": "^2.1.1",
     "xhr2-cookies": "^1.1.0",
     "xmlhttprequest": "*"
@@ -18,7 +19,7 @@
     "xmlhttprequest": "./lib/utils/browser-xhr.js"
   },
   "devDependencies": {
-    "bower": ">=1.4.1",
+    "bower": "^1.8.8",
     "browserify": ">=10.0",
     "chai": "^3.0.0",
     "coveralls": "^3.0.2",
